@@ -6,7 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository", repositoryClass=ProductRepository::class)
  */
 class Product
 {
@@ -48,11 +48,13 @@ class Product
     private $Type;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
@@ -134,10 +136,19 @@ class Product
         return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
+
+    /**
+     * @param \DateTimeInterface|null $createdAt
+     * @return Product
+     */
 
     public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
@@ -146,10 +157,19 @@ class Product
         return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
+
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
+
+    /**
+     * @param \DateTimeInterface|null $updatedAt
+     * @return Product
+     */
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {

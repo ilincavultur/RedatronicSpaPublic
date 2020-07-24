@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +54,8 @@ class ProductController extends AbstractController
             $product->setPrice($data->getPrice());
             $product->setWeekendPrice($data->getWeekendPrice());
             $product->setType($data->getType());
-            $product->setCreateDate();
+
+
 
 
             $em->persist($product);
@@ -68,30 +70,6 @@ class ProductController extends AbstractController
         );
 
     }
-
-    /**
-     * @var DateTime
-     *
-     * @ORM\Column(name="create_date", type="date", nullable=false, options={"default" = "CURRENT_TIMESTAMP"})
-     * @Assert\NotBlank
-     */
-    private $createDate;
-
-
-    /**
-     * @param DateTime $createDate
-     *
-     * @return ProductController
-     * @throws \Exception
-     */
-    public function setCreateDate(DateTime $createDate)
-    {
-        $date=new DateTime();
-        $this->createDate = $date;
-
-        return $this;
-    }
-
 
 
     /**
@@ -108,6 +86,65 @@ class ProductController extends AbstractController
             'products'=>$products
         ]);
 
+    }
+
+    /**
+     * @Route("/{id}/delete", name="app_product_delete")
+     * @param $id
+     * @return RedirectResponse
+     *
+     */
+    public function productDelete($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+        $entityManager->remove($product);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_product_list');
+    }
+
+    /**
+     * @Route("/edit/{id}")
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function update($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $product->setName('New product name!');
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_product_list', [
+            'id' => $product->getId()
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/{id}/info", name="app_product_info")
+     *
+     * @param Product $product
+     * @return JsonResponse
+     */
+    public function productInfo(Product $product)
+    {
+        $response = ['id' => $product->getId(), 'name' => $product->getName(), 'code' => $product->getCode(), 'price' => $product->getPrice()];
+        return new JsonResponse($response);
     }
 
 
