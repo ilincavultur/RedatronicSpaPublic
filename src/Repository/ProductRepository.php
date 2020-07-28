@@ -33,6 +33,9 @@ class ProductRepository extends ServiceEntityRepository
             $qb->where('p.Name like :search')
                 ->orWhere('p.Code like :search')
                 ->orWhere('p.Barcode like :search')
+                ->orWhere('p.Price like :search')
+                ->orWhere('p.WeekendPrice like :search')
+                ->orWhere('p.Type like :search')
                 ->setParameter('search','%'.$search.'%');
         }
 
