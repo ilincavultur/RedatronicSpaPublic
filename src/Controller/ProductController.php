@@ -48,6 +48,7 @@ class ProductController extends AbstractController
     {
         $form = $this->createForm(\ProductType::class);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
             $product = new Product();
@@ -58,9 +59,10 @@ class ProductController extends AbstractController
             $product->setWeekendPrice($data->getWeekendPrice());
             $product->setType($data->getType());
 
+
             $em->persist($product);
             $em->flush();
-            return $this->redirectToRoute('app_product_list');
+            return $this->redirect($this->generateUrl('app_product_list'));
         }
         return $this->render(
             'Product/addProduct.html.twig',
@@ -75,6 +77,7 @@ class ProductController extends AbstractController
      * @Route("/list", name="app_product_list")
      *
      * @param Request $request
+     *
      *
      *
      * @return Response
@@ -110,6 +113,7 @@ class ProductController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $product = $entityManager->getRepository(Product::class)->find($id);
 
+
         if (!$product) {
             throw $this->createNotFoundException(
                 'No product found for id '.$id
@@ -117,7 +121,11 @@ class ProductController extends AbstractController
         }
         $entityManager->remove($product);
         $entityManager->flush();
+
+
+
         return $this->redirectToRoute('app_product_list');
+
     }
 
     /**
@@ -148,6 +156,8 @@ class ProductController extends AbstractController
             ]
         );
     }
+
+
 
 
 

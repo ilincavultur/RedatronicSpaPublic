@@ -29,6 +29,7 @@ class ProductRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p');
 
+
         if (null !== $search){
             $qb->where('p.Name like :search')
                 ->orWhere('p.Code like :search')
@@ -43,6 +44,10 @@ class ProductRepository extends ServiceEntityRepository
 
         return $qb;
     }
+
+
+
+
 
     // /**
     //  * @return Product[] Returns an array of Product objects
