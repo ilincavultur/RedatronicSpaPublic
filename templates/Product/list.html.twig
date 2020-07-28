@@ -1,19 +1,63 @@
 {% extends 'base.html.twig' %}
 
 
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
 
-    {% block title %}List{% endblock %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="{{ path('app_product_list') }}" class="btn btn-light">
+                Products
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a href="{{ path('app_new_product') }}" class="btn btn-light">
+                            Add New Product <i class="fa fa-plus"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <form method="get" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                    <button class="btn btn-light">
+                        Search Product
+                    </button>
+                </form>
+
+            </div>
+        </nav>
+
+
+
+        <title>{% block title %}List{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+
+
+    </head>
+{% endblock %}
 
 
 
 {% block body %}
 
-    <h4 class="display-4">Available Products</h4>
+
 
 
     <table class="table">
         <thead>
-            <tr>
+            <tr class="col text-center">
                 <th>Name</th>
                 <th>Code</th>
                 <th>Barcode</th>
@@ -21,15 +65,15 @@
                 <th>WeekendPrice</th>
                 <th>Type</th>
                 <th>Created At</th>
-                <th>Updated At</th>
+                {#<th>Updated At</th>#}
                 <th>Actions</th>
             </tr>
 
         </thead>
 
         <tbody>
-            {%  for product in products %}
-                <tr>
+            {% for product in pager.currentPageResults %}
+                <tr class="col text-center">
                     <td> {{ product.Name }}</td>
                     <td> {{ product.Code }}</td>
                     <td> {{ product.Barcode }}</td>
@@ -37,26 +81,31 @@
                     <td> {{ product.WeekendPrice }}</td>
                     <td> {{ product.Type }}</td>
                     <td> {{ product.createdAt|date }}</td>
-                    <td> {{ product.updatedAt|date }}</td>
-
+                    {#<td> {{ product.updatedAt|date }}</td>#}
                     <td>
-                        <ul class="list-inline m-0">
 
-                            <li class="list-inline-item">
-                                <button class="btn btn-success btn-sm rounded-0" type="button" > <i class="fa fa-edit" style="font-size:20px"></i></button>
-                            </li>
-                            <li class="list-inline-item">
+                            <ul class="list-inline m-0">
 
-                                <button class="btn btn-danger btn-sm rounded-0" type="button" >
-                                    <a href="{{ path('app_product_delete', {"id":product.id}) }}" class="btn btn-danger btn-sm rounded-0"> <i class="material-icons" style="font-size:20px">delete_forever</i>
-                                    </a>
-                                </button>
+                                <li class="list-inline-item">
+
+                                        <a href="{{ path('app_product_edit', {"id":product.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                                        </a>
+
+                                </li>
+                                <li class="list-inline-item">
 
 
-                            </li>
-                        </ul>
+                                        <a href="{{ path('app_product_delete', {"id":product.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                                        </a>
+
+
+
+                                </li>
+                            </ul>
 
                     </td>
+
+
 
                 </tr>
 
@@ -64,10 +113,23 @@
 
             {% endfor %}
 
+
         </tbody>
+
 
     </table>
 
+    <nav aria-label="Page navigation example" class="p-3 mb-2 bg-light text-dark">
+        <ul class="pagination justify-content-center">
+
+
+            {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
+
+
+
+
+        </ul>
+    </nav>
 
 
 
@@ -80,4 +142,6 @@
 
 
 
+
 {% endblock %}
+

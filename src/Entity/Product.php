@@ -5,11 +5,15 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository", repositoryClass=ProductRepository::class)
+ *
  */
 class Product
 {
+    use TimestampableEntity;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -47,17 +51,6 @@ class Product
      */
     private $Type;
 
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -136,45 +129,4 @@ class Product
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface|null
-     */
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param \DateTimeInterface|null $createdAt
-     * @return Product
-     */
-
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTimeInterface|null
-     */
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param \DateTimeInterface|null $updatedAt
-     * @return Product
-     */
-
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
 }

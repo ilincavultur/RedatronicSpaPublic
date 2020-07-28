@@ -99,7 +99,6 @@ class ProductController extends AbstractController
     }
 
 
-
     /**
      * @Route("/{id}/delete", name="app_product_delete")
      * @param $id

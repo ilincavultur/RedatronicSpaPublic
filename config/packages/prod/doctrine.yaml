@@ -11,6 +11,7 @@ doctrine:
             type: pool
             pool: doctrine.result_cache_pool
 
+
 framework:
     cache:
         pools:

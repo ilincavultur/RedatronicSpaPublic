@@ -1,0 +1,25 @@
+
+
+        <div class="row">
+
+            <div class="col-md-10">
+
+                {{ form_start(form) }}
+
+                {{ form_row(form.Search) }}
+
+
+
+                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <a href="{{ path('app_search_element') }}" class="btn btn-light">
+                    Search Product
+                </a>
+
+                {#<button type="submit" class="btn btn-light"> Search Product </button> #}
+
+
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
