@@ -42,25 +42,24 @@ class ProductController extends AbstractController
      * @Route ("/addProduct", name="app_new_product")
      * @param EntityManagerInterface $em
      * @param Request $request
+     * @param ValidatorInterface $validator
      * @return Response
      */
-    public function addProduct(EntityManagerInterface $em ,Request $request)
+    public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
     {
-        $form = $this->createForm(\ProductType::class);
+        $form = $this->createForm(Product\ProductType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
-            $product = new Product();
-            $product->setName($data->getName());
-            $product->setCode($data->getCode());
-            $product->setBarcode($data->getBarcode());
-            $product->setPrice($data->getPrice());
-            $product->setWeekendPrice($data->getWeekendPrice());
-            $product->setType($data->getType());
 
+            $em->persist($form->getData());
+            $errors = $validator->validate($em);
+            if (count($errors) > 0) {
 
-            $em->persist($product);
+                $errorsString = (string) $errors;
+
+                return new Response($errorsString);
+            }
             $em->flush();
             return $this->redirect($this->generateUrl('app_product_list'));
         }
@@ -77,8 +76,6 @@ class ProductController extends AbstractController
      * @Route("/list", name="app_product_list")
      *
      * @param Request $request
-     *
-     *
      *
      * @return Response
      */
@@ -103,26 +100,16 @@ class ProductController extends AbstractController
 
 
     /**
-     * @Route("/{id}/delete", name="app_product_delete")
-     * @param $id
+     * @Route("/delete/{id}", name="app_product_delete")
+     * @param Product $product
      * @return RedirectResponse
-     *
      */
-    public function productDelete($id)
+    public function productDelete(Product $product)
     {
+
         $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($id);
-
-
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
-        }
         $entityManager->remove($product);
         $entityManager->flush();
-
-
 
         return $this->redirectToRoute('app_product_list');
 
@@ -131,16 +118,17 @@ class ProductController extends AbstractController
     /**
      * @Route("/edit/{id}", name="app_product_edit")
      * @param Request $request
-     * @param $id
+     * @param Product $product
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($id);
 
-        $form = $this->createForm(\ProductType::class, $product);
+
+        $form = $this->createForm(Product\ProductType::class, $product);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()){
 

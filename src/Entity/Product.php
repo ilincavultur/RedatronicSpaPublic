@@ -6,14 +6,21 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductRepository", repositoryClass=ProductRepository::class)
+ * @ORM\Entity(repositoryClass=ProductRepository::class)
  *
  */
 class Product
 {
     use TimestampableEntity;
+
+    public const TYPE_RESTAURANT = 'Restaurant';
+    public const TYPE_BAR = 'Bar';
+    public const TYPE_SERVICE = 'Service';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -23,16 +30,26 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $Name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $Code;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $Barcode;
 
@@ -48,6 +65,9 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $Type;
 

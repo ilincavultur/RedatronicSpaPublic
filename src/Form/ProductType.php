@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Entity\Product;
 
 
 use App\Entity\Product;
@@ -27,9 +28,9 @@ class ProductType extends AbstractType
             ->add('WeekendPrice', IntegerType::class)
             ->add('Type', ChoiceType::class, [
                 'choices' => [
-                    'Restaurant' => 'Restaurant',
-                    'Bar' => 'Bar',
-                    'Service' => 'Service',
+                    'Restaurant' => Product::TYPE_RESTAURANT ,
+                    'Bar' => Product::TYPE_BAR,
+                    'Service' => Product::TYPE_SERVICE ,
                 ],
 
             ])
