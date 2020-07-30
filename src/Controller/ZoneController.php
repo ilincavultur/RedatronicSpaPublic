@@ -3,41 +3,37 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
-use App\Form\ProductType;
-use App\Form\SearchProductType;
+
+use App\Entity\Zone;
+use App\Form\ZoneType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
-
-
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * Class ProductController
+ * Class ZoneController
  * @package App\Controller
- * @Route("/Spa/Product")
+ * @Route("/Spa/Zone")
  */
-class ProductController extends AbstractController
+class ZoneController extends AbstractController
 {
 
-
     /**
-     * @Route ("/addProduct", name="app_new_product")
+     * @Route("/addZone", name="app_new_zone")
      * @param EntityManagerInterface $em
      * @param Request $request
      * @param ValidatorInterface $validator
-     * @return Response
+     * @return RedirectResponse|Response
      */
-    public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
+    public function addZone(EntityManagerInterface $em , Request $request, ValidatorInterface $validator)
     {
-        $form = $this->createForm(Product\ProductType::class);
+        $form = $this->createForm(ZoneType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -51,10 +47,10 @@ class ProductController extends AbstractController
                 return new Response($errorsString);
             }
             $em->flush();
-            return $this->redirect($this->generateUrl('app_product_list'));
+            return $this->redirect($this->generateUrl('app_zone_list'));
         }
         return $this->render(
-            'Product/addProduct.html.twig',
+            'Zone/addZone.html.twig',
             [
                 'user_form' => $form->createView()
             ]
@@ -62,17 +58,16 @@ class ProductController extends AbstractController
 
     }
 
+
     /**
-     * @Route("/list", name="app_product_list")
-     *
+     * @Route("/list", name="app_zone_list")
      * @param Request $request
-     *
      * @return Response
      */
     public function listAction(Request $request)
     {
-        $productRepository = $this->getDoctrine()->getRepository(Product::class);
-        $qb = $productRepository->findProducts($request->get('search'));
+        $zoneRepository = $this->getDoctrine()->getRepository(Zone::class);
+        $qb = $zoneRepository->findZones($request->get('search'));
 
         $page = $request->get('page');
         $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
@@ -80,7 +75,7 @@ class ProductController extends AbstractController
         $pager->getNbResults();
 
         return $this->render(
-            'Product/list.html.twig',
+            'Zone/list.html.twig',
             [
                 'pager' => $pager
             ]
@@ -88,35 +83,34 @@ class ProductController extends AbstractController
 
     }
 
-
     /**
-     * @Route("/delete/{id}", name="app_product_delete")
-     * @param Product $product
+     * @Route("/delete/{id}", name="app_zone_delete")
+     * @param Zone $zone
      * @return RedirectResponse
      */
-    public function productDelete(Product $product)
+    public function zoneDelete(Zone $zone)
     {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($product);
+        $entityManager->remove($zone);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_product_list');
+        return $this->redirectToRoute('app_zone_list');
 
     }
 
     /**
-     * @Route("/edit/{id}", name="app_product_edit")
+     * @Route("/edit/{id}", name="app_zone_edit")
      * @param Request $request
-     * @param Product $product
+     * @param Zone $zone
      * @return Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Zone $zone)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
 
-        $form = $this->createForm(Product\ProductType::class, $product);
+        $form = $this->createForm(ZoneType::class, $zone);
         $form->handleRequest($request);
 
 
@@ -124,11 +118,11 @@ class ProductController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_product_list');
+            return $this->redirectToRoute('app_zone_list');
         }
 
         return $this->render(
-            'Product/editProduct.html.twig',
+            'Zone/editZone.html.twig',
             [
                 'user_form' => $form->createView()
             ]
@@ -137,28 +131,4 @@ class ProductController extends AbstractController
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
