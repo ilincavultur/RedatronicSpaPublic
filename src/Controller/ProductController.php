@@ -43,13 +43,7 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             $em->persist($form->getData());
-            $errors = $validator->validate($em);
-            if (count($errors) > 0) {
 
-                $errorsString = (string) $errors;
-
-                return new Response($errorsString);
-            }
             $em->flush();
             return $this->redirect($this->generateUrl('app_product_list'));
         }
