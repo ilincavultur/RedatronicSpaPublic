@@ -1,36 +1,26 @@
-{% extends 'Product/base.html.twig' %}
+{% extends 'Zone/base.html.twig' %}
 
 
 {% block head %}
     <head>
         <meta charset="UTF-8">
-
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_product_list') }}" class="btn btn-light">
+            <a href="{{ path('app_zone_list') }}" class="btn btn-light">
                 Products
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
         </nav>
 
-
-
-        <title>{% block title %}Products{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-
-
+        <title>{% block title %}Zones{% endblock %}</title>
     </head>
 {% endblock %}
-
 
 
 {% block body %}
@@ -40,29 +30,25 @@
 
         <div class="row">
 
-    <div class="col-md-5">
+            <div class="col-md-5">
 
-        {{ form_start(user_form) }}
+                {{ form_start(user_form) }}
 
-        {{ form_row(user_form.Name) }}
-        {{ form_row(user_form.Code) }}
-        {{ form_row(user_form.Barcode) }}
-        {{ form_row(user_form.Price) }}
-        {{ form_row(user_form.WeekendPrice) }}
-        {{ form_row(user_form.Type) }}
+                {{ form_row(user_form.Name) }}
+                {{ form_row(user_form.inReader) }}
+                {{ form_row(user_form.outReader) }}
+                {{ form_row(user_form.mainEntrance) }}
+                {{ form_row(user_form.extra) }}
 
+                <button type="submit" class="btn btn-light"> Edit </button>
 
-        <button type="submit" class="btn btn-light"> Edit </button>
+                {{ form_end(user_form) }}
 
+            </div>
 
-        {{ form_end(user_form) }}
-
-    </div>
-
-    </div>
+        </div>
 
     </div>
-
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
