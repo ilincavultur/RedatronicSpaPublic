@@ -5,6 +5,7 @@ namespace App\Form;
 
 
 use App\Entity\Package;
+use App\Entity\Product;
 use App\Entity\Zone;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -27,17 +28,18 @@ class PackageType extends AbstractType
             ->add('Name', TextType::class)
             ->add('Price', IntegerType::class)
             ->add('Zones', EntityType::class, [
-                // looks for choices from this entity
                 'class' => Zone::class,
-
-
-                // uses the User.username property as the visible option string
                 'choice_label' => 'Name',
-
-                // used to render a select box, check boxes or radios
+                'multiple' => true,
+                'expanded' => true,
+            ])
+            ->add('Products', EntityType::class, [
+                'class' => Product::class,
+                'choice_label' => 'Name',
                 'multiple' => true,
                 'expanded' => true,
             ]);
+
         ;
 
 

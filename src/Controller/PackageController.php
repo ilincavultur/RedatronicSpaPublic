@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -120,6 +121,24 @@ class PackageController extends AbstractController
                 'user_form' => $form->createView()
             ]
         );
+    }
+
+    /**
+     * @Route("/showDetails/{id}", name="app_package_showDetails")
+     * @param Package $package
+     * @return Response
+     */
+    public function showDetails(Package $package)
+    {
+
+
+
+        return $this->render('Package/showDetails.html.twig', array(
+            'package' => $package
+        ));
+
+
+
     }
 
 
