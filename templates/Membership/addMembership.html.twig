@@ -1,4 +1,4 @@
-{% extends 'Package/base.html.twig' %}
+{% extends 'Membership/base.html.twig' %}
 
 
 {% block head %}
@@ -37,9 +37,8 @@
         {{ form_start(user_form) }}
 
         {{ form_row(user_form.ClientName) }}
-        {{ form_row(user_form.Products) }}
         {{ form_row(user_form.Age) }}
-        {{ form_row(user_form.Type) }}
+        {{ form_row(user_form.Products) }}
         {{ form_row(user_form.availability) }}
         {{ form_row(user_form.NoOfEntries) }}
         {{ form_row(user_form.RFID) }}

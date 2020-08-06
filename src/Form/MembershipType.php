@@ -26,10 +26,9 @@ class MembershipType extends AbstractType
         $builder
             ->add('ClientName', TextType::class)
             ->add('availability', IntegerType::class)
-            ->add('Age', IntegerType::class)
-            ->add('Type', ChoiceType::class, [
+            ->add('Age', ChoiceType::class, [
                 'choices' => [
-                    'Adult' => Membership::TYPE_ADULT ,
+                    'Adult' => Membership::TYPE_ADULT,
                     'Child' => Membership::TYPE_CHILD,
                 ],
 

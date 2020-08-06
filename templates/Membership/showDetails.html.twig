@@ -47,7 +47,6 @@
             <th>Availability</th>
             <th>Services Included</th>
             <th>Age</th>
-            <th>Type</th>
             <th>NoOfEntries</th>
             <th>RFID</th>
         </tr>
@@ -58,7 +57,7 @@
 
         <tr class="col text-center">
             <td> {{ membership.ClientName }}</td>
-            <td> {{ membership.Availability }}</td>
+            <td> {{ membership.Age }}</td>
             <td>
                 {% for product in membership.Products %}
                     <li class="col text-center">
@@ -66,8 +65,7 @@
                     </li>
                 {% endfor %}
             </td>
-            <td> {{ membership.Age }}</td>
-            <td> {{ membership.Type }}</td>
+            <td> {{ membership.availability }}</td>
             <td> {{ membership.NoOfEntries }}</td>
             <td> {{ membership.RFID }}</td>
         </tr>
