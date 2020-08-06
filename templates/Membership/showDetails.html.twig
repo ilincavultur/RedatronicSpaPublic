@@ -1,4 +1,4 @@
-{% extends 'Package/base.html.twig' %}
+{% extends 'Membership/base.html.twig' %}
 
 
 {% block head %}
@@ -10,8 +10,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_package_list') }}" class="btn btn-light">
-                Back to Packages
+            <a href="{{ path('app_membership_list') }}" class="btn btn-light">
+                Back to Memberships
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
 
         </nav>
 
-        <title>{% block title %}Package Details{% endblock %}</title>
+        <title>{% block title %}Membership Details{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -36,39 +36,41 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Package {{ package.Name }}</h4>
+    <h4  class="col text-center">Membership {{ membership.id }}</h4>
 
     <table class="table">
         <thead>
 
-            <tr class="col text-center">
-                <th>Zones Included</th>
-                <th>Products Included</th>
-            </tr>
+        <tr class="col text-center">
+
+            <th>Client Name</th>
+            <th>Availability</th>
+            <th>Services Included</th>
+            <th>Age</th>
+            <th>Type</th>
+            <th>NoOfEntries</th>
+            <th>RFID</th>
+        </tr>
 
         </thead>
 
         <tbody>
 
-            <tr class="col text-center">
-
-                <td>
-                    {% for zone in package.Zones %}
-                        <li class="col text-center">
-                            {{ zone.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
-
-                <td>
-                    {% for product in package.Products %}
-                        <li class="col text-center">
-                            {{ product.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
-
-            </tr>
+        <tr class="col text-center">
+            <td> {{ membership.ClientName }}</td>
+            <td> {{ membership.Availability }}</td>
+            <td>
+                {% for product in membership.Products %}
+                    <li class="col text-center">
+                        {{ product.Name }}
+                    </li>
+                {% endfor %}
+            </td>
+            <td> {{ membership.Age }}</td>
+            <td> {{ membership.Type }}</td>
+            <td> {{ membership.NoOfEntries }}</td>
+            <td> {{ membership.RFID }}</td>
+        </tr>
 
         </tbody>
     </table>
@@ -80,7 +82,7 @@
                 <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
                     <ul class="pagination justify-content-center">
 
-                            Package Details
+                        Package Details
 
                     </ul>
                 </nav>

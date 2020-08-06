@@ -10,23 +10,15 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_package_list') }}" class="btn btn-light">
-                Back to Packages
+            <a href="{{ path('app_membership_list') }}" class="btn btn-light">
+                Memberships
             </a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-
-
-
-            </div>
-
         </nav>
 
-        <title>{% block title %}Package Details{% endblock %}</title>
+        <title>{% block title %}Memberships{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -36,56 +28,31 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Package {{ package.Name }}</h4>
+    <div class="col text-center>
 
-    <table class="table">
-        <thead>
-
-            <tr class="col text-center">
-                <th>Zones Included</th>
-                <th>Products Included</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr class="col text-center">
-
-                <td>
-                    {% for zone in package.Zones %}
-                        <li class="col text-center">
-                            {{ zone.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
-
-                <td>
-                    {% for product in package.Products %}
-                        <li class="col text-center">
-                            {{ product.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
-
-            </tr>
-
-        </tbody>
-    </table>
-
-
-    <div class="fixed-bottom">
         <div class="row">
-            <div class="col-sm-12">
-                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
-                    <ul class="pagination justify-content-center">
 
-                            Package Details
+    <div class="col-md-5">
 
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        {{ form_start(user_form) }}
+
+        {{ form_row(user_form.ClientName) }}
+        {{ form_row(user_form.Products) }}
+        {{ form_row(user_form.Age) }}
+        {{ form_row(user_form.Type) }}
+        {{ form_row(user_form.availability) }}
+        {{ form_row(user_form.NoOfEntries) }}
+        {{ form_row(user_form.RFID) }}
+
+        <button type="submit" class="btn btn-light"> Add </button>
+
+
+        {{ form_end(user_form) }}
+
+    </div>
+
+    </div>
+
     </div>
 
 
@@ -95,8 +62,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-
 
 
 

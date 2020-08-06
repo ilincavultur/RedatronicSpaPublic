@@ -1,4 +1,4 @@
-{% extends 'Package/base.html.twig' %}
+{% extends 'Membership/base.html.twig' %}
 
 
 {% block head %}
@@ -10,8 +10,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_package_list') }}" class="btn btn-light">
-                Back to Packages
+            <a href="{{ path('app_membership_list') }}" class="btn btn-light">
+                Memberships
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,13 +20,26 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a href="{{ path('app_new_membership') }}" class="btn btn-light">
+                            Add New Membership <i class="fa fa-plus"></i>
+                        </a>
+                    </li>
+                </ul>
 
+                <form method="get" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                    <button class="btn btn-light">
+                        Search Membership
+                    </button>
+                </form>
 
             </div>
 
         </nav>
 
-        <title>{% block title %}Package Details{% endblock %}</title>
+        <title>{% block title %}List{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -36,41 +49,70 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Package {{ package.Name }}</h4>
+
 
     <table class="table">
         <thead>
-
-            <tr class="col text-center">
-                <th>Zones Included</th>
-                <th>Products Included</th>
-            </tr>
+        <tr class="col text-center">
+            <th>Client Name</th>
+            <th>Age</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
 
         </thead>
 
         <tbody>
-
+        {% for membership in pager.currentPageResults %}
             <tr class="col text-center">
-
+                <td> {{ membership.ClientName }}</td>
+                <td> {{ membership.Age }}</td>
+                <td> {{ membership.Type }}</td>
                 <td>
-                    {% for zone in package.Zones %}
-                        <li class="col text-center">
-                            {{ zone.Name }}
+
+                    <ul class="list-inline m-0">
+
+                        <li class="list-inline-item">
+
+                            <a href="{{ path('app_membership_edit', {"id":membership.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                            </a>
+
                         </li>
-                    {% endfor %}
+                        <li class="list-inline-item">
+
+
+                            <a href="{{ path('app_membership_delete', {"id":membership.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                            </a>
+
+
+                        </li>
+                        <li class="list-inline-item">
+
+
+                            <a href="{{ path('app_membership_showDetails', {"id":membership.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
+                            </a>
+
+
+
+                        </li>
+
+
+                    </ul>
+
                 </td>
 
-                <td>
-                    {% for product in package.Products %}
-                        <li class="col text-center">
-                            {{ product.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
+
 
             </tr>
 
+
+
+        {% endfor %}
+
+
         </tbody>
+
+
     </table>
 
 
@@ -80,7 +122,7 @@
                 <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
                     <ul class="pagination justify-content-center">
 
-                            Package Details
+                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
 
                     </ul>
                 </nav>
