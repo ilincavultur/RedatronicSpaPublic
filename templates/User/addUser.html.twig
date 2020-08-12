@@ -1,4 +1,4 @@
-{% extends 'Membership/base.html.twig' %}
+{% extends 'User/base.html.twig' %}
 
 
 {% block head %}
@@ -10,15 +10,15 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_membership_list') }}" class="btn btn-light">
-                Memberships
+            <a href="{{ path('app_login') }}" class="btn btn-light">
+                Back To Sign In
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav>
 
-        <title>{% block title %}Memberships{% endblock %}</title>
+        <title>{% block title %}Users{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -42,14 +42,13 @@
 
                             {{ form_start(user_form) }}
 
-                            {{ form_row(user_form.ClientName) }}
-                            {{ form_row(user_form.Age) }}
-                            {{ form_row(user_form.Products) }}
-                            {{ form_row(user_form.availability) }}
-                            {{ form_row(user_form.NoOfEntries) }}
-                            {{ form_row(user_form.RFID) }}
+                            {{ form_row(user_form.username) }}
+                            {{ form_row(user_form.email) }}
+                            {{ form_row(user_form.roles) }}
+                            {{ form_row(user_form.plainPassword.first) }}
+                            {{ form_row(user_form.plainPassword.second) }}
 
-                            <button type="submit" class="btn btn-light"> Add </button>
+                            <button type="submit" class="btn btn-light"> Create Account </button>
 
 
                             {{ form_end(user_form) }}
@@ -58,13 +57,11 @@
 
                         </div>
 
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
