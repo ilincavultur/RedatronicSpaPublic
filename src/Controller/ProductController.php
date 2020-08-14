@@ -7,6 +7,7 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Form\SearchProductType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +24,7 @@ use Pagerfanta\Pagerfanta;
  * Class ProductController
  * @package App\Controller
  * @Route("/Spa/Product")
+ *
  */
 class ProductController extends AbstractController
 {
@@ -34,6 +36,7 @@ class ProductController extends AbstractController
      * @param Request $request
      * @param ValidatorInterface $validator
      * @return Response
+     *
      */
     public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
     {
@@ -87,6 +90,7 @@ class ProductController extends AbstractController
      * @Route("/delete/{id}", name="app_product_delete")
      * @param Product $product
      * @return RedirectResponse
+     *
      */
     public function productDelete(Product $product)
     {
@@ -104,6 +108,7 @@ class ProductController extends AbstractController
      * @param Request $request
      * @param Product $product
      * @return Response
+     *
      */
     public function update(Request $request, Product $product)
     {

@@ -20,10 +20,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface
 {
-    public const TYPE_ADMIN = 'Admin';
-    public const TYPE_USER = 'User';
-    public const TYPE_SUPER = 'Super Admin';
-
+    const ROLE_USER = 'ROLE_USER';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     use TimestampableEntity;
     /**
@@ -121,7 +120,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = self::TYPE_USER;
+        $roles[] = self::ROLE_USER;
 
         return array_unique($roles);
     }

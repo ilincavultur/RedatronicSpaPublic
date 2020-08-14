@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -105,7 +106,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      * @param Request $request
      * @param TokenInterface $token
      * @param string $providerKey
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
+     * @return RedirectResponse|Response|null
      * @throws \Exception
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
@@ -115,13 +116,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('app_user_list'));
-        //return $this->render(
-            //'security/homepage.html.twig',
-            //[
+        return new RedirectResponse($this->urlGenerator->generate('app_homepage'));
 
-            //]
-        //);
     }
 
     protected function getLoginUrl()

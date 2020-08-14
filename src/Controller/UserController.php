@@ -13,6 +13,7 @@ use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -33,6 +34,7 @@ class UserController extends AbstractController
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return RedirectResponse|Response
      * @Route("/addUser", name="app_new_user")
+     *
      */
     public function addUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -67,6 +69,7 @@ class UserController extends AbstractController
      * @Route("/list", name="app_user_list")
      * @param Request $request
      * @return Response
+     *
      */
     public function listAction(Request $request)
     {
@@ -96,8 +99,9 @@ class UserController extends AbstractController
      * @Route("/delete/{id}", name="app_user_delete")
      * @param User $user
      * @return RedirectResponse
+     *
      */
-    public function packageDelete(User $user)
+    public function userDelete(User $user)
     {
 
         $entityManager = $this->getDoctrine()->getManager();

@@ -9,6 +9,7 @@ use App\Form\ZoneType;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +31,7 @@ class ZoneController extends AbstractController
      * @param Request $request
      * @param ValidatorInterface $validator
      * @return RedirectResponse|Response
+     *
      */
     public function addZone(EntityManagerInterface $em , Request $request, ValidatorInterface $validator)
     {
@@ -57,6 +59,7 @@ class ZoneController extends AbstractController
      * @Route("/list", name="app_zone_list")
      * @param Request $request
      * @return Response
+     *
      */
     public function listAction(Request $request)
     {
@@ -81,6 +84,7 @@ class ZoneController extends AbstractController
      * @Route("/delete/{id}", name="app_zone_delete")
      * @param Zone $zone
      * @return RedirectResponse
+     *
      */
     public function zoneDelete(Zone $zone)
     {
@@ -98,6 +102,7 @@ class ZoneController extends AbstractController
      * @param Request $request
      * @param Zone $zone
      * @return Response
+     *
      */
     public function update(Request $request, Zone $zone)
     {
