@@ -69,6 +69,7 @@ class UserController extends AbstractController
      * @Route("/list", name="app_user_list")
      * @param Request $request
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function listAction(Request $request)
@@ -99,6 +100,7 @@ class UserController extends AbstractController
      * @Route("/delete/{id}", name="app_user_delete")
      * @param User $user
      * @return RedirectResponse
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function userDelete(User $user)

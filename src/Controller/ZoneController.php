@@ -31,6 +31,7 @@ class ZoneController extends AbstractController
      * @param Request $request
      * @param ValidatorInterface $validator
      * @return RedirectResponse|Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function addZone(EntityManagerInterface $em , Request $request, ValidatorInterface $validator)
@@ -59,6 +60,7 @@ class ZoneController extends AbstractController
      * @Route("/list", name="app_zone_list")
      * @param Request $request
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function listAction(Request $request)
@@ -84,6 +86,7 @@ class ZoneController extends AbstractController
      * @Route("/delete/{id}", name="app_zone_delete")
      * @param Zone $zone
      * @return RedirectResponse
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function zoneDelete(Zone $zone)
@@ -102,6 +105,7 @@ class ZoneController extends AbstractController
      * @param Request $request
      * @param Zone $zone
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function update(Request $request, Zone $zone)

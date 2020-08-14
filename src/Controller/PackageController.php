@@ -30,6 +30,7 @@ class PackageController extends AbstractController
      * @param Request $request
      * @return RedirectResponse|Response
      * @Route("/addPackage", name="app_new_package")
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function addPackage(EntityManagerInterface $em , Request $request)
@@ -57,6 +58,7 @@ class PackageController extends AbstractController
      * @Route("/list", name="app_package_list")
      * @param Request $request
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function listAction(Request $request)
@@ -84,6 +86,7 @@ class PackageController extends AbstractController
      * @Route("/delete/{id}", name="app_package_delete")
      * @param Package $package
      * @return RedirectResponse
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function packageDelete(Package $package)
@@ -102,6 +105,7 @@ class PackageController extends AbstractController
      * @param Request $request
      * @param Package $package
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function update(Request $request, Package $package)
@@ -132,6 +136,7 @@ class PackageController extends AbstractController
      * @Route("/showDetails/{id}", name="app_package_showDetails")
      * @param Package $package
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function showDetails(Package $package)

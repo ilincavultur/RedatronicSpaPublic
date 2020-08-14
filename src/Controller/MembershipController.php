@@ -31,7 +31,7 @@ class MembershipController extends AbstractController
      * @param Request $request
      * @return RedirectResponse|Response
      * @Route("/addMembership", name="app_new_membership")
-     *
+     * @Security("is_granted('ROLE_USER')")
      */
     public function addMembership(EntityManagerInterface $em , Request $request)
     {
@@ -59,7 +59,7 @@ class MembershipController extends AbstractController
      * @Route("/list", name="app_membership_list")
      * @param Request $request
      * @return Response
-     *
+     * @Security("is_granted('ROLE_USER')")
      *
      *
      */
@@ -90,7 +90,7 @@ class MembershipController extends AbstractController
      * @Route("/delete/{id}", name="app_membership_delete")
      * @param Membership $membership
      * @return RedirectResponse
-     *
+     * @Security("is_granted('ROLE_USER')")
      */
     public function membershipDelete(Membership $membership)
     {
@@ -108,6 +108,7 @@ class MembershipController extends AbstractController
      * @param Request $request
      * @param Membership $membership
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function update(Request $request, Membership $membership)
@@ -145,7 +146,7 @@ class MembershipController extends AbstractController
     public function showDetails(Membership $membership)
     {
 
-        $this->denyAccessUnlessGranted('ROLE_USER',null, 'Unable to access this page!');
+        # $this->denyAccessUnlessGranted('ROLE_USER',null, 'Unable to access this page!');
 
         return $this->render('Membership/showDetails.html.twig', array(
             'membership' => $membership

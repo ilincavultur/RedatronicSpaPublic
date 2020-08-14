@@ -36,6 +36,7 @@ class ProductController extends AbstractController
      * @param Request $request
      * @param ValidatorInterface $validator
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
@@ -65,6 +66,7 @@ class ProductController extends AbstractController
      * @param Request $request
      *
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      */
     public function listAction(Request $request)
     {
@@ -90,6 +92,7 @@ class ProductController extends AbstractController
      * @Route("/delete/{id}", name="app_product_delete")
      * @param Product $product
      * @return RedirectResponse
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function productDelete(Product $product)
@@ -108,6 +111,7 @@ class ProductController extends AbstractController
      * @param Request $request
      * @param Product $product
      * @return Response
+     * @Security("is_granted('ROLE_USER')")
      *
      */
     public function update(Request $request, Product $product)
