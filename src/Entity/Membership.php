@@ -35,11 +35,11 @@ class Membership
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Zone")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      *
      */
-    private $Products;
+    private $Zones;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -104,18 +104,18 @@ class Membership
     /**
      * @return ArrayCollection
      */
-    public function getProducts()
+    public function getZones()
     {
-        return $this->Products;
+        return $this->Zones;
     }
 
     /**
-     * @param string $Products
+     * @param string $Zones
      * @return $this
      */
-    public function setProducts($Products)
+    public function setZones($Zones)
     {
-        $this->Products = $Products;
+        $this->Zones = $Zones;
 
         return $this;
     }

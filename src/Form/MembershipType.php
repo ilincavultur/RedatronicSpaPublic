@@ -6,6 +6,7 @@ namespace App\Form;
 
 use App\Entity\Membership;
 use App\Entity\Product;
+use App\Entity\Zone;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -33,13 +34,12 @@ class MembershipType extends AbstractType
                 ],
 
             ])
-            ->add('Products', EntityType::class, [
-                'class' => Product::class,
+            ->add('Zones', EntityType::class, [
+                'class' => Zone::class,
                 'choice_label' => 'Name',
                 'multiple' => true,
                 'expanded' => true,
             ])
-
             ->add('NoOfEntries', IntegerType::class)
             ->add('RFID', TextType::class);
 

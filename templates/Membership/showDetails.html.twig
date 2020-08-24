@@ -100,7 +100,7 @@
 
             <th>Client Name</th>
             <th>Availability</th>
-            <th>Services Included</th>
+            <th>Zones Included</th>
             <th>Age</th>
             <th>NoOfEntries</th>
             <th>RFID</th>
@@ -114,9 +114,9 @@
             <td> {{ membership.ClientName }}</td>
             <td> {{ membership.Age }}</td>
             <td>
-                {% for product in membership.Products %}
+                {% for zone in membership.Zones %}
                     <li class="col text-center">
-                        {{ product.Name }}
+                        {{ zone.Name }}
                     </li>
                 {% endfor %}
             </td>

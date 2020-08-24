@@ -10,6 +10,7 @@ use App\Entity\User;
 use App\Form\ChangePasswordType;
 use App\Form\MembershipType;
 use App\Form\UserType;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -31,28 +32,29 @@ class UserController extends AbstractController
 {
     /**
      * @param Request $request
+     * @param EntityManagerInterface $em
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return RedirectResponse|Response
      * @Route("/addUser", name="app_new_user")
-     *
      */
-    public function addUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function addUser(Request $request, EntityManagerInterface $em,UserPasswordEncoderInterface $passwordEncoder)
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+
+        $form = $this->createForm(UserType::class);
 
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
 
+            $user = $form->getData();
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $em->persist($user);
+
+            $em->flush();
             return $this->redirect($this->generateUrl('app_login'));
 
 
@@ -77,9 +79,9 @@ class UserController extends AbstractController
         $zoneRepository = $this->getDoctrine()->getRepository(User::class);
         $qb = $zoneRepository->findUsers($request->get('search'));
 
-        $page = $request->get('page');
+        $page = $request->get('page', 1);
         $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
-        $pager->setCurrentPage($page ? $page : 1);
+        $pager->setCurrentPage($page);
         $pager->getNbResults();
 
         return $this->render(
@@ -100,7 +102,8 @@ class UserController extends AbstractController
      * @Route("/delete/{id}", name="app_user_delete")
      * @param User $user
      * @return RedirectResponse
-     * @Security("is_granted('ROLE_USER')")
+     * @Security("is_granted('ROLE_ADMIN')")
+     *
      *
      */
     public function userDelete(User $user)
