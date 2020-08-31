@@ -29,7 +29,7 @@ class Circuit
     private $Rfid;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isOpen;
 

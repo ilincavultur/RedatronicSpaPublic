@@ -1,4 +1,4 @@
-{% extends 'Package/base.html.twig' %}
+{% extends 'reception/base.html.twig' %}
 
 
 {% block head %}
@@ -64,8 +64,8 @@
         </nav>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_package_list') }}" class="btn btn-light">
-                Back to Packages
+            <a href="{{ path('app_reception_list') }}" class="btn btn-light">
+                Receptions
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,13 +74,26 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a href="{{ path('app_new_reception') }}" class="btn btn-light">
+                            Add New Reception <i class="fa fa-plus"></i>
+                        </a>
+                    </li>
+                </ul>
 
+                <form method="get" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                    <button class="btn btn-light">
+                        Search Reception
+                    </button>
+                </form>
 
             </div>
 
         </nav>
 
-        <title>{% block title %}Package Details{% endblock %}</title>
+        <title>{% block title %}List{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -90,46 +103,77 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Package {{ package.Name }}</h4>
+
 
     <table class="table">
         <thead>
-
-            <tr class="col text-center">
-                <th>Zones Included</th>
-                <th>Availability</th>
-                <th>NoOfEntries</th>
-            </tr>
+        <tr class="col text-center">
+            <th>Rfid</th>
+            <th>Type</th>
+            <th>Age</th>
+            <th>Packages</th>
+            <th>Products</th>
+            <th>Actions</th>
+        </tr>
 
         </thead>
 
         <tbody>
-
+        {% for reception in pager.currentPageResults %}
             <tr class="col text-center">
-
+                <td> {{ reception.Rfid }}</td>
+                <td> {{ reception.Type }}</td>
+                <td> {{ reception.Age }}</td>
                 <td>
-                    {% for zone in package.Zones %}
+                    {% for package in reception.Packages %}
                         <li class="col text-center">
-                            {{ zone.Name }}
+                            {{ package.Name }}
                         </li>
                     {% endfor %}
                 </td>
-
                 <td>
-
-                    {{ package.Availability }}
-
+                    {% for product in reception.Products %}
+                        <li class="col text-center">
+                            {{ product.Name }}
+                        </li>
+                    {% endfor %}
                 </td>
                 <td>
+{#
+                    <ul class="list-inline m-0">
 
-                    {{ package.NoOfEntries }}
+                        <li class="list-inline-item">
 
-                </td>
+                            <a href="{{ path('app_reception_edit', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                            </a>
+
+                        </li>
+                        <li class="list-inline-item">
+
+
+                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </td> #}
+
 
 
             </tr>
 
+
+
+        {% endfor %}
+
+
         </tbody>
+
+
     </table>
 
 
@@ -139,7 +183,7 @@
                 <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
                     <ul class="pagination justify-content-center">
 
-                            Package Details
+                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
 
                     </ul>
                 </nav>
