@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="611e0664-6307-40b6-9b9a-f3cf3414d9fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Form/CircuitType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/circuit/base.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/circuit/endCircuit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/circuit/list.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/circuit/startCircuit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CircuitController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Circuit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CircuitRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Package.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Package.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PackageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PackageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Membership/editMembership.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Membership/editMembership.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Membership/showDetails.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Membership/showDetails.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Package/addPackage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Package/addPackage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Package/editPackage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Package/editPackage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Package/showDetails.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Package/showDetails.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,91 +29,49 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Circuit.php">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Membership.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            <state relative-caret-position="1294">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
-                <element signature="e#30#67#0#PHP" expanded="true" />
+                <element signature="e#30#70#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Repository/CircuitRepository.php">
+        <entry file="file://$PROJECT_DIR$/templates/Package/editPackage.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
-              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            <state relative-caret-position="868">
+              <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/CircuitController.php">
+        <entry file="file://$PROJECT_DIR$/templates/Membership/editMembership.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-              <folding>
-                <element signature="e#34#57#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="275">
+              <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/CircuitType.php">
+        <entry file="file://$PROJECT_DIR$/templates/Membership/addMembership.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="e#30#53#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="347">
+              <caret line="102" column="65" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+        <entry file="file://$PROJECT_DIR$/src/Form/MembershipType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="e#36#62#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/MembershipController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="97" column="60" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="60" />
-              <folding>
-                <element signature="e#35#61#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/PackageType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-              <folding>
-                <element signature="e#30#53#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+            <state relative-caret-position="209">
+              <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
               <folding>
                 <element signature="e#30#56#0#PHP" expanded="true" />
               </folding>
@@ -124,8 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Entity/Package.php" />
-        <option value="$PROJECT_DIR$/src/Repository/PackageRepository.php" />
         <option value="$PROJECT_DIR$/src/Entity/Product.php" />
         <option value="$PROJECT_DIR$/templates/Membership/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/MembershipRepository.php" />
@@ -148,12 +109,8 @@
         <option value="$PROJECT_DIR$/templates/Zone/list.html.twig" />
         <option value="$PROJECT_DIR$/templates/Zone/editZone.html.twig" />
         <option value="$PROJECT_DIR$/templates/Zone/addZone.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Membership/editMembership.html.twig" />
         <option value="$PROJECT_DIR$/templates/Membership/list.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Package/addPackage.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Package/editPackage.html.twig" />
         <option value="$PROJECT_DIR$/templates/Package/list.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Package/showDetails.html.twig" />
         <option value="$PROJECT_DIR$/templates/Product/addProduct.html.twig" />
         <option value="$PROJECT_DIR$/templates/Product/editProduct.html.twig" />
         <option value="$PROJECT_DIR$/templates/Product/list.html.twig" />
@@ -164,7 +121,6 @@
         <option value="$PROJECT_DIR$/src/Entity/Membership.php" />
         <option value="$PROJECT_DIR$/templates/Membership/addMembership.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/MembershipType.php" />
-        <option value="$PROJECT_DIR$/templates/Membership/showDetails.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/Form/UserType.php" />
         <option value="$PROJECT_DIR$/templates/circuit/base.html.twig" />
@@ -175,6 +131,13 @@
         <option value="$PROJECT_DIR$/src/Entity/Circuit.php" />
         <option value="$PROJECT_DIR$/src/Repository/CircuitRepository.php" />
         <option value="$PROJECT_DIR$/src/Controller/CircuitController.php" />
+        <option value="$PROJECT_DIR$/templates/Membership/showDetails.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entity/Package.php" />
+        <option value="$PROJECT_DIR$/templates/Package/showDetails.html.twig" />
+        <option value="$PROJECT_DIR$/templates/Package/editPackage.html.twig" />
+        <option value="$PROJECT_DIR$/templates/Package/addPackage.html.twig" />
+        <option value="$PROJECT_DIR$/src/Form/PackageType.php" />
+        <option value="$PROJECT_DIR$/templates/Membership/editMembership.html.twig" />
       </list>
     </option>
   </component>
@@ -289,16 +252,15 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="40" />
-    <option name="y" value="46" />
+    <option name="y" value="23" />
     <option name="width" value="1400" />
-    <option name="height" value="669" />
+    <option name="height" value="692" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -413,6 +375,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -597,6 +560,9 @@
       <workItem from="1598876145506" duration="1308000" />
       <workItem from="1598877955161" duration="1789000" />
       <workItem from="1598879770863" duration="1734000" />
+      <workItem from="1598881592990" duration="348000" />
+      <workItem from="1598893086482" duration="1720000" />
+      <workItem from="1598894984591" duration="769000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1595923724818</created>
@@ -696,17 +662,24 @@
       <option name="project" value="LOCAL" />
       <updated>1598270778330</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added Circuits">
+      <created>1598881791595</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1598881791595</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201465000" />
+    <option name="totallyTimeSpent" value="204302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="46" width="1400" height="669" extended-state="0" />
+    <frame x="40" y="23" width="1400" height="692" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22606775" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23490427" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -720,7 +693,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49852726" weight="0.3287858" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5095729" side_tool="true" visible="true" weight="0.10918544" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5095729" side_tool="true" visible="true" weight="0.10333333" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -793,17 +766,8 @@
     <MESSAGE value="added: general navbar" />
     <MESSAGE value="added: navbar + security" />
     <MESSAGE value="added Details" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Details" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/CircuitController.php</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="added Circuits" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Circuits" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/security/login.html.twig">
@@ -841,34 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="16" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Package/addPackage.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Package/editPackage.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Package/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Package/showDetails.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -955,33 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Package.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="96" selection-end-column="5" />
-          <folding>
-            <element signature="e#30#67#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Membership.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#30#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Membership/showDetails.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="118" column="31" selection-start-line="118" selection-start-column="31" selection-end-line="118" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/User/addUser.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1018,20 +927,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/circuit/index.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/Membership/addMembership.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="103" column="20" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Membership/editMembership.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="17" selection-end-line="118" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Membership/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1077,16 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/MembershipType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-          <folding>
-            <element signature="e#30#56#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1138,6 +1023,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/CircuitRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/CircuitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/CircuitType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1158,12 +1060,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/PackageType.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/MembershipController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        <state relative-caret-position="437">
+          <caret line="97" column="60" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="60" />
           <folding>
-            <element signature="e#30#53#0#PHP" expanded="true" />
+            <element signature="e#35#61#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1178,30 +1080,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MembershipController.php">
+    <entry file="file://$PROJECT_DIR$/templates/Membership/showDetails.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="97" column="60" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="60" />
+        <state relative-caret-position="344">
+          <caret line="122" column="34" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PackageType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
           <folding>
-            <element signature="e#35#61#0#PHP" expanded="true" />
+            <element signature="e#30#53#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/CircuitRepository.php">
+    <entry file="file://$PROJECT_DIR$/templates/Package/addPackage.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="271">
+          <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/CircuitController.php">
+    <entry file="file://$PROJECT_DIR$/templates/Package/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        <state relative-caret-position="15">
+          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Package/showDetails.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Package.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-596">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
           <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
+            <element signature="e#30#67#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/MembershipType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+          <folding>
+            <element signature="e#30#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Membership.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1294">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="e#30#70#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Membership/addMembership.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="102" column="65" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Package/editPackage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Membership/editMembership.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
         </state>
       </provider>
     </entry>

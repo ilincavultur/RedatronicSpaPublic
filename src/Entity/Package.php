@@ -42,11 +42,16 @@ class Package
     private $Zones;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     *
+     * @ORM\Column(type="integer")
      */
-    private $Products;
+    private $Availability;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $NoOfEntries;
+
+
 
     public function getId(): ?int
     {
@@ -96,24 +101,31 @@ class Package
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getProducts()
+    public function getAvailability(): ?int
     {
-        return $this->Products;
+        return $this->Availability;
     }
 
-    /**
-     * @param string $Products
-     * @return $this
-     */
-    public function setProducts($Products)
+    public function setAvailability(int $Availability): self
     {
-        $this->Products = $Products;
+        $this->Availability = $Availability;
 
         return $this;
     }
+
+    public function getNoOfEntries(): ?int
+    {
+        return $this->NoOfEntries;
+    }
+
+    public function setNoOfEntries(?int $NoOfEntries): self
+    {
+        $this->NoOfEntries = $NoOfEntries;
+
+        return $this;
+    }
+
+
 
 
 }

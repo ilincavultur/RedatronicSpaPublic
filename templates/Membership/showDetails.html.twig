@@ -112,7 +112,7 @@
 
         <tr class="col text-center">
             <td> {{ membership.ClientName }}</td>
-            <td> {{ membership.Age }}</td>
+            <td> {{ membership.availability }}</td>
             <td>
                 {% for zone in membership.Zones %}
                     <li class="col text-center">
@@ -120,7 +120,7 @@
                     </li>
                 {% endfor %}
             </td>
-            <td> {{ membership.availability }}</td>
+            <td> {{ membership.Age }}</td>
             <td> {{ membership.NoOfEntries }}</td>
             <td> {{ membership.RFID }}</td>
         </tr>

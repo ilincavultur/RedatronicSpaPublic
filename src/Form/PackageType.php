@@ -33,12 +33,8 @@ class PackageType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('Products', EntityType::class, [
-                'class' => Product::class,
-                'choice_label' => 'Name',
-                'multiple' => true,
-                'expanded' => true,
-            ]);
+            ->add('Availability', IntegerType::class)
+            ->add('NoOfEntries', IntegerType::class)
 
         ;
 

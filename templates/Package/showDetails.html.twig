@@ -97,7 +97,8 @@
 
             <tr class="col text-center">
                 <th>Zones Included</th>
-                <th>Products Included</th>
+                <th>Availability</th>
+                <th>NoOfEntries</th>
             </tr>
 
         </thead>
@@ -115,12 +116,16 @@
                 </td>
 
                 <td>
-                    {% for product in package.Products %}
-                        <li class="col text-center">
-                            {{ product.Name }}
-                        </li>
-                    {% endfor %}
+
+                    {{ package.Availability }}
+
                 </td>
+                <td>
+
+                    {{ package.NoOfEntries }}
+
+                </td>
+
 
             </tr>
 
