@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Circuit;
 use App\Entity\Membership;
 use App\Entity\Product;
+use App\Entity\Reception;
 use App\Form\CircuitType;
+use App\Form\MembershipType;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -26,57 +28,27 @@ class CircuitController extends AbstractController
 {
     /**
      * @param EntityManagerInterface $em
-     * @param Request $request
+     * @param Reception $reception
      * @return RedirectResponse|Response
-     * @Route ("/startCircuit", name="app_new_circuit")
+     * @Route("/startCircuit/{Rfid}", name="app_new_circuit")
      */
-    public function startCircuit(EntityManagerInterface $em, Request $request)
+    public function startCircuit(EntityManagerInterface $em, Reception $reception)
     {
-
 
         $circuit = new Circuit();
 
-
-
-
-        $form = $this->createForm(CircuitType::class, $circuit);
+        $circuit->setRfid($reception->getRfid());
 
         $circuit->setIsOpen(true);
 
 
-        $form->handleRequest($request);
+        $em->persist($circuit);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        $em->flush();
+        return $this->redirect($this->generateUrl('app_circuit_list'));
 
 
-            $em->persist($form->getData());
 
-            $em->flush();
-            return $this->redirect($this->generateUrl('app_circuit_list'));
-        }
-        return $this->render(
-            'Circuit/startCircuit.html.twig',
-            [
-                'user_form' => $form->createView()
-            ]
-        );
-        /*
-        $em = $this->getDoctrine()->getManager();
-        $circuit = $em->getRepository(Circuit::class)->find($circuitId);
-
-        if (!$circuit || $circuit->getOpen()==false) {
-            $newcircuit = new Circuit();
-            $newcircuit->setOpen(true);
-            $em->persist($newcircuit);
-            $em->flush();
-            return $this->redirect($this->generateUrl('app_circuit_list'));
-        }
-        else{
-            throw $this->createNotFoundException(
-                'cannot open circuit because it is already open'
-            );
-        }
-        */
 
     }
 
@@ -120,4 +92,5 @@ class CircuitController extends AbstractController
         return $this->redirectToRoute('app_circuit_list');
 
     }
+
 }

@@ -76,7 +76,7 @@
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a href="{{ path('app_new_reception') }}" class="btn btn-light">
+                        <a href="{{ path('app_decision') }}" class="btn btn-light">
                             Add New Reception <i class="fa fa-plus"></i>
                         </a>
                     </li>
@@ -109,10 +109,7 @@
         <thead>
         <tr class="col text-center">
             <th>Rfid</th>
-            <th>Type</th>
-            <th>Age</th>
-            <th>Packages</th>
-            <th>Products</th>
+            <th>Created At</th>
             <th>Actions</th>
         </tr>
 
@@ -122,45 +119,27 @@
         {% for reception in pager.currentPageResults %}
             <tr class="col text-center">
                 <td> {{ reception.Rfid }}</td>
-                <td> {{ reception.Type }}</td>
-                <td> {{ reception.Age }}</td>
+                <td> {{ reception.createdAt|date }}</td>
                 <td>
-                    {% for package in reception.Packages %}
-                        <li class="col text-center">
-                            {{ package.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for product in reception.Products %}
-                        <li class="col text-center">
-                            {{ product.Name }}
-                        </li>
-                    {% endfor %}
-                </td>
-                <td>
-{#
-                    <ul class="list-inline m-0">
 
-                        <li class="list-inline-item">
+                    <li class="list-inline-item">
 
-                            <a href="{{ path('app_reception_edit', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+
+                            <a href="{{ path('app_reception_showDetails', {"id":reception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
                             </a>
 
-                        </li>
-                        <li class="list-inline-item">
+                    </li>
+
+                    <li class="list-inline-item">
 
 
-                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
-                            </a>
+                        <a href="{{ path('app_new_circuit', {"Rfid":reception.Rfid}) }}" class="btn btn-info btn-sm"><i class="fas fa-play" style="font-size:20px"></i>
+                        </a>
+
+                    </li>
 
 
-                        </li>
-
-
-                    </ul>
-
-                </td> #}
+                </td>
 
 
 

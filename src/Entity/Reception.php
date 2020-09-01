@@ -5,7 +5,10 @@ namespace App\Entity;
 use App\Repository\ReceptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReceptionRepository", repositoryClass=ReceptionRepository::class)
@@ -14,6 +17,9 @@ class Reception
 {
     public const TYPE_ADULT = 'Adult';
     public const TYPE_CHILD = 'Child';
+
+
+    use TimestampableEntity;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -45,6 +51,8 @@ class Reception
      *
      */
     private $Products;
+
+
 
     public function getId(): ?int
     {
@@ -124,4 +132,7 @@ class Reception
 
         return $this;
     }
+
+
+
 }

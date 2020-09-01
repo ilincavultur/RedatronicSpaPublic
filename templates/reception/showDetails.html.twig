@@ -1,4 +1,4 @@
-{% extends 'Membership/base.html.twig' %}
+{% extends 'reception/base.html.twig' %}
 
 
 {% block head %}
@@ -17,7 +17,6 @@
                 display: flex;
                 justify-content: space-between;
             }
-
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
@@ -36,10 +35,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_product_list') }}">Products</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_package_list') }}">Packages</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_membership_list') }}">Memberships</a>
                     </li>
                     <li class="nav-item">
@@ -65,8 +64,8 @@
         </nav>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_membership_list') }}" class="btn btn-light">
-                Back to Memberships
+            <a href="{{ path('app_reception_list') }}" class="btn btn-light">
+                Back to Receptions
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +80,7 @@
 
         </nav>
 
-        <title>{% block title %}Membership Details{% endblock %}</title>
+        <title>{% block title %}Reception Details{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -91,17 +90,16 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Membership {{ membership.id }}</h4>
+    <h4  class="col text-center">Rfid {{ reception.Rfid }}</h4>
 
     <table class="table">
         <thead>
 
         <tr class="col text-center">
-
-            <th>Client Name</th>
             <th>Age</th>
-            <th>Packages Included</th>
-            <th>RFID</th>
+            <th>Packages</th>
+            <th>Products</th>
+            <th>Actions</th>
         </tr>
 
         </thead>
@@ -109,16 +107,46 @@
         <tbody>
 
         <tr class="col text-center">
-            <td> {{ membership.ClientName }}</td>
-            <td> {{ membership.Age }}</td>
+            <td> {{ reception.Rfid }}</td>
+            <td> {{ reception.Age }}</td>
             <td>
-                {% for package in membership.Packages %}
+                {% for package in reception.Packages %}
                     <li class="col text-center">
                         {{ package.Name }}
                     </li>
                 {% endfor %}
             </td>
-            <td> {{ membership.RFID }}</td>
+            <td>
+                {% for product in reception.Products %}
+                    <li class="col text-center">
+                        {{ product.Name }}
+                    </li>
+                {% endfor %}
+            </td>
+            <td>
+{#
+                    <ul class="list-inline m-0">
+
+                        <li class="list-inline-item">
+
+                            <a href="{{ path('app_reception_edit', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                            </a>
+
+                        </li>
+                        <li class="list-inline-item">
+
+
+                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+    #}
+                </td>
+
         </tr>
 
         </tbody>
@@ -131,7 +159,7 @@
                 <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
                     <ul class="pagination justify-content-center">
 
-                        Membership Details
+                        Package Details
 
                     </ul>
                 </nav>

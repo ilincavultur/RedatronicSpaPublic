@@ -28,18 +28,14 @@ class Membership
      */
     private $ClientName;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $availability;
-
 
     /**
-     * @ORM\ManyToMany(targetEntity="Zone")
-     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Package")
+     * @ORM\JoinColumn(name="package_id", referencedColumnName="id")
      *
      */
-    private $Zones;
+    private $Packages;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -47,10 +43,6 @@ class Membership
      */
     private $Age;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $NoOfEntries;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -82,43 +74,27 @@ class Membership
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getAvailability(): ?string
-    {
-        return $this->availability;
-    }
-
-    /**
-     * @param string $availability
-     * @return Membership
-     */
-    public function setAvailability(string $availability): self
-    {
-        $this->availability = $availability;
-
-        return $this;
-    }
 
     /**
      * @return ArrayCollection
      */
-    public function getZones()
+    public function getPackages()
     {
-        return $this->Zones;
+        return $this->Packages;
     }
 
     /**
-     * @param string $Zones
+     * @param $Packages
      * @return $this
      */
-    public function setZones($Zones)
+    public function setPackages($Packages)
     {
-        $this->Zones = $Zones;
+        $this->Packages = $Packages;
 
         return $this;
     }
+
+
 
     /**
      * @return string|null
@@ -141,17 +117,7 @@ class Membership
 
 
 
-    public function getNoOfEntries(): ?int
-    {
-        return $this->NoOfEntries;
-    }
 
-    public function setNoOfEntries(?int $NoOfEntries): self
-    {
-        $this->NoOfEntries = $NoOfEntries;
-
-        return $this;
-    }
 
     public function getRFID(): ?string
     {
@@ -168,4 +134,6 @@ class Membership
 
         return $this;
     }
+
+
 }

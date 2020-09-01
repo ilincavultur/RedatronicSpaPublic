@@ -5,6 +5,7 @@ namespace App\Form;
 
 
 use App\Entity\Membership;
+use App\Entity\Package;
 use App\Entity\Product;
 use App\Entity\Zone;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,7 +27,6 @@ class MembershipType extends AbstractType
     {
         $builder
             ->add('ClientName', TextType::class)
-            ->add('availability', IntegerType::class)
             ->add('Age', ChoiceType::class, [
                 'choices' => [
                     'Adult' => Membership::TYPE_ADULT,
@@ -34,13 +34,12 @@ class MembershipType extends AbstractType
                 ],
 
             ])
-            ->add('Zones', EntityType::class, [
-                'class' => Zone::class,
+            ->add('Packages', EntityType::class, [
+                'class' => Package::class,
                 'choice_label' => 'Name',
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('NoOfEntries', IntegerType::class)
             ->add('RFID', TextType::class);
 
         ;

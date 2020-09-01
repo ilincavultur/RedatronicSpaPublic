@@ -39,8 +39,6 @@ class Circuit
     private $endTime;
 
 
-    
-
     public function getId(): ?int
     {
         return $this->id;

@@ -17,6 +17,13 @@
                 display: flex;
                 justify-content: space-between;
             }
+            #form{
+                padding-top: 20px;
+                align-items: center;
+                justify-content: space-around;
+                display: flex;
+                float: none;
+            }
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
@@ -64,9 +71,17 @@
         </nav>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{{ path('app_package_list') }}" class="btn btn-light">
+            <a href="{{ path('app_reception_list') }}" class="btn btn-light">
                 Receptions
             </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a href="{{ path('app_decision') }}" class="btn btn-light">
+                Back to Decision <i class="fa fa-arrow-left"></i>
+            </a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -80,16 +95,9 @@
 
 
 {% block body %}
-    <div class="section-1-container section-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-2 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
 
-                    <div class="div-to-align">
 
-                        <div class="col text-center>
-
-                            <div class="row">
+                        <div id="form">
 
 
 
@@ -100,20 +108,14 @@
                         {{ form_row(user_form.Packages) }}
                         {{ form_row(user_form.Products) }}
 
-                        <button type="submit" class="btn btn-light"> Add </button>
+                        <button type="submit" class="btn btn-light">  Add  </button>
 
 
                         {{ form_end(user_form) }}
 
 
 
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                        </div>
 
 
 
