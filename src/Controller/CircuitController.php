@@ -93,4 +93,20 @@ class CircuitController extends AbstractController
 
     }
 
+    /**
+     * @param Circuit $circuit
+     * @return RedirectResponse
+     * @Route("/delete/{id}", name="app_circuit_delete")
+     */
+    public function circuitDelete(Circuit $circuit)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($circuit);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_circuit_list');
+
+    }
+
 }

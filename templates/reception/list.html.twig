@@ -80,16 +80,23 @@
                             Add New Reception <i class="fa fa-plus"></i>
                         </a>
                     </li>
+                    <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
+                        Circuits
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </ul>
 
-                <form method="get" class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
-                    <button class="btn btn-light">
-                        Search Reception
-                    </button>
-                </form>
 
             </div>
+            <form method="get" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                <button class="btn btn-light">
+                    Search Reception
+                </button>
+            </form>
 
         </nav>
 
@@ -137,6 +144,14 @@
                         </a>
 
                     </li>
+
+                    {#
+                    <li class="list-inline-item">
+
+                        <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
+                        </a>
+
+                    </li> #}
 
 
                 </td>

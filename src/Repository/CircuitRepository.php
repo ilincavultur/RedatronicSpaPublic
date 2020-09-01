@@ -32,7 +32,7 @@ class CircuitRepository extends ServiceEntityRepository
                 ->setParameter('search','%'.$search.'%');
         }
 
-        $qb->orderBy('p.createdAt','DESC');
+        $qb->orderBy('p.Rfid','DESC');
 
         return $qb;
     }

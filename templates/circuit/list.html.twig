@@ -64,14 +64,30 @@
         </nav>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-            <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
-                Circuits
-            </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
+                        Circuits
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a href="{{ path('app_reception_list') }}" class="btn btn-light">
+                        Receptions
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </ul>
+
+
+            </div>
                 <form method="get" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
                     <button class="btn btn-light">
@@ -112,9 +128,9 @@
                 <td> {{ circuit.Rfid }}</td>
                 <td> {{ circuit.createdAt|date }}</td>
                 <td>
-                {% if circuit.createdAt != circuit.updatedAt %}
-                     {{ circuit.updatedAt|date }}
-                {% endif %}
+                    {% if circuit.createdAt != circuit.updatedAt %}
+                    {{ circuit.updatedAt|date }}
+                    {% endif %}
                 </td>
                 <td>
 
@@ -122,10 +138,16 @@
 
                         <li class="list-inline-item">
 
-                            <a href="{{ path('app_circuit_edit', {"id":circuit.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                            <a href="{{ path('app_circuit_edit', {"id":circuit.id}) }}" class="btn btn-success btn-sm">  <i class="far fa-stop-circle" style="font-size:20px"></i>
                             </a>
 
                         </li>
+                       {# <li class="list-inline-item">
+
+                            <a href="{{ path('app_circuit_delete', {"id":circuit.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
+                            </a>
+
+                        </li> #}
 
 
                     </ul>

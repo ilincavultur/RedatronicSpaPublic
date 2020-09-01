@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Circuit;
 use App\Entity\Membership;
 use App\Entity\Package;
 use App\Entity\Product;
@@ -143,6 +144,22 @@ class ReceptionController extends AbstractController
             'reception' => $reception
         ));
 
+
+    }
+
+    /**
+     * @param Reception $reception
+     * @return RedirectResponse
+     * @Route("/delete/{id}", name="app_reception_delete")
+     */
+    public function receptionDelete(Reception $reception)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($reception);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_reception_list');
 
     }
 

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CircuitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -15,6 +16,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Circuit
 {
     use TimestampableEntity;
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
