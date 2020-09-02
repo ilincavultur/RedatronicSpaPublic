@@ -17,18 +17,6 @@
                 display: flex;
                 justify-content: space-between;
             }
-            #td{
-                height: 200px;
-                width: 400px;
-
-
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                margin-top: -100px;
-                margin-left: -100px;
-
-            }
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
@@ -86,8 +74,29 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a href="{{ path('app_decision') }}" class="btn btn-light">
+                            Add New Reception <i class="fa fa-plus"></i>
+                        </a>
+                    </li>
+                    <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
+                        Circuits
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </ul>
+
 
             </div>
+            <form method="get" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                <button class="btn btn-light">
+                    Search Reception
+                </button>
+            </form>
 
         </nav>
 
@@ -107,25 +116,57 @@
         <thead>
         <tr class="col text-center">
 
+            <th>Rfid</th>
+            <th>Created At</th>
+            <th>Actions</th>
         </tr>
 
         </thead>
 
         <tbody>
 
-             <div id="td">
+        {% for reception in pager.currentPageResults %}
+            <tr class="col text-center">
+
+                <td> {{ reception.Rfid }}</td>
+                <td> {{ reception.createdAt|date }}</td>
+                {#<td>
+
+                    <li class="list-inline-item">
 
 
-                    <a href="{{ path('app_new_reception') }}" class="btn btn-light">
-                        New Client <i class="fa fa-plus"></i>
-                    </a>
+                        <a href="{{ path('app_reception_showDetails', {"id":reception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
+                        </a>
 
-                    <a href="{{ path('app_new_rec') }}" class="btn btn-light">
-                        Membership <i class="fa fa-plus"></i>
-                    </a>
+                    </li>
+
+                    <li class="list-inline-item">
 
 
-             </div>
+                        <a href="{{ path('app_new_circuit', {"Rfid":reception.Rfid}) }}" class="btn btn-info btn-sm"><i class="fas fa-play" style="font-size:20px"></i>
+                        </a>
+
+                    </li>
+
+                    {#
+                                        <li class="list-inline-item">
+
+                                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
+                                            </a>
+
+                                        </li>
+                    #}
+
+               {# </td> #}
+
+
+
+            </tr>
+
+
+
+        {% endfor %}
+
 
 
         </tbody>
@@ -134,6 +175,19 @@
     </table>
 
 
+    <div class="fixed-bottom">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
+                    <ul class="pagination justify-content-center">
+
+                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
 
 
 

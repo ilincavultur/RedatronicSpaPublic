@@ -60,36 +60,37 @@ class ReceptionController extends AbstractController
 
     }
 
-/*
+
     /**
      * @param EntityManagerInterface $em
      * @param Request $request
      * @return RedirectResponse|Response
      * @Route("/addMemReception", name="app_new_rec")
      */
-/*
-    public function addMembershipReception(EntityManagerInterface $em, Request $request, Membership $membership)
+
+    public function addMembershipReception(EntityManagerInterface $em, Request $request)
     {
 
         $memreception = new MemReception();
         $form = $this->createForm(ChooseMembershipType::class, $memreception);
         $form->handleRequest($request);
 
-
-
-        $memreception->setRfid($membership->getRfid());
-        $memreception->setAge($membership->getAge());
-
-        $em->persist($memreception);
-
-        $em->flush();
-
         if ($form->isSubmitted() && $form->isValid()){
+
+            //$memreception->setRfid('d');
+
+            $membership = $form->get('Membership')->getData();
+
+            $repository = $this->getDoctrine()->getRepository(Membership::class);
+
+            $m = $repository->find($membership->getId());
+
+            $memreception->setRfid($m->getRFID());
 
             $em->persist($form->getData());
 
             $em->flush();
-            return $this->redirect($this->generateUrl('app_reception_list'));
+            return $this->redirect($this->generateUrl('app_memreception_list'));
         }
         return $this->render(
             'reception/choose.html.twig',
@@ -101,7 +102,7 @@ class ReceptionController extends AbstractController
 
     }
 
-*/
+
 
     /**
      * @param Request $request
@@ -130,13 +131,12 @@ class ReceptionController extends AbstractController
 
     }
 
-/*
+
     /**
      * @param Request $request
      * @return Response
-     * @Route("/list", name="app_memreception_list")
+     * @Route("/memlist", name="app_memreception_list")
      */
-/*
     public function listMemAction(Request $request)
     {
 
@@ -149,7 +149,7 @@ class ReceptionController extends AbstractController
         $pager->getNbResults();
 
         return $this->render(
-            'reception/list.html.twig',
+            'reception/memlist.html.twig',
             [
                 'pager' => $pager
             ]
@@ -158,7 +158,7 @@ class ReceptionController extends AbstractController
 
 
     }
-*/
+
     /**
      * @param Request $request
      * @return Response
