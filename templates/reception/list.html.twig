@@ -29,13 +29,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_reception_list') }}">Receptions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_product_list') }}">Products</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_package_list') }}">Packages</a>
                     </li>
                     <li class="nav-item">
@@ -115,6 +115,7 @@
     <table class="table">
         <thead>
         <tr class="col text-center">
+
             <th>Rfid</th>
             <th>Created At</th>
             <th>Actions</th>
@@ -123,8 +124,10 @@
         </thead>
 
         <tbody>
+
         {% for reception in pager.currentPageResults %}
             <tr class="col text-center">
+
                 <td> {{ reception.Rfid }}</td>
                 <td> {{ reception.createdAt|date }}</td>
                 <td>
@@ -145,14 +148,14 @@
 
                     </li>
 
-                    {#
+{#
                     <li class="list-inline-item">
 
                         <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
                         </a>
 
-                    </li> #}
-
+                    </li>
+#}
 
                 </td>
 
@@ -163,6 +166,7 @@
 
 
         {% endfor %}
+
 
 
         </tbody>

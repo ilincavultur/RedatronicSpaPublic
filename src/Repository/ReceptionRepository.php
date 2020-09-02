@@ -32,7 +32,7 @@ class ReceptionRepository extends ServiceEntityRepository
                 ->setParameter('search','%'.$search.'%');
         }
 
-        $qb->orderBy('p.Rfid','DESC');
+        $qb->orderBy('p.createdAt','DESC');
 
         return $qb;
     }

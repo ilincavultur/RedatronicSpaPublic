@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Circuit;
 use App\Entity\Membership;
+use App\Entity\MemReception;
 use App\Entity\Package;
 use App\Entity\Product;
 use App\Entity\Reception;
 use App\Entity\Zone;
+use App\Form\ChooseMembershipType;
 use App\Form\PackageType;
 use App\Form\ReceptionType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -58,15 +60,29 @@ class ReceptionController extends AbstractController
 
     }
 
+/*
     /**
      * @param EntityManagerInterface $em
      * @param Request $request
      * @return RedirectResponse|Response
+     * @Route("/addMemReception", name="app_new_rec")
      */
-    public function addMembershipReception(EntityManagerInterface $em , Request $request)
+/*
+    public function addMembershipReception(EntityManagerInterface $em, Request $request, Membership $membership)
     {
-        $form = $this->createForm(ReceptionType::class);
+
+        $memreception = new MemReception();
+        $form = $this->createForm(ChooseMembershipType::class, $memreception);
         $form->handleRequest($request);
+
+
+
+        $memreception->setRfid($membership->getRfid());
+        $memreception->setAge($membership->getAge());
+
+        $em->persist($memreception);
+
+        $em->flush();
 
         if ($form->isSubmitted() && $form->isValid()){
 
@@ -76,13 +92,16 @@ class ReceptionController extends AbstractController
             return $this->redirect($this->generateUrl('app_reception_list'));
         }
         return $this->render(
-            'reception/simplecard.html.twig',
+            'reception/choose.html.twig',
             [
                 'user_form' => $form->createView()
             ]
         );
 
+
     }
+
+*/
 
     /**
      * @param Request $request
@@ -91,11 +110,12 @@ class ReceptionController extends AbstractController
      */
     public function listAction(Request $request)
     {
-        $zoneRepository = $this->getDoctrine()->getRepository(Reception::class);
-        $qb = $zoneRepository->findReceptions($request->get('search'));
+        $receptionRepository = $this->getDoctrine()->getRepository(Reception::class);
+        $qbr = $receptionRepository->findReceptions($request->get('search'));
+
 
         $page = $request->get('page');
-        $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
+        $pager = new Pagerfanta(new DoctrineORMAdapter($qbr));
         $pager->setCurrentPage($page?$page:1);
         $pager->getNbResults();
 
@@ -110,6 +130,35 @@ class ReceptionController extends AbstractController
 
     }
 
+/*
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route("/list", name="app_memreception_list")
+     */
+/*
+    public function listMemAction(Request $request)
+    {
+
+        $memreceptionRepository = $this->getDoctrine()->getRepository(MemReception::class);
+        $qbm = $memreceptionRepository->findMemReceptions($request->get('search'));
+
+        $page = $request->get('page');
+        $pager = new Pagerfanta(new DoctrineORMAdapter($qbm));
+        $pager->setCurrentPage($page?$page:1);
+        $pager->getNbResults();
+
+        return $this->render(
+            'reception/list.html.twig',
+            [
+                'pager' => $pager
+            ]
+        );
+
+
+
+    }
+*/
     /**
      * @param Request $request
      * @return Response
@@ -162,6 +211,23 @@ class ReceptionController extends AbstractController
         return $this->redirectToRoute('app_reception_list');
 
     }
+/*
+    /**
+     * @param MemReception $memreception
+     * @return RedirectResponse
+     * @Route("/delete/{id}", name="app_memreception_delete")
+     */
+/*
+    public function memreceptionDelete(MemReception $memreception)
+    {
 
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($memreception);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_reception_list');
+
+    }
+*/
 
 }

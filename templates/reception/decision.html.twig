@@ -41,13 +41,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_reception_list') }}">Receptions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_product_list') }}">Products</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_package_list') }}">Packages</a>
                     </li>
                     <li class="nav-item">
@@ -120,7 +120,7 @@
                         New Client <i class="fa fa-plus"></i>
                     </a>
 
-                    <a href="#" class="btn btn-light">
+                    <a href="{{ path('app_new_reception') }}" class="btn btn-light">
                         Membership <i class="fa fa-plus"></i>
                     </a>
 

@@ -29,13 +29,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_reception_list') }}">Receptions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_product_list') }}">Products</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_package_list') }}">Packages</a>
                     </li>
                     <li class="nav-item">
@@ -65,22 +65,14 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a href="{{ path('app_reception_list') }}" class="btn btn-light">
-                Back to Receptions
+                Receptions
             </a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-
-
-
-            </div>
-
         </nav>
 
-        <title>{% block title %}Reception Details{% endblock %}</title>
+        <title>{% block title %}Receptions{% endblock %}</title>
 
     </head>
 {% endblock %}
@@ -88,84 +80,39 @@
 
 
 {% block body %}
+    <div class="section-1-container section-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-2 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
+
+                    <div class="div-to-align">
+
+                        <div class="col text-center>
+
+                            <div class="row">
 
 
-    <h4  class="col text-center">Rfid {{ reception.Rfid }}</h4>
 
-    <table class="table">
-        <thead>
+                        {{ form_start(user_form) }}
 
-        <tr class="col text-center">
-            <th>Age</th>
-            <th>Packages</th>
-            <th>Products</th>
-            {#<th>Actions</th> #}
-        </tr>
+                        {{ form_row(user_form.Membership) }}
+                        {{ form_row(user_form.Products) }}
 
-        </thead>
-
-        <tbody>
-
-        <tr class="col text-center">
-
-            <td> {{ reception.Age }}</td>
-            <td>
-                {% for package in reception.Packages %}
-                    <li class="col text-center">
-                        {{ package.Name }}
-                    </li>
-                {% endfor %}
-            </td>
-            <td>
-                {% for product in reception.Products %}
-                    <li class="col text-center">
-                        {{ product.Name }}
-                    </li>
-                {% endfor %}
-            </td>
-{#            <td>
-
-                    <ul class="list-inline m-0">
-
-                        <li class="list-inline-item">
-
-                            <a href="{{ path('app_reception_edit', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
-                            </a>
-
-                        </li>
-                        <li class="list-inline-item">
+                        <button type="submit" class="btn btn-light"> Add </button>
 
 
-                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
-                            </a>
+                        {{ form_end(user_form) }}
 
 
-                        </li>
 
+                    </div>
 
-                    </ul>
-
-                </td>
-#}
-        </tr>
-
-        </tbody>
-    </table>
-
-
-    <div class="fixed-bottom">
-        <div class="row">
-            <div class="col-sm-12">
-                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
-                    <ul class="pagination justify-content-center">
-
-                        Package Details
-
-                    </ul>
-                </nav>
+                </div>
             </div>
         </div>
     </div>
+    </div>
+
 
 
 
@@ -174,8 +121,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-
 
 
 

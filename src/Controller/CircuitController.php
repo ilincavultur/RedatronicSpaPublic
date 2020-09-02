@@ -53,6 +53,7 @@ class CircuitController extends AbstractController
     }
 
 
+
     /**
      * @param Request $request
      * @return Response
