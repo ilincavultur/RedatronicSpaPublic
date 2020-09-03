@@ -43,6 +43,12 @@ class MemReception
      */
     private $Age;
 
+    /**
+     *  @ORM\ManyToMany(targetEntity="Package")
+     *  @ORM\JoinColumn(name="package_id", referencedColumnName="id")
+     */
+    private $Packages;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +112,25 @@ class MemReception
     public function setAge(?string $Age): self
     {
         $this->Age = $Age;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPackages()
+    {
+        return $this->Packages;
+    }
+
+    /**
+     * @param $Packages
+     * @return $this
+     */
+    public function setPackages($Packages)
+    {
+        $this->Packages = $Packages;
 
         return $this;
     }

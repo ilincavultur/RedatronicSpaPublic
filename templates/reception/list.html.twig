@@ -76,7 +76,7 @@
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a href="{{ path('app_decision') }}" class="btn btn-light">
+                        <a href="{{ path('app_new_reception') }}" class="btn btn-light">
                             Add New Reception <i class="fa fa-plus"></i>
                         </a>
                     </li>
@@ -139,7 +139,7 @@
                             </a>
 
                     </li>
-
+{#
                     <li class="list-inline-item">
 
 
@@ -147,15 +147,15 @@
                         </a>
 
                     </li>
-
+#}
 {#
                     <li class="list-inline-item">
 
                         <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
                         </a>
 
-                    </li>
-#}
+                    </li> #}
+
 
                 </td>
 
@@ -166,6 +166,10 @@
 
 
         {% endfor %}
+
+
+
+
 
 
 

@@ -49,6 +49,7 @@ class ReceptionController extends AbstractController
             $em->persist($form->getData());
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('app_reception_list'));
         }
         return $this->render(
@@ -86,6 +87,9 @@ class ReceptionController extends AbstractController
             $m = $repository->find($membership->getId());
 
             $memreception->setRfid($m->getRFID());
+            $memreception->setAge($m->getAge());
+            $memreception->setPackages($m->getPackages());
+            $memreception->setProducts($form->get('Products')->getData());
 
             $em->persist($form->getData());
 
@@ -117,8 +121,11 @@ class ReceptionController extends AbstractController
 
         $page = $request->get('page');
         $pager = new Pagerfanta(new DoctrineORMAdapter($qbr));
+
+
         $pager->setCurrentPage($page?$page:1);
         $pager->getNbResults();
+
 
         return $this->render(
             'reception/list.html.twig',
@@ -149,9 +156,12 @@ class ReceptionController extends AbstractController
         $pager->getNbResults();
 
         return $this->render(
-            'reception/memlist.html.twig',
+            'reception/list.html.twig',
             [
                 'pager' => $pager
+
+
+
             ]
         );
 
@@ -197,6 +207,23 @@ class ReceptionController extends AbstractController
     }
 
     /**
+     * @param MemReception $memReception
+     * @return Response
+     * @Route("/showMemDetails/{id}", name="app_memreception_showDetails")
+     */
+    public function showMemDetails(MemReception $memReception)
+    {
+
+        # $this->denyAccessUnlessGranted('ROLE_USER',null, 'Unable to access this page!');
+
+        return $this->render('reception/showMemDetails.html.twig', array(
+            'memReception' => $memReception
+        ));
+
+
+    }
+
+    /**
      * @param Reception $reception
      * @return RedirectResponse
      * @Route("/delete/{id}", name="app_reception_delete")
@@ -211,13 +238,12 @@ class ReceptionController extends AbstractController
         return $this->redirectToRoute('app_reception_list');
 
     }
-/*
+
     /**
      * @param MemReception $memreception
      * @return RedirectResponse
-     * @Route("/delete/{id}", name="app_memreception_delete")
+     * @Route("/deletemem/{id}", name="app_memreception_delete")
      */
-/*
     public function memreceptionDelete(MemReception $memreception)
     {
 
@@ -225,9 +251,9 @@ class ReceptionController extends AbstractController
         $entityManager->remove($memreception);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_reception_list');
+        return $this->redirectToRoute('app_memreception_list');
 
     }
-*/
+
 
 }

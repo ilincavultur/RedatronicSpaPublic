@@ -29,13 +29,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_reception_list') }}">Receptions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_product_list') }}">Products</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_package_list') }}">Packages</a>
                     </li>
                     <li class="nav-item">
@@ -90,7 +90,7 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Rfid {{ reception.Rfid }}</h4>
+    <h4  class="col text-center">Rfid {{ memReception.Rfid }}</h4>
 
     <table class="table">
         <thead>
@@ -99,7 +99,7 @@
             <th>Age</th>
             <th>Packages</th>
             <th>Products</th>
-            {#<th>Actions</th> #}
+            <th>Actions</th>
         </tr>
 
         </thead>
@@ -108,45 +108,45 @@
 
         <tr class="col text-center">
 
-            <td> {{ reception.Age }}</td>
+            <td> {{ memReception.Age }}</td>
             <td>
-                {% for package in reception.Packages %}
+                {% for package in memReception.Packages %}
                     <li class="col text-center">
                         {{ package.Name }}
                     </li>
                 {% endfor %}
             </td>
             <td>
-                {% for product in reception.Products %}
+                {% for product in memReception.Products %}
                     <li class="col text-center">
                         {{ product.Name }}
                     </li>
                 {% endfor %}
             </td>
-            {#            <td>
+           <td>
 
-                                <ul class="list-inline m-0">
+                    <ul class="list-inline m-0">
 
-                                    <li class="list-inline-item">
+                        {#<li class="list-inline-item">
 
-                                        <a href="{{ path('app_reception_edit', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
-                                        </a>
+                            <a href="{{ path('app_reception_edit', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                            </a>
 
-                                    </li>
-                                    <li class="list-inline-item">
-
-
-                                        <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
-                                        </a>
+                        </li> #}
+                        <li class="list-inline-item">
 
 
-                                    </li>
+                            <a href="{{ path('app_memreception_delete', {"id":memReception.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                            </a>
 
 
-                                </ul>
+                        </li>
 
-                            </td>
-            #}
+
+                    </ul>
+
+                </td>
+
         </tr>
 
         </tbody>

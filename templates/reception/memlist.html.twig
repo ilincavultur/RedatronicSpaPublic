@@ -125,21 +125,21 @@
 
         <tbody>
 
-        {% for reception in pager.currentPageResults %}
+        {% for memReception in pager.currentPageResults %}
             <tr class="col text-center">
 
-                <td> {{ reception.Rfid }}</td>
-                <td> {{ reception.createdAt|date }}</td>
-                {#<td>
+                <td> {{ memReception.Rfid }}</td>
+                <td> {{ memReception.createdAt|date }}</td>
+                <td>
 
                     <li class="list-inline-item">
 
 
-                        <a href="{{ path('app_reception_showDetails', {"id":reception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
+                        <a href="{{ path('app_memreception_showDetails', {"id":memReception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
                         </a>
 
                     </li>
-
+{#
                     <li class="list-inline-item">
 
 
@@ -147,17 +147,17 @@
                         </a>
 
                     </li>
-
-                    {#
+#}
+{#
                                         <li class="list-inline-item">
 
-                                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
+                                            <a href="{{ path('app_memreception_delete', {"id":memReception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px"></i>
                                             </a>
 
-                                        </li>
-                    #}
+                                        </li> #}
 
-               {# </td> #}
+
+               </td>
 
 
 

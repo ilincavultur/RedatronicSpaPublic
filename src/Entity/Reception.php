@@ -16,6 +16,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Reception
 {
+    public const TYPE_NEW_CLIENT = 'New Client';
+    public const TYPE_MEMBERSHIP = 'Membership';
     public const TYPE_ADULT = 'Adult';
     public const TYPE_CHILD = 'Child';
 
@@ -51,6 +53,17 @@ class Reception
      *
      */
     private $Products;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Membership")
+     * @ORM\JoinColumn(name="membership_id", referencedColumnName="id")
+     */
+    private $Membership;
 
 
 
@@ -129,6 +142,37 @@ class Reception
     public function setProducts($Products)
     {
         $this->Products = $Products;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->Type;
+    }
+
+    public function setType(string $Type): self
+    {
+        $this->Type = $Type;
+
+        return $this;
+    }
+
+    /**
+     * @return Membership|null
+     */
+    public function getMembership(): ?Membership
+    {
+        return $this->Membership;
+    }
+
+    /**
+     * @param Membership $Membership
+     * @return MemReception
+     */
+    public function setMembership(Membership $Membership): self
+    {
+        $this->Membership = $Membership;
 
         return $this;
     }

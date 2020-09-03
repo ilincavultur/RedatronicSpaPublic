@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\MemReception;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,7 +22,7 @@ class MemReceptionRepository extends ServiceEntityRepository
 
     /**
      * @param null $search
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function findMemReceptions($search = null)
     {
@@ -31,6 +32,9 @@ class MemReceptionRepository extends ServiceEntityRepository
         if (null !== $search){
             $qb->where('p.Membership like :search')
                 ->orWhere('p.Products like :search')
+                ->orWhere('p.Age like :search')
+                ->orWhere('p.Rfid like :search')
+                ->orWhere('p.Packages like :search')
                 ->setParameter('search','%'.$search.'%');
         }
 
