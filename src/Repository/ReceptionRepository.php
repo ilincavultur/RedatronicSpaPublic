@@ -27,7 +27,7 @@ class ReceptionRepository extends ServiceEntityRepository
         if (null !== $search){
             $qb->where('p.Rfid like :search')
                 ->orWhere('p.Age like :search')
-                ->orWhere('p.Packages like :search')
+                ->orWhere('p.Package like :search')
                 ->orWhere('p.Products like :search')
                 ->setParameter('search','%'.$search.'%');
         }

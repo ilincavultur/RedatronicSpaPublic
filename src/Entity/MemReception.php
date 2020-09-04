@@ -43,6 +43,17 @@ class MemReception
      */
     private $Age;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Package")
+     * @ORM\JoinColumn(name="package_id", referencedColumnName="id")
+     */
+    private $Package;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ClientName;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +117,37 @@ class MemReception
     public function setAge(?string $Age): self
     {
         $this->Age = $Age;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPackage()
+    {
+        return $this->Package;
+    }
+
+    /**
+     * @param $Package
+     * @return $this
+     */
+    public function setPackage($Package)
+    {
+        $this->Package = $Package;
+
+        return $this;
+    }
+
+    public function getClientName(): ?string
+    {
+        return $this->ClientName;
+    }
+
+    public function setClientName(string $ClientName): self
+    {
+        $this->ClientName = $ClientName;
 
         return $this;
     }

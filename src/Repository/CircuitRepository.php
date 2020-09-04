@@ -52,6 +52,24 @@ class CircuitRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @param $Rfid
+     * @return array
+     */
+    public function findAllWithSameRfid($Rfid): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Circuit p
+            WHERE p.Rfid = :Rfid
+            ORDER BY p.Rfid ASC'
+        )->setParameter('Rfid', $Rfid);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
 
 /*
     /**

@@ -97,7 +97,7 @@
 
         <tr class="col text-center">
             <th>Age</th>
-            <th>Packages</th>
+            <th>Package</th>
             <th>Products</th>
             {#<th>Actions</th> #}
         </tr>
@@ -110,11 +110,7 @@
 
             <td> {{ reception.Age }}</td>
             <td>
-                {% for package in reception.Packages %}
-                    <li class="col text-center">
-                        {{ package.Name }}
-                    </li>
-                {% endfor %}
+                {{ reception.Package.Name }}
             </td>
             <td>
                 {% for product in reception.Products %}

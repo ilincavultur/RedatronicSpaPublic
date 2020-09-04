@@ -39,11 +39,11 @@ class Reception
     private $Age;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Package")
+     * @ORM\ManyToOne(targetEntity="Package")
      * @ORM\JoinColumn(name="package_id", referencedColumnName="id")
      *
      */
-    private $Packages;
+    private $Package;
 
     /**
      * @ORM\ManyToMany(targetEntity="Product")
@@ -94,20 +94,20 @@ class Reception
 
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getPackages()
+    public function getPackage()
     {
-        return $this->Packages;
+        return $this->Package;
     }
 
     /**
-     * @param $Packages
+     * @param $Package
      * @return $this
      */
-    public function setPackages($Packages)
+    public function setPackage($Package)
     {
-        $this->Packages = $Packages;
+        $this->Package = $Package;
 
         return $this;
     }

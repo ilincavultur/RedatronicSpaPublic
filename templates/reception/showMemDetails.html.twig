@@ -90,14 +90,15 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Rfid {{ reception.Rfid }}</h4>
+    <h4  class="col text-center">Rfid {{ memreception.Rfid }}</h4>
 
     <table class="table">
         <thead>
 
         <tr class="col text-center">
+            <th>Client Name</th>
             <th>Age</th>
-            <th>Packages</th>
+            <th>Package</th>
             <th>Products</th>
             {#<th>Actions</th> #}
         </tr>
@@ -108,16 +109,13 @@
 
         <tr class="col text-center">
 
-            <td> {{ reception.Age }}</td>
+            <td> {{ memreception.ClientName }}</td>
+            <td> {{ memreception.Age }}</td>
             <td>
-                {% for package in reception.Packages %}
-                    <li class="col text-center">
-                        {{ package.Name }}
-                    </li>
-                {% endfor %}
+                {{ memreception.Package.Name }}
             </td>
             <td>
-                {% for product in reception.Products %}
+                {% for product in memreception.Products %}
                     <li class="col text-center">
                         {{ product.Name }}
                     </li>

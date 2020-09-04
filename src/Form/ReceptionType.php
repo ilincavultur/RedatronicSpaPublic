@@ -35,11 +35,11 @@ class ReceptionType extends AbstractType
                 ],
 
             ])
-            ->add('Packages', EntityType::class, [
+            ->add('Package', EntityType::class, [
                 'class' => Package::class,
                 'choice_label' => 'Name',
-                'multiple' => true,
-                'expanded' => true,
+                'multiple' => false,
+                'expanded' => false,
             ])
             ->add('Products', EntityType::class, [
                 'class' => Product::class,

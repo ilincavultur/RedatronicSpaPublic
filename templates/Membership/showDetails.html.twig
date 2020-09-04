@@ -100,7 +100,7 @@
 
             <th>Client Name</th>
             <th>Age</th>
-            <th>Packages Included</th>
+            <th>Package Included</th>
             <th>RFID</th>
         </tr>
 
@@ -112,11 +112,7 @@
             <td> {{ membership.ClientName }}</td>
             <td> {{ membership.Age }}</td>
             <td>
-                {% for package in membership.Packages %}
-                    <li class="col text-center">
-                        {{ package.Name }}
-                    </li>
-                {% endfor %}
+                {{ membership.Package.Name }}
             </td>
             <td> {{ membership.RFID }}</td>
         </tr>

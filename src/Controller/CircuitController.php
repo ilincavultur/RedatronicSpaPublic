@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Circuit;
 use App\Entity\Membership;
+use App\Entity\MemReception;
 use App\Entity\Product;
 use App\Entity\Reception;
 use App\Form\CircuitType;
@@ -35,18 +36,104 @@ class CircuitController extends AbstractController
     public function startCircuit(EntityManagerInterface $em, Reception $reception)
     {
 
-        $circuit = new Circuit();
+        $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
+        $array = $circuitRepository->findAllWithSameRfid($reception->getRfid());
 
-        $circuit->setRfid($reception->getRfid());
+        if($array == null){
+            $circuit = new Circuit();
 
-        $circuit->setIsOpen(true);
+            $circuit->setRfid($reception->getRfid());
+
+            $circuit->setIsOpen(true);
 
 
-        $em->persist($circuit);
+            $em->persist($circuit);
 
-        $em->flush();
-        return $this->redirect($this->generateUrl('app_circuit_list'));
+            $em->flush();
+            return $this->redirect($this->generateUrl('app_circuit_list'));
+        }
 
+        $ok = true;
+        foreach ($array as &$value){
+            if ($value->getIsOpen() != false){
+
+                $ok = false;
+
+            }
+        }
+        if ($ok == false){
+            $this->createNotFoundException("guhu");
+            //$this->addFlash('error', 'cannot start new circuit bc it is already open');
+            return $this->redirect($this->generateUrl('app_circuit_list'));
+        }else{
+            $circuit = new Circuit();
+
+            $circuit->setRfid($reception->getRfid());
+
+            $circuit->setIsOpen(true);
+
+
+            $em->persist($circuit);
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('app_circuit_list'));
+        }
+
+
+    }
+
+    /**
+     * @param EntityManagerInterface $em
+     * @param MemReception $memreception
+     * @return RedirectResponse
+     * @Route("/startMemCircuit/{Rfid}", name="app_new_memcircuit")
+     */
+    public function startMemCircuit(EntityManagerInterface $em, MemReception $memreception)
+    {
+
+
+        $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
+        $array = $circuitRepository->findAllWithSameRfid($memreception->getRfid());
+
+        if($array == null){
+            $circuit = new Circuit();
+
+            $circuit->setRfid($memreception->getRfid());
+
+            $circuit->setIsOpen(true);
+
+
+            $em->persist($circuit);
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('app_circuit_list'));
+        }
+
+        $ok = true;
+        foreach ($array as &$value){
+            if ($value->getIsOpen() != false){
+
+                $ok = false;
+
+            }
+        }
+        if ($ok == false){
+            $this->createNotFoundException("guhu");
+            //$this->addFlash('error', 'cannot start new circuit bc it is already open');
+            return $this->redirect($this->generateUrl('app_circuit_list'));
+        }else{
+            $circuit = new Circuit();
+
+            $circuit->setRfid($memreception->getRfid());
+
+            $circuit->setIsOpen(true);
+
+
+            $em->persist($circuit);
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('app_circuit_list'));
+        }
 
 
 
@@ -61,8 +148,8 @@ class CircuitController extends AbstractController
      */
     public function listAction(Request $request)
     {
-        $productRepository = $this->getDoctrine()->getRepository(Circuit::class);
-        $qb = $productRepository->findCircuits($request->get('search'));
+        $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
+        $qb = $circuitRepository->findCircuits($request->get('search'));
 
         $page = $request->get('page');
         $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
@@ -87,8 +174,10 @@ class CircuitController extends AbstractController
     {
 
         $circuit->setEndTime(date_create());
+        $circuit->setIsOpen(false);
         $circuitRepository = $this->getDoctrine()->getManager();
         $circuitRepository->flush();
+
 
         return $this->redirectToRoute('app_circuit_list');
 

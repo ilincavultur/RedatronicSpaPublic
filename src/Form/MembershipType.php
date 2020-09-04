@@ -34,11 +34,11 @@ class MembershipType extends AbstractType
                 ],
 
             ])
-            ->add('Packages', EntityType::class, [
+            ->add('Package', EntityType::class, [
                 'class' => Package::class,
                 'choice_label' => 'Name',
-                'multiple' => true,
-                'expanded' => true,
+                'multiple' => false,
+                'expanded' => false,
             ])
             ->add('RFID', TextType::class);
 
