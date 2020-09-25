@@ -31,25 +31,31 @@ class CircuitController extends AbstractController
      * @param EntityManagerInterface $em
      * @param Reception $reception
      * @return RedirectResponse|Response
-     * @Route("/startCircuit/{Rfid}", name="app_new_circuit")
+     * @Route("/startCircuit/{id}", name="app_new_circuit")
      */
     public function startCircuit(EntityManagerInterface $em, Reception $reception)
     {
 
         $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
-        $array = $circuitRepository->findAllWithSameRfid($reception->getRfid());
+        //foreach ($reception->getRfids() as $val){
+          //  $array = $circuitRepository->findAllWithSameRfid($val);
+        //}
 
+        $array = $circuitRepository->findAllWithSameRfid($reception->getRfids());
         if($array == null){
-            $circuit = new Circuit();
+            for ($x = $reception->getTotalPers(); $x > 0; $x--){
+                $circuit = new Circuit();
 
-            $circuit->setRfid($reception->getRfid());
+                $circuit->setRfid("dsgsdgs");
 
-            $circuit->setIsOpen(true);
+                $circuit->setIsOpen(true);
 
 
-            $em->persist($circuit);
+                $em->persist($circuit);
 
-            $em->flush();
+                $em->flush();
+            }
+
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
 
@@ -68,7 +74,7 @@ class CircuitController extends AbstractController
         }else{
             $circuit = new Circuit();
 
-            $circuit->setRfid($reception->getRfid());
+            $circuit->setRfid("fsdsdf");
 
             $circuit->setIsOpen(true);
 
@@ -86,7 +92,7 @@ class CircuitController extends AbstractController
      * @param EntityManagerInterface $em
      * @param MemReception $memreception
      * @return RedirectResponse
-     * @Route("/startMemCircuit/{Rfid}", name="app_new_memcircuit")
+     * @Route("/startMemCircuit/{id}", name="app_new_memcircuit")
      */
     public function startMemCircuit(EntityManagerInterface $em, MemReception $memreception)
     {

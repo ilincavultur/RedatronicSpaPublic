@@ -8,13 +8,18 @@ use App\Entity\Membership;
 use App\Entity\Package;
 use App\Entity\Product;
 use App\Entity\Reception;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Types\ArrayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Form\FormEvents;
 
 class ReceptionType extends AbstractType
 {
@@ -26,15 +31,9 @@ class ReceptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Rfid', TextType::class)
 
-            ->add('Age', ChoiceType::class, [
-                'choices' => [
-                    'Adult' => Reception::TYPE_ADULT,
-                    'Child' => Reception::TYPE_CHILD,
-                ],
-
-            ])
+            ->add('Adults', IntegerType::class)
+            ->add('Children', IntegerType::class)
             ->add('Package', EntityType::class, [
                 'class' => Package::class,
                 'choice_label' => 'Name',
@@ -47,11 +46,23 @@ class ReceptionType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+            ->add('Credit', ChoiceType::class, [
+                'choices' => [
+                    '10' => Reception::TYPE_TEN ,
+                    '50' => Reception::TYPE_FIFTY,
+                    '100' => Reception::TYPE_HUNDRED ,
+                ],
+
+            ])
+
+
 
         ;
 
 
     }
+
+
 
     /**
      * @param OptionsResolver $resolver

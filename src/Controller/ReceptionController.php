@@ -12,6 +12,7 @@ use App\Entity\Zone;
 use App\Form\ChooseMembershipType;
 use App\Form\PackageType;
 use App\Form\ReceptionType;
+use App\Form\RfidType;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -41,15 +42,47 @@ class ReceptionController extends AbstractController
      */
     public function addSimpleReception(EntityManagerInterface $em , Request $request)
     {
-        $form = $this->createForm(ReceptionType::class);
+        $reception = new Reception();
+        $form = $this->createForm(ReceptionType::class, $reception);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
 
+
+            $reception->setPackage($form->get('Package')->getData());
+            $reception->setAdults($form->get('Adults')->getData());
+            $reception->setChildren($form->get('Children')->getData());
+            $reception->setCredit($form->get('Credit')->getData());
+
+            $reception->setTotalAccess($form->get('Adults')->getData() * $reception->getPackage()->getPriceAdult() + $form->get('Children')->getData() * $reception->getPackage()->getPriceChild());
+            $reception->setTotalPers($form->get('Adults')->getData() + $form->get('Children')->getData());
+
+
+            for ($i = 0; $i < $reception->getTotalPers(); $i++){
+                $frm = $this->createForm(RfidType::class);
+                $frm->handleRequest($request);
+                if ($frm->isSubmitted() && $frm->isValid()) {
+                    $reception->setRfids($frm->get('Rfid')->getData());
+
+                }
+                return $this->render('reception/addRfid.html.twig', ['user_form' => $frm->createView()]);
+
+            }
+
+
+
+
+            //$reception->setRfids($form->get('Rfids')->getData());
+            $reception->setTotalServices($form->get('Products')->getData()->get('Price') * $reception->getTotalPers());
+            $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
+
+
+
             $em->persist($form->getData());
 
             $em->flush();
-            return $this->redirect($this->generateUrl('app_reception_list'));
+            return $this->redirect($this->generateUrl('app_new_circuit', array(
+                'id' => $reception->getId())));
         }
         return $this->render(
             'reception/simplecard.html.twig',
@@ -94,7 +127,8 @@ class ReceptionController extends AbstractController
             $em->persist($form->getData());
 
             $em->flush();
-            return $this->redirect($this->generateUrl('app_memreception_list'));
+            return $this->redirect($this->generateUrl('app_new_memcircuit', array(
+                'id' => $memreception->getId())));
         }
         return $this->render(
             'reception/choose.html.twig',

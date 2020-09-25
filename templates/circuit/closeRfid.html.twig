@@ -1,4 +1,4 @@
-{% extends 'reception/base.html.twig' %}
+{% extends 'circuit/base.html.twig' %}
 
 
 {% block head %}
@@ -16,6 +16,26 @@
                 margin: auto !important;
                 display: flex;
                 justify-content: space-between;
+            }
+            #td{
+                height: 200px;
+                width: 400px;
+
+
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -100px;
+                margin-left: -100px;
+
+            }
+
+            #form{
+                padding-top: 20px;
+                align-items: center;
+                justify-content: space-around;
+                display: flex;
+                float: none;
             }
         </style>
 
@@ -74,29 +94,8 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a href="{{ path('app_decision') }}" class="btn btn-light">
-                            Add New Reception <i class="fa fa-plus"></i>
-                        </a>
-                    </li>
-                    <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
-                        Circuits
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </ul>
-
 
             </div>
-            <form method="get" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
-                <button class="btn btn-light">
-                    Search Reception
-                </button>
-            </form>
 
         </nav>
 
@@ -116,52 +115,27 @@
         <thead>
         <tr class="col text-center">
 
-
-            <th>Created At</th>
-            <th>Actions</th>
         </tr>
 
         </thead>
 
         <tbody>
 
-        {% for reception in pager.currentPageResults %}
-            <tr class="col text-center">
+        <div id="form">
 
 
+            {{ form_start(user_form) }}
 
-                <td> {{ reception.createdAt|date }}</td>
-                <td>
-
-                    <li class="list-inline-item">
+            {{ form_row(user_form.Rfid) }}
 
 
-                            <a href="{{ path('app_reception_showDetails', {"id":reception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
-                            </a>
-
-                    </li>
+            <button type="submit" class="btn btn-light">  Add  </button>
 
 
-
-{#
-                    <li class="list-inline-item">
-
-                        <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px">delete_forever</i>
-                        </a>
-
-                    </li>
-#}
-
-                </td>
+            {{ form_end(user_form) }}
 
 
-
-            </tr>
-
-
-
-        {% endfor %}
-
+        </div>
 
 
         </tbody>
@@ -170,19 +144,6 @@
     </table>
 
 
-    <div class="fixed-bottom">
-        <div class="row">
-            <div class="col-sm-12">
-                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
-                    <ul class="pagination justify-content-center">
-
-                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
 
 
 

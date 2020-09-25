@@ -6,16 +6,17 @@ namespace App\Form;
 
 use App\Entity\Package;
 use App\Entity\Product;
-use App\Entity\Zone;
+use App\Entity\Reception;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class PackageType extends AbstractType
+class RfidType extends AbstractType
 {
 
     /**
@@ -25,22 +26,18 @@ class PackageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Name', TextType::class)
-            ->add('priceAdult', IntegerType::class)
-            ->add('priceChild', IntegerType::class)
-            ->add('Zones', EntityType::class, [
-                'class' => Zone::class,
-                'choice_label' => 'Name',
-                'multiple' => true,
-                'expanded' => true,
-            ])
-            ->add('Availability', IntegerType::class)
-            ->add('NoOfEntries', IntegerType::class)
+
+            ->add('Rfid', TextType::class)
+
+
+
 
         ;
 
 
     }
+
+
 
     /**
      * @param OptionsResolver $resolver
@@ -48,8 +45,9 @@ class PackageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Package::class
+            'data_class' => Reception::class
         ]);
     }
+
 
 }

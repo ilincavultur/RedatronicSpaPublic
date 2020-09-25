@@ -29,10 +29,6 @@ class Package
      */
     private $Name;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Price;
 
     /**
      * @ORM\ManyToMany(targetEntity="Zone")
@@ -50,6 +46,16 @@ class Package
      * @ORM\Column(type="integer", nullable=true)
      */
     private $NoOfEntries;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $priceAdult;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $priceChild;
 
 
 
@@ -70,17 +76,6 @@ class Package
         return $this;
     }
 
-    public function getPrice(): ?int
-    {
-        return $this->Price;
-    }
-
-    public function setPrice(int $Price): self
-    {
-        $this->Price = $Price;
-
-        return $this;
-    }
 
     /**
      * @return ArrayCollection
@@ -121,6 +116,30 @@ class Package
     public function setNoOfEntries(?int $NoOfEntries): self
     {
         $this->NoOfEntries = $NoOfEntries;
+
+        return $this;
+    }
+
+    public function getPriceAdult(): ?int
+    {
+        return $this->priceAdult;
+    }
+
+    public function setPriceAdult(?int $priceAdult): self
+    {
+        $this->priceAdult = $priceAdult;
+
+        return $this;
+    }
+
+    public function getPriceChild(): ?int
+    {
+        return $this->priceChild;
+    }
+
+    public function setPriceChild(?int $priceChild): self
+    {
+        $this->priceChild = $priceChild;
 
         return $this;
     }

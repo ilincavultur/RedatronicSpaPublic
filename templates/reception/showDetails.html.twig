@@ -90,15 +90,24 @@
 {% block body %}
 
 
-    <h4  class="col text-center">Rfid {{ reception.Rfid }}</h4>
+    <h4  class="col text-center">Rfid {{ reception.Rfids }}</h4>
 
     <table class="table">
         <thead>
 
         <tr class="col text-center">
-            <th>Age</th>
+            {#<th>Age</th> #}
             <th>Package</th>
             <th>Products</th>
+            <th>Adults</th>
+            <th>Children</th>
+            <th>Total Services</th>
+            <th>Total Access</th>
+            <th>Total People</th>
+            <th>Credit</th>
+            <th>Total</th>
+
+
             {#<th>Actions</th> #}
         </tr>
 
@@ -108,9 +117,9 @@
 
         <tr class="col text-center">
 
-            <td> {{ reception.Age }}</td>
+            {#<td> {{ reception.Age }}</td> #}
             <td>
-                {{ reception.Package.Name }}
+                {{ reception.Package.Name}}
             </td>
             <td>
                 {% for product in reception.Products %}
@@ -119,6 +128,29 @@
                     </li>
                 {% endfor %}
             </td>
+            <td>
+                {{ reception.Adults }}
+            </td>
+            <td>
+                {{ reception.Children }}
+            </td>
+            <td>
+                {{ reception.totalServices }}
+            </td>
+            <td>
+                {{ reception.totalAccess }}
+            </td>
+            <td>
+                {{ reception.totalPers }}
+            </td>
+
+            <td>
+                {{ reception.Credit }}
+            </td>
+            <td>
+                {{ reception.totalSum}}
+            </td>
+
 
         </tr>
 

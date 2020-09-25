@@ -109,7 +109,8 @@
         <thead>
         <tr class="col text-center">
             <th>Name</th>
-            <th>Price</th>
+            <th>Price for Adult</th>
+            <th>Price for Child</th>
             <th>Actions</th>
         </tr>
 
@@ -119,7 +120,8 @@
         {% for package in pager.currentPageResults %}
             <tr class="col text-center">
                 <td> {{ package.Name }}</td>
-                <td> {{ package.Price }}</td>
+                <td> {{ package.priceAdult }}</td>
+                <td> {{ package.priceChild }}</td>
                 <td>
 
                     <ul class="list-inline m-0">

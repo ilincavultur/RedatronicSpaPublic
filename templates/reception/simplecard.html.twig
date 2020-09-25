@@ -103,10 +103,16 @@
 
     {{ form_start(user_form) }}
 
-    {{ form_row(user_form.Rfid) }}
-    {{ form_row(user_form.Age) }}
+
+        {#{{ form_row(user_form.Rfids) }} #}
+
+
+    {{ form_row(user_form.Adults) }}
+        {{ form_row(user_form.Children) }}
+
     {{ form_row(user_form.Package) }}
     {{ form_row(user_form.Products) }}
+        {{ form_row(user_form.Credit) }}
 
     <button type="submit" class="btn btn-light">  Add  </button>
 
