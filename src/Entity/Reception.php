@@ -85,9 +85,10 @@ class Reception
     private $Credit;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\OneToMany(targetEntity="Rfid", mappedBy="Rfid")
+     * @ORM\JoinColumn(name="Rfid_id", referencedColumnName="id")
      */
-    private $Rfids;
+    private $Rfid;
 
 
 
@@ -225,20 +226,20 @@ class Reception
     }
 
     /**
-     * @return array|null
+     * @return ArrayCollection
      */
-    public function getRfids(): ?array
+    public function getRfid()
     {
-        return $this->Rfids;
+        return $this->Rfid;
     }
 
     /**
-     * @param array|null $Rfids
-     * @return Reception
+     * @param string $Rfid
+     * @return $this
      */
-    public function setRfids(?array $Rfids): self
+    public function setRfid($Rfid)
     {
-        $this->Rfids = $Rfids;
+        $this->Rfid = $Rfid;
 
         return $this;
     }

@@ -8,6 +8,7 @@ use App\Entity\MemReception;
 use App\Entity\Package;
 use App\Entity\Product;
 use App\Entity\Reception;
+use App\Entity\Rfid;
 use App\Entity\Zone;
 use App\Form\ChooseMembershipType;
 use App\Form\PackageType;
@@ -45,6 +46,8 @@ class ReceptionController extends AbstractController
         $reception = new Reception();
         $form = $this->createForm(ReceptionType::class, $reception);
         $form->handleRequest($request);
+        $rf = new Rfid();
+        $rf->setRfid("sfbs");
 
         if ($form->isSubmitted() && $form->isValid()){
 
@@ -58,21 +61,11 @@ class ReceptionController extends AbstractController
             $reception->setTotalPers($form->get('Adults')->getData() + $form->get('Children')->getData());
 
 
-            for ($i = 0; $i < $reception->getTotalPers(); $i++){
-                $frm = $this->createForm(RfidType::class);
-                $frm->handleRequest($request);
-                if ($frm->isSubmitted() && $frm->isValid()) {
-                    $reception->setRfids($frm->get('Rfid')->getData());
 
-                }
-                return $this->render('reception/addRfid.html.twig', ['user_form' => $frm->createView()]);
-
-            }
+            $reception->setRfid($rf);
 
 
 
-
-            //$reception->setRfids($form->get('Rfids')->getData());
             $reception->setTotalServices($form->get('Products')->getData()->get('Price') * $reception->getTotalPers());
             $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
 

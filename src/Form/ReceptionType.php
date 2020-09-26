@@ -54,6 +54,15 @@ class ReceptionType extends AbstractType
                 ],
 
             ])
+            ->add('Rfid', CollectionType::class, [
+                'entry_type' => RfidType::class,
+                'entry_options' => [
+                    'label' => false
+                ],
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
+            ])
 
 
 
