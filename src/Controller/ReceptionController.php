@@ -62,7 +62,7 @@ class ReceptionController extends AbstractController
 
 
 
-            $reception->setRfid($rf);
+            $reception->setRfids($rf);
 
 
 

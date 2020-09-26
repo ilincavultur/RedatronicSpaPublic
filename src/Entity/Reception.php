@@ -88,7 +88,7 @@ class Reception
      * @ORM\OneToMany(targetEntity="Rfid", mappedBy="Rfid")
      * @ORM\JoinColumn(name="Rfid_id", referencedColumnName="id")
      */
-    private $Rfid;
+    private $Rfids;
 
 
 
@@ -228,18 +228,18 @@ class Reception
     /**
      * @return ArrayCollection
      */
-    public function getRfid()
+    public function getRfids()
     {
-        return $this->Rfid;
+        return $this->Rfids;
     }
 
     /**
-     * @param string $Rfid
+     * @param string $Rfids
      * @return $this
      */
-    public function setRfid($Rfid)
+    public function setRfids($Rfids)
     {
-        $this->Rfid = $Rfid;
+        $this->Rfids = $Rfids;
 
         return $this;
     }

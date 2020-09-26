@@ -6,7 +6,7 @@ use App\Repository\RfidRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=RfidRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\RfidRepository", repositoryClass=RfidRepository::class)
  */
 class Rfid
 {
@@ -18,8 +18,8 @@ class Rfid
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Reception", inversedBy="Rfid")
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Reception", inversedBy="Rfids")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Rfid;
 
