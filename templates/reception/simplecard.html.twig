@@ -106,9 +106,6 @@
     {{ form_start(user_form) }}
 
 
-        {#{{ form_row(user_form.Rfids) }} #}
-
-
     {{ form_row(user_form.Adults) }}
         {{ form_row(user_form.Children) }}
 
@@ -133,58 +130,44 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
                         <div class="modal-body">
-                            <div id="Rfid_List" data-prototype="{{ form_widget(user_form.Rfid.vars.prototype)|e('html_attr') }}">
-                                {% for row in user_form.Rfid %}
 
-                                    {{ form_row(row) }}
-                                    {#<input class="form-control" type="text" placeholder=""> #}
+                            <div id="Rfid_List" data-prototype="{{ form_widget(user_form.Rfids.vars.prototype)|e('html_attr') }}">
+                                {% for row in user_form.Rfids %}
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        bla
+                                    </div>
 
+
+                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                                    <div class="panel-body">
+                                        {{ form_row(row) }}
+                                    </div>
+
+
+
+
+                                </div>
                                 {% endfor%}
-
-
-
                             </div>
 
+
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-light">Add Card</button>
+                            <input id="tag-form-submit" type="submit" class="btn btn-light" value="Add Card">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="form">
-            {% for row in user_form.Rfid %}
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        bla
-                    </div>
-                    <div class="panel-body">
-                        <div id="Rfid_List" data-prototype="{{ form_widget(user_form.Rfid.vars.prototype)|e('html_attr') }}">
 
-
-                            {{ form_row(row) }}
-                            {#<input class="form-control" type="text" placeholder=""> #}
-
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor%}
-        </div>
-        <div id="form">
-
-            <button type="submit" class="btn btn-light">  Open Circuits  </button>
-
-        </div>
         {{ form_end(user_form) }}
-
     </div>
+
 
 
 

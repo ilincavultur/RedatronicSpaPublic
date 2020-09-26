@@ -30,11 +30,7 @@ class RfidType extends AbstractType
         $builder
 
             ->add('Rfid', TextType::class)
-            ->add('save', SubmitType::class, [
-                'attr' => [
-                    'class btn btn-light'
-                ]
-            ])
+
 
 
 

@@ -46,8 +46,7 @@ class ReceptionController extends AbstractController
         $reception = new Reception();
         $form = $this->createForm(ReceptionType::class, $reception);
         $form->handleRequest($request);
-        $rf = new Rfid();
-        $rf->setRfid("sfbs");
+
 
         if ($form->isSubmitted() && $form->isValid()){
 
@@ -62,6 +61,9 @@ class ReceptionController extends AbstractController
 
 
 
+            $rf = new Rfid();
+            $frm = $this->createForm(RfidType::class, $rf);
+            $frm->handleRequest($request);
             $reception->setRfids($rf);
 
 
@@ -83,6 +85,43 @@ class ReceptionController extends AbstractController
                 'user_form' => $form->createView()
             ]
         );
+
+    }
+
+    /**
+     * @param EntityManagerInterface $em
+     * @param Request $request
+     * @return void
+     * @Route("/addTag", name="addTag")
+     */
+    public function addTag(EntityManagerInterface $em , Request $request)
+    {
+
+        $rf = new Rfid();
+        $form = $this->createForm(RfidType::class, $rf);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+
+            $membership = $form->get('Rfid')->getData();
+
+            $repository = $this->getDoctrine()->getRepository(Reception::class);
+
+            $m = $repository->find($membership->getId());
+
+
+            $m->setRfids($form->getData());
+
+
+
+            $em->persist($form->getData());
+
+            $em->flush();
+
+        }
+
 
     }
 

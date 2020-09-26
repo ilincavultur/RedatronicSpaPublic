@@ -24,6 +24,32 @@ $(document).ready(function () {
         addNewForm();
     })
 });
+/*
+$('#addTag').click(function(e) {
+    e.preventDefault();
+    $('#mymodal').modal();
+});
+
+$(function() {
+
+    $('#tag-form-submit').on('click', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "{{ path('addTag') }}",
+            data: $('form.tagForm').serialize(),
+            success: function(response) {
+                alert(response['response']);
+            },
+            error: function() {
+                alert('Error');
+            }
+        });
+        return false;
+    });
+});
+
+ */
 
 function addNewForm() {
 
@@ -54,7 +80,7 @@ function addNewForm() {
  */
 function addRemoveButton ($panel) {
 
-    var $removeButton = $('<a href="#" class="btn btn-danger">Remove</a>');
+    var $removeButton = $('<a href="#" class="btn btn-light">Remove</a>');
     var $panelFooter = $('<div class="panel-footer"></div>').append($removeButton);
     $removeButton.click(function (e) {
         e.preventDefault();
