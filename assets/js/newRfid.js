@@ -1,92 +1,63 @@
 import '../css/app.css';
-
 var $collectionHolder;
 
-var $addNewItem = $('<a href="#" class="btn btn-info">Add new item</a>');
+// setup an "add a tag" link
+var $addTagButton = $('<button type="button" class="add_tag_link">Add a tag</button>');
+var $newLinkLi = $('<li></li>').append($addTagButton);
 
-$(document).ready(function () {
-
-    $collectionHolder = $('#Rfid_List');
-
-    $collectionHolder.append($addNewItem);
-
-    $collectionHolder.data('index', $collectionHolder.find('.panel').length)
-
-    $collectionHolder.find('.panel').each(function () {
-
-        addRemoveButton($(this));
+jQuery(document).ready(function() {
+    // Get the ul that holds the collection of tags
+    $collectionHolder = $('ul.Rfids');
+    $collectionHolder.find('li').each(function() {
+        addTagFormDeleteLink($(this));
     });
 
-    $addNewItem.click(function (e) {
+    // add the "add a tag" anchor and li to the tags ul
+    $collectionHolder.append($newLinkLi);
 
-        e.preventDefault();
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    $collectionHolder.data('index', $collectionHolder.find('input').length);
 
-        addNewForm();
-    })
-});
-/*
-$('#addTag').click(function(e) {
-    e.preventDefault();
-    $('#mymodal').modal();
-});
-
-$(function() {
-
-    $('#tag-form-submit').on('click', function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "{{ path('addTag') }}",
-            data: $('form.tagForm').serialize(),
-            success: function(response) {
-                alert(response['response']);
-            },
-            error: function() {
-                alert('Error');
-            }
-        });
-        return false;
+    $addTagButton.on('click', function(e) {
+        // add a new tag form (see next code block)
+        addTagForm($collectionHolder, $newLinkLi);
     });
 });
 
- */
-
-function addNewForm() {
-
+function addTagForm($collectionHolder, $newLinkLi) {
+    // Get the data-prototype explained earlier
     var prototype = $collectionHolder.data('prototype');
 
+    // get the new index
     var index = $collectionHolder.data('index');
 
     var newForm = prototype;
+    // You need this only if you didn't set 'label' => false in your tags field in TaskType
+    // Replace '__name__label__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    // newForm = newForm.replace(/__name__label__/g, index);
 
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
     newForm = newForm.replace(/__name__/g, index);
 
-    $collectionHolder.data('index', index+1);
+    // increase the index with one for the next item
+    $collectionHolder.data('index', index + 1);
 
-    var $panel = $('<div class="panel panel-warning"><div class="panel-heading"></div></div>');
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(newForm);
+    $newLinkLi.before($newFormLi);
 
-    var $panelBody = $('<div class="panel-body"></div>').append(newForm);
-
-    $panel.append($panelBody);
-
-    addRemoveButton($panel);
-
-    $addNewItem.before($panel);
+    addTagFormDeleteLink($newFormLi);
 }
 
-/**
- * adds a remove button to the panel that is passed in the parameter
- * @param $panel
- */
-function addRemoveButton ($panel) {
+function addTagFormDeleteLink($tagFormLi) {
+    var $removeFormButton = $('<button type="button">Delete this tag</button>');
+    $tagFormLi.append($removeFormButton);
 
-    var $removeButton = $('<a href="#" class="btn btn-light">Remove</a>');
-    var $panelFooter = $('<div class="panel-footer"></div>').append($removeButton);
-    $removeButton.click(function (e) {
-        e.preventDefault();
-        $(e.target).parents('.panel').slideUp(1000, function () {
-            $(this).remove();
-        })
+    $removeFormButton.on('click', function(e) {
+        // remove the li for the tag form
+        $tagFormLi.remove();
     });
-    $panel.append($panelFooter);
 }

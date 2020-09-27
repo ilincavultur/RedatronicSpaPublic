@@ -8,6 +8,7 @@ use App\Entity\Membership;
 use App\Entity\Package;
 use App\Entity\Product;
 use App\Entity\Reception;
+use App\Entity\Rfid;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\ArrayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -80,6 +81,7 @@ class ReceptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reception::class
+
         ]);
     }
 

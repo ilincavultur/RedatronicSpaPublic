@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Form\ReceptionType;
 use App\Repository\RfidRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,15 +19,19 @@ class Rfid
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Reception", inversedBy="Rfids")
-     * @ORM\JoinColumn(nullable=true)
+     *  
+     * @ORM\Column(type="string")
+     *
      */
     private $Rfid;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Reception", inversedBy="Rfids")
+     * @ORM\JoinColumn(name="reception_id", referencedColumnName="id")
      */
     private $Reception;
+
+
 
     public function getId(): ?int
     {
@@ -50,10 +55,14 @@ class Rfid
         return $this->Reception;
     }
 
-    public function setReception(string $Reception): self
+    public function setReception(?string $Reception): self
     {
         $this->Reception = $Reception;
 
         return $this;
     }
+
+
+
+
 }

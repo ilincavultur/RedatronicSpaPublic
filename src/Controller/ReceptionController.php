@@ -14,6 +14,7 @@ use App\Form\ChooseMembershipType;
 use App\Form\PackageType;
 use App\Form\ReceptionType;
 use App\Form\RfidType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -22,6 +23,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,6 +45,73 @@ class ReceptionController extends AbstractController
      */
     public function addSimpleReception(EntityManagerInterface $em , Request $request)
     {
+
+        $reception = new Reception();
+
+
+
+        $arrc = new ArrayCollection();
+        $reception->setRfids($arrc);
+        $rf1 = new Rfid();
+        $rf1->setRfid("rf1");
+
+        $reception->getRfids()->add($rf1);
+        $rf2 = new Rfid();
+        $rf2->setRfid("rf2");
+        $reception->getRfids()->add($rf2);
+
+
+        $form = $this->createForm(ReceptionType::class, $reception);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $reception->setPackage($form->get('Package')->getData());
+            $reception->setAdults($form->get('Adults')->getData());
+            $reception->setChildren($form->get('Children')->getData());
+            $reception->setCredit($form->get('Credit')->getData());
+            $reception->setProducts($form->get('Products')->getData());
+
+            $reception->setTotalAccess($reception->getAdults() * $reception->getPackage()->getPriceAdult() + $reception->getChildren() * $reception->getPackage()->getPriceChild());
+            $reception->setTotalPers($reception->getAdults() + $reception->getChildren());
+
+
+            $arr = $reception->getProducts()->toArray();
+
+            $sum = 0;
+            foreach ($arr as $p) {
+                $sum += $p->getPrice();
+            }
+
+
+
+
+
+
+            $reception->setTotalServices($sum * $reception->getTotalPers());
+            $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
+
+
+            $em->persist($form->getData());
+
+            $em->flush();
+        }
+
+        return $this->render(
+            'reception/simplecard.html.twig',
+            [
+                'user_form' => $form->createView()
+            ]
+        );
+
+
+
+
+
+
+
+        //-------------------------------------
+        /*
         $reception = new Reception();
         $form = $this->createForm(ReceptionType::class, $reception);
         $form->handleRequest($request);
@@ -60,11 +129,6 @@ class ReceptionController extends AbstractController
             $reception->setTotalPers($form->get('Adults')->getData() + $form->get('Children')->getData());
 
 
-
-            $rf = new Rfid();
-            $frm = $this->createForm(RfidType::class, $rf);
-            $frm->handleRequest($request);
-            $reception->setRfids($rf);
 
 
 
@@ -85,7 +149,7 @@ class ReceptionController extends AbstractController
                 'user_form' => $form->createView()
             ]
         );
-
+*/
     }
 
     /**
@@ -96,6 +160,11 @@ class ReceptionController extends AbstractController
      */
     public function addTag(EntityManagerInterface $em , Request $request)
     {
+
+
+
+
+
 
         $rf = new Rfid();
         $form = $this->createForm(RfidType::class, $rf);

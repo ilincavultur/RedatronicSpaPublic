@@ -85,10 +85,14 @@ class Reception
     private $Credit;
 
     /**
-     * @ORM\OneToMany(targetEntity="Rfid", mappedBy="Rfid")
-     * @ORM\JoinColumn(name="Rfid_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Rfid",mappedBy="Reception", cascade={"persist"})
+     *
+
+
      */
     private $Rfids;
+
+
 
 
 
@@ -225,6 +229,24 @@ class Reception
         return $this;
     }
 
+
+
+    /**
+     * @param Rfid $tag
+     */
+    public function addTag(Rfid $tag)
+    {
+
+        $tag->setRfid($this);
+
+        $this->Rfids->add($tag);
+    }
+
+    public function removeTag(Rfid $tag)
+    {
+        $this->Rfids->removeElement($tag);
+    }
+
     /**
      * @return ArrayCollection
      */
@@ -243,6 +265,9 @@ class Reception
 
         return $this;
     }
+
+
+
 
 
 
