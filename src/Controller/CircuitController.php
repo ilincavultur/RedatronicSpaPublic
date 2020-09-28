@@ -41,12 +41,12 @@ class CircuitController extends AbstractController
           //  $array = $circuitRepository->findAllWithSameRfid($val);
         //}
 
-        $array = $circuitRepository->findAllWithSameRfid($reception->getRfids());
+        $array = $circuitRepository->findAllWithSameRfid($reception->getRfid());
         if($array == null){
-            for ($x = $reception->getTotalPers(); $x > 0; $x--){
+
                 $circuit = new Circuit();
 
-                $circuit->setRfid("dsgsdgs");
+                $circuit->setRfid($reception->getRfid());
 
                 $circuit->setIsOpen(true);
 
@@ -54,7 +54,7 @@ class CircuitController extends AbstractController
                 $em->persist($circuit);
 
                 $em->flush();
-            }
+
 
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }

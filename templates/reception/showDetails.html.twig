@@ -96,14 +96,11 @@
         <thead>
 
         <tr class="col text-center">
-            {#<th>Age</th> #}
+            <th>Age</th>
             <th>Package</th>
             <th>Products</th>
-            <th>Adults</th>
-            <th>Children</th>
             <th>Total Services</th>
             <th>Total Access</th>
-            <th>Total People</th>
             <th>Credit</th>
             <th>Total</th>
 
@@ -117,7 +114,7 @@
 
         <tr class="col text-center">
 
-            {#<td> {{ reception.Age }}</td> #}
+            <td> {{ reception.Age }}</td>
             <td>
                 {{ reception.Package.Name}}
             </td>
@@ -129,19 +126,10 @@
                 {% endfor %}
             </td>
             <td>
-                {{ reception.Adults }}
-            </td>
-            <td>
-                {{ reception.Children }}
-            </td>
-            <td>
                 {{ reception.totalServices }}
             </td>
             <td>
                 {{ reception.totalAccess }}
-            </td>
-            <td>
-                {{ reception.totalPers }}
             </td>
 
             <td>

@@ -101,21 +101,13 @@
 
     <div id="form">
         {{ form_start(user_form) }}
-        {{ form_row(user_form.Adults) }}
-        {{ form_row(user_form.Children) }}
-
+        {{ form_row(user_form.Age) }}
         {{ form_row(user_form.Package) }}
         {{ form_row(user_form.Products) }}
         {{ form_row(user_form.Credit) }}
 
 
-        <ul class="Rfids" data-prototype="{{ form_widget(user_form.Rfids.vars.prototype)|e('html_attr') }}">
-
-
-            {% for Rfid in user_form.Rfids %}
-                <li>{{ form_row(Rfid.Rfid) }}</li>
-            {% endfor %}
-        </ul>
+        {{ form_row(user_form.Rfid) }}
 
         <button type="submit" class="btn btn-light"> Add </button>
         {{ form_end(user_form) }}
