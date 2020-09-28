@@ -50,30 +50,23 @@ class ReceptionController extends AbstractController
 
 
 
-        $arrc = new ArrayCollection();
-        $reception->setRfids($arrc);
-        $rf1 = new Rfid();
-        $rf1->setRfid("rf1");
-
-        $reception->getRfids()->add($rf1);
-        $rf2 = new Rfid();
-        $rf2->setRfid("rf2");
-        $reception->getRfids()->add($rf2);
-
-
         $form = $this->createForm(ReceptionType::class, $reception);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $reception->setAge($form->get('Age')->getData());
             $reception->setPackage($form->get('Package')->getData());
-            $reception->setAdults($form->get('Adults')->getData());
-            $reception->setChildren($form->get('Children')->getData());
+
+
             $reception->setCredit($form->get('Credit')->getData());
             $reception->setProducts($form->get('Products')->getData());
 
-            $reception->setTotalAccess($reception->getAdults() * $reception->getPackage()->getPriceAdult() + $reception->getChildren() * $reception->getPackage()->getPriceChild());
-            $reception->setTotalPers($reception->getAdults() + $reception->getChildren());
+            if($reception->getAge() == Reception::TYPE_ADULT){
+                $reception->setTotalAccess($reception->getPackage()->getPriceAdult());
+            }else{
+                $reception->setTotalAccess($reception->getPackage()->getPriceChild());
+            }
 
 
             $arr = $reception->getProducts()->toArray();
@@ -85,56 +78,8 @@ class ReceptionController extends AbstractController
 
 
 
-
-
-
-            $reception->setTotalServices($sum * $reception->getTotalPers());
+            $reception->setTotalServices($sum);
             $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
-
-
-            $em->persist($form->getData());
-
-            $em->flush();
-        }
-
-        return $this->render(
-            'reception/simplecard.html.twig',
-            [
-                'user_form' => $form->createView()
-            ]
-        );
-
-
-
-
-
-
-
-        //-------------------------------------
-        /*
-        $reception = new Reception();
-        $form = $this->createForm(ReceptionType::class, $reception);
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-
-            $reception->setPackage($form->get('Package')->getData());
-            $reception->setAdults($form->get('Adults')->getData());
-            $reception->setChildren($form->get('Children')->getData());
-            $reception->setCredit($form->get('Credit')->getData());
-
-            $reception->setTotalAccess($form->get('Adults')->getData() * $reception->getPackage()->getPriceAdult() + $form->get('Children')->getData() * $reception->getPackage()->getPriceChild());
-            $reception->setTotalPers($form->get('Adults')->getData() + $form->get('Children')->getData());
-
-
-
-
-
-            $reception->setTotalServices($form->get('Products')->getData()->get('Price') * $reception->getTotalPers());
-            $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
-
 
 
             $em->persist($form->getData());
@@ -143,53 +88,13 @@ class ReceptionController extends AbstractController
             return $this->redirect($this->generateUrl('app_new_circuit', array(
                 'id' => $reception->getId())));
         }
+
         return $this->render(
             'reception/simplecard.html.twig',
             [
                 'user_form' => $form->createView()
             ]
         );
-*/
-    }
-
-    /**
-     * @param EntityManagerInterface $em
-     * @param Request $request
-     * @return void
-     * @Route("/addTag", name="addTag")
-     */
-    public function addTag(EntityManagerInterface $em , Request $request)
-    {
-
-
-
-
-
-
-        $rf = new Rfid();
-        $form = $this->createForm(RfidType::class, $rf);
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-
-            $membership = $form->get('Rfid')->getData();
-
-            $repository = $this->getDoctrine()->getRepository(Reception::class);
-
-            $m = $repository->find($membership->getId());
-
-
-            $m->setRfids($form->getData());
-
-
-
-            $em->persist($form->getData());
-
-            $em->flush();
-
-        }
 
 
     }

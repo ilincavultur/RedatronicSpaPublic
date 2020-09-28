@@ -33,8 +33,16 @@ class ReceptionType extends AbstractType
     {
         $builder
 
-            ->add('Adults', IntegerType::class)
-            ->add('Children', IntegerType::class)
+            ->add('Age', ChoiceType::class, [
+                'choices' => [
+                    'Adult' => Reception::TYPE_ADULT,
+                    'Child' => Reception::TYPE_CHILD,
+                ],
+
+                'multiple' => false,
+                'expanded' => false,
+
+            ])
             ->add('Package', EntityType::class, [
                 'class' => Package::class,
                 'choice_label' => 'Name',
@@ -55,19 +63,12 @@ class ReceptionType extends AbstractType
                 ],
 
             ])
-            ->add('Rfids', CollectionType::class, [
-                'entry_type' => RfidType::class,
-                'entry_options' => [
-                    'label' => false
-                ],
-                'by_reference' => false,
-                'allow_add' => true,
-                'allow_delete' => true
-            ])
+            ->add('Rfid', TextType::class)
 
 
 
         ;
+
 
 
     }

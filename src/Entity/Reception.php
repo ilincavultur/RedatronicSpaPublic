@@ -49,20 +49,9 @@ class Reception
      */
     private $Products;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $Adults;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $Children;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $totalPers;
+
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -85,12 +74,16 @@ class Reception
     private $Credit;
 
     /**
-     * @ORM\OneToMany(targetEntity="Rfid",mappedBy="Reception", cascade={"persist"})
-     *
-
-
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Rfids;
+    private $Rfid;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Age;
+
+
 
 
 
@@ -145,41 +138,9 @@ class Reception
         return $this;
     }
 
-    public function getAdults(): ?int
-    {
-        return $this->Adults;
-    }
 
-    public function setAdults(?int $Adults): self
-    {
-        $this->Adults = $Adults;
 
-        return $this;
-    }
 
-    public function getChildren(): ?int
-    {
-        return $this->Children;
-    }
-
-    public function setChildren(?int $Children): self
-    {
-        $this->Children = $Children;
-
-        return $this;
-    }
-
-    public function getTotalPers(): ?int
-    {
-        return $this->totalPers;
-    }
-
-    public function setTotalPers(?int $totalPers): self
-    {
-        $this->totalPers = $totalPers;
-
-        return $this;
-    }
 
     public function getTotalAccess(): ?int
     {
@@ -229,42 +190,33 @@ class Reception
         return $this;
     }
 
-
-
-    /**
-     * @param Rfid $tag
-     */
-    public function addTag(Rfid $tag)
+    public function getRfid(): ?string
     {
-
-        $tag->setRfid($this);
-
-        $this->Rfids->add($tag);
+        return $this->Rfid;
     }
 
-    public function removeTag(Rfid $tag)
+    public function setRfid(?string $Rfid): self
     {
-        $this->Rfids->removeElement($tag);
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getRfids()
-    {
-        return $this->Rfids;
-    }
-
-    /**
-     * @param string $Rfids
-     * @return $this
-     */
-    public function setRfids($Rfids)
-    {
-        $this->Rfids = $Rfids;
+        $this->Rfid = $Rfid;
 
         return $this;
     }
+
+    public function getAge(): ?string
+    {
+        return $this->Age;
+    }
+
+    public function setAge(?string $Age): self
+    {
+        $this->Age = $Age;
+
+        return $this;
+    }
+
+
+
+
 
 
 

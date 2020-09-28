@@ -38,23 +38,23 @@ class CircuitController extends AbstractController
 
         $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
         //foreach ($reception->getRfids() as $val){
-          //  $array = $circuitRepository->findAllWithSameRfid($val);
+        //  $array = $circuitRepository->findAllWithSameRfid($val);
         //}
 
-        $array = $circuitRepository->findAllWithSameRfid($reception->getRfids());
+        $array = $circuitRepository->findAllWithSameRfid($reception->getRfid());
         if($array == null){
-            for ($x = $reception->getTotalPers(); $x > 0; $x--){
-                $circuit = new Circuit();
 
-                $circuit->setRfid("dsgsdgs");
+            $circuit = new Circuit();
 
-                $circuit->setIsOpen(true);
+            $circuit->setRfid($reception->getRfid());
+
+            $circuit->setIsOpen(true);
 
 
-                $em->persist($circuit);
+            $em->persist($circuit);
 
-                $em->flush();
-            }
+            $em->flush();
+
 
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
@@ -84,6 +84,8 @@ class CircuitController extends AbstractController
             $em->flush();
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
+
+
 
 
     }

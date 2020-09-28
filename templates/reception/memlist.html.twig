@@ -117,8 +117,10 @@
         <tr class="col text-center">
 
             <th>Rfid</th>
-            <th>Created At</th>
+            <th>Start Time</th>
+            <th>End Time</th>
             <th>Actions</th>
+
         </tr>
 
         </thead>
@@ -130,6 +132,8 @@
 
                 <td> {{ memreception.Rfid }}</td>
                 <td> {{ memreception.createdAt|date }}</td>
+                <td> {{ memreception.updatedAt|date }}</td>
+
                 <td>
 
                     <li class="list-inline-item">
