@@ -1,0 +1,19 @@
+{% set uniqueId = uniqueId() %}
+<div id="{{ uniqueId }}" class="modal smart-modal" data-backdrop="static" data-keyboard="false" data-href="{{ path('app_test_modal_to_open') }}" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+            <div class="modal-header">
+                <h3 class="modal-title">Modal Title</h3>
+            </div>
+            <div class="modal-body">
+                <div>Modal Body</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-p-lr-10 btn-modal-close-no-refresh" data-dismiss="modal">{{ 'action.cancel'|trans }}</button>
+                <button type="button" class="btn btn-success btn-p-lr-10 submit">{{ 'action.save'|trans }}</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
