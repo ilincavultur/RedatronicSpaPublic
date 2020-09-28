@@ -117,7 +117,8 @@
         <tr class="col text-center">
 
             <th>Rfid</th>
-            <th>Created At</th>
+            <th>Start Time</th>
+            <th>End Time</th>
             <th>Actions</th>
         </tr>
 
@@ -130,6 +131,7 @@
 
                 <td> {{ memreception.Rfid }}</td>
                 <td> {{ memreception.createdAt|date }}</td>
+                <td> {{ memreception.updatedAt|date }}</td>
                 <td>
 
                     <li class="list-inline-item">
@@ -148,8 +150,8 @@
                     <a href="{{ path('app_memreception_delete', {"id":memreception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px">delete_forever</i>
                     </a>
 
-                </li>
-#}
+                </li> #}
+
 
                </td>
 

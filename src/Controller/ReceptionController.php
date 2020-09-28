@@ -50,30 +50,23 @@ class ReceptionController extends AbstractController
 
 
 
-        $arrc = new ArrayCollection();
-        $reception->setRfids($arrc);
-        $rf1 = new Rfid();
-        $rf1->setRfid("rf1");
-
-        $reception->getRfids()->add($rf1);
-        $rf2 = new Rfid();
-        $rf2->setRfid("rf2");
-        $reception->getRfids()->add($rf2);
-
-
         $form = $this->createForm(ReceptionType::class, $reception);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $reception->setAge($form->get('Age')->getData());
             $reception->setPackage($form->get('Package')->getData());
-            $reception->setAdults($form->get('Adults')->getData());
-            $reception->setChildren($form->get('Children')->getData());
+
+
             $reception->setCredit($form->get('Credit')->getData());
             $reception->setProducts($form->get('Products')->getData());
 
-            $reception->setTotalAccess($reception->getAdults() * $reception->getPackage()->getPriceAdult() + $reception->getChildren() * $reception->getPackage()->getPriceChild());
-            $reception->setTotalPers($reception->getAdults() + $reception->getChildren());
+            if($reception->getAge() == Reception::TYPE_ADULT){
+                $reception->setTotalAccess($reception->getPackage()->getPriceAdult());
+            }else{
+                $reception->setTotalAccess($reception->getPackage()->getPriceChild());
+            }
 
 
             $arr = $reception->getProducts()->toArray();
@@ -85,16 +78,15 @@ class ReceptionController extends AbstractController
 
 
 
-
-
-
-            $reception->setTotalServices($sum * $reception->getTotalPers());
+            $reception->setTotalServices($sum);
             $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
 
 
             $em->persist($form->getData());
 
             $em->flush();
+            return $this->redirect($this->generateUrl('app_new_circuit', array(
+                'id' => $reception->getId())));
         }
 
         return $this->render(
