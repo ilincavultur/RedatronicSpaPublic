@@ -41,7 +41,8 @@ class ProductController extends AbstractController
      */
     public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
     {
-        $form = $this->createForm(Product\ProductType::class);
+
+        $form = $this->createForm(ProductType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -52,7 +53,7 @@ class ProductController extends AbstractController
             return $this->redirect($this->generateUrl('app_product_list'));
         }
         return $this->render(
-            'Product/addProduct.html.twig',
+            'Test/modal-to-open.html.twig',
             [
                 'user_form' => $form->createView()
             ]
@@ -60,6 +61,7 @@ class ProductController extends AbstractController
 
 
     }
+
 
     /**
      * @Route("/list", name="app_product_list")
@@ -80,7 +82,7 @@ class ProductController extends AbstractController
         $pager->getNbResults();
 
         return $this->render(
-            'Product/list.html.twig',
+            'Test/test.html.twig',
             [
                 'pager' => $pager
             ]
@@ -120,7 +122,7 @@ class ProductController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
 
-        $form = $this->createForm(Product\ProductType::class, $product);
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
 

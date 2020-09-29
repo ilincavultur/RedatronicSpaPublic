@@ -1,6 +1,7 @@
 {% extends 'Product/base.html.twig' %}
 
 
+
 {% block head %}
     <head>
         <meta charset="UTF-8">
@@ -76,9 +77,10 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 {##}<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a href="{{ path('app_new_product') }}" class="btn btn-light">
+                       {# <a class="open-in-modal" data-href="{{ path('app_new_product') }}">
                             Add New Product <i class="fa fa-plus"></i>
-                        </a>
+                        </a> #}
+                        <button class="open-in-modal" data-href="{{ path('app_new_product') }}">Open Modal</button>
 
                     </li>
                 </ul>
@@ -201,4 +203,5 @@
 
 
 {% endblock %}
+
 

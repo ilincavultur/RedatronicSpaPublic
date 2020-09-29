@@ -1,6 +1,194 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <button class="open-in-modal" data-href="{{ path('app_test_modal_to_open') }}">Open Modal</button>
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <style>
+            #navi{
+                flex: 1;
+                margin: auto !important;
+                display: flex;
+                justify-content: space-between;
+            }
+
+        </style>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav nav-fill w-100 align-items-start">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_homepage') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_reception_list') }}">Receptions</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_product_list') }}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_package_list') }}">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_membership_list') }}">Memberships</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_zone_list') }}">Zones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_user_list') }}">Users</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class='fas fa-user-alt'></i>
+                            {{ app.user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="{{ path('app_logout')}}">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="{{ path('app_product_list') }}" class="btn btn-light">
+                Products
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                {##}<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        {# <a class="open-in-modal" data-href="{{ path('app_new_product') }}">
+                             Add New Product <i class="fa fa-plus"></i>
+                         </a> #}
+                        <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_product') }}">Add New Product <i class="fa fa-plus"></i></button>
+
+                    </li>
+                </ul>
+
+                <form method="get" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                    <button class="btn btn-light">
+                        Search Product
+                    </button>
+                </form>
+
+            </div>
+        </nav>
+        <title>{% block title %}List{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+
+
+
+
+
+    </head>
+
+
+
+
+
+<body>
+
+
+        <table class="table">
+            <thead>
+            <tr class="col text-center">
+                <th>Name</th>
+                <th>Code</th>
+                <th>Barcode</th>
+                <th>Price</th>
+                <th>WeekendPrice</th>
+                <th>Type</th>
+                <th>Created At</th>
+                {#<th>Updated At</th>#}
+                <th>Actions</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+            {% for product in pager.currentPageResults %}
+                <tr class="col text-center">
+                    <td> {{ product.Name }}</td>
+                    <td> {{ product.Code }}</td>
+                    <td> {{ product.Barcode }}</td>
+                    <td> {{ product.Price }}</td>
+                    <td> {{ product.WeekendPrice }}</td>
+                    <td> {{ product.Type }}</td>
+                    <td> {{ product.createdAt|date }}</td>
+                    {#<td> {{ product.updatedAt|date }}</td>#}
+                    <td>
+
+                        <ul class="list-inline m-0">
+
+                            <li class="list-inline-item">
+
+                                <a href="{{ path('app_product_edit', {"id":product.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                                </a>
+
+                            </li>
+                            <li class="list-inline-item">
+
+
+                                <a href="{{ path('app_product_delete', {"id":product.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                                </a>
+
+
+
+                            </li>
+                        </ul>
+
+                    </td>
+
+
+
+                </tr>
+
+
+
+            {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+        <div class="fixed-bottom">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
+                        <ul class="pagination justify-content-center">
+
+                            {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+
+
 
 {% endblock %}
