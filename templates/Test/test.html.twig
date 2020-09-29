@@ -142,8 +142,10 @@
 
                             <li class="list-inline-item">
 
-                                <a href="{{ path('app_product_edit', {"id":product.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
-                                </a>
+                                {#<a href="{{ path('app_product_edit', {"id":product.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                                </a>#}
+                                <button class="open-in-modal btn btn-success btn-sm" data-href="{{ path('app_product_edit', {"id":product.id}) }}"><i class="fa fa-edit" style="font-size:20px"></i></button>
+
 
                             </li>
                             <li class="list-inline-item">

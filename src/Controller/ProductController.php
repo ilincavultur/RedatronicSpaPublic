@@ -53,7 +53,7 @@ class ProductController extends AbstractController
             return $this->redirect($this->generateUrl('app_product_list'));
         }
         return $this->render(
-            'Test/modal-to-open.html.twig',
+            'Product/addProduct.html.twig',
             [
                 'user_form' => $form->createView()
             ]
@@ -82,7 +82,7 @@ class ProductController extends AbstractController
         $pager->getNbResults();
 
         return $this->render(
-            'Test/test.html.twig',
+            'Product/list.html.twig',
             [
                 'pager' => $pager
             ]

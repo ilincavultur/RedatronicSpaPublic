@@ -492,3 +492,8 @@ input.required {
     position: absolute !important;
     background-color: #8080807d;
 }
+
+.has-error {
+    color: #ff0500 !important;
+    border-color: #ff0500 !important;
+}

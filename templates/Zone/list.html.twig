@@ -1,7 +1,5 @@
-{% extends 'Zone/base.html.twig' %}
-
-
-{% block head %}
+{% extends 'base.html.twig' %}
+{% block main %}
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,9 +74,11 @@
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a href="{{ path('app_new_zone') }}" class="btn btn-light">
+                        {#<a href="{{ path('app_new_zone') }}" class="btn btn-light">
                             Add New Zone <i class="fa fa-plus"></i>
-                        </a>
+                        </a>#}
+                        <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_zone') }}">Add New Zone <i class="fa fa-plus"></i></button>
+
                     </li>
                 </ul>
 
@@ -94,13 +94,14 @@
         </nav>
 
         <title>{% block title %}List{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
 
     </head>
-{% endblock %}
 
 
 
-{% block body %}
+
+<body>
 
 
 
@@ -136,8 +137,10 @@
 
                         <li class="list-inline-item">
 
-                            <a href="{{ path('app_zone_edit', {"id":zone.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
-                            </a>
+                            {#<a href="{{ path('app_zone_edit', {"id":zone.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
+                            </a>#}
+                            <button class="open-in-modal btn btn-success btn-sm" data-href="{{ path('app_zone_edit', {"id":zone.id}) }}"><i class="fa fa-edit" style="font-size:20px"></i></button>
+
 
                         </li>
                         <li class="list-inline-item">
@@ -184,15 +187,8 @@
 
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-
-
-
+</body>
 
 {% endblock %}
 
