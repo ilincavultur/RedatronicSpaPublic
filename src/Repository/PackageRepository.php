@@ -31,7 +31,11 @@ class PackageRepository extends ServiceEntityRepository
 
         if (null !== $search){
             $qb->where('p.Name like :search')
-                ->orWhere('p.Price like :search')
+                ->orWhere('p.priceAdult like :search')
+                ->orWhere('p.priceChild like :search')
+                ->orWhere('p.Availability like :search')
+                ->orWhere('p.NoOfEntries like :search')
+                //->orWhere('p.Zones like :search')
                 ->setParameter('search','%'.$search.'%');
         }
 

@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="611e0664-6307-40b6-9b9a-f3cf3414d9fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Rfid/addRfid.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Spa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Spa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/modal/new.modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/modal/new.modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Membership.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Membership.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Rfid.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Rfid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RfidType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RfidType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Membership/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Membership/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Package/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Package/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/modal/modal.popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/modal/modal.popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/vendor/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/vendor/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MembershipRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PackageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PackageRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Product/addProduct.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Product/addProduct.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Product/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Product/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/User/editUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User/editUser.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/User/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Zone/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Zone/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/circuit/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/circuit/list.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reception/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reception/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reception/memlist.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reception/memlist.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reception/showDetails.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reception/showDetails.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reception/showMemDetails.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reception/showMemDetails.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/base.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,79 +57,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ProductController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="80" column="37" lean-forward="true" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/reception/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/User/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Zone/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="27" selection-start-column="27" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/security/homepage.html.twig">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/security/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/circuit/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3091">
-              <caret line="212" selection-start-line="207" selection-start-column="4" selection-end-line="212" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Membership/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Package/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="57" column="120" selection-start-line="57" selection-start-column="120" selection-end-line="57" selection-end-column="120" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Product/list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="56" column="120" selection-start-line="56" selection-start-column="120" selection-end-line="56" selection-end-column="120" />
+            <state relative-caret-position="207">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Product/addProduct.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="110" selection-start-line="18" selection-start-column="110" selection-end-line="18" selection-end-column="110" />
             </state>
           </provider>
         </entry>
@@ -158,6 +96,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>checkbox</find>
+      <find>dialog</find>
+      <find>content</find>
+      <find>body</find>
+      <find>open</find>
+      <find>modal</find>
+      <find>smart</find>
+      <find>table</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,9 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/js/newProduct.js" />
-        <option value="$PROJECT_DIR$/assets/js/newRfid.js" />
-        <option value="$PROJECT_DIR$/templates/reception/incercare.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/ReceptionController.php" />
         <option value="$PROJECT_DIR$/src/Controller/CircuitController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Reception.php" />
@@ -177,17 +119,14 @@
         <option value="$PROJECT_DIR$/templates/Test/testulmeu.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/TestController.php" />
         <option value="$PROJECT_DIR$/templates/Test/modal-to-open.html.twig" />
-        <option value="$PROJECT_DIR$/public/css/modal/modal.popup.css" />
         <option value="$PROJECT_DIR$/assets/css/app.css" />
         <option value="$PROJECT_DIR$/templates/Test/test.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Product/addProduct.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.modal.html.twig" />
         <option value="$PROJECT_DIR$/templates/Zone/addZone.html.twig" />
         <option value="$PROJECT_DIR$/templates/Membership/addMembership.html.twig" />
         <option value="$PROJECT_DIR$/templates/Membership/editMembership.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PackageController.php" />
         <option value="$PROJECT_DIR$/src/Controller/ZoneController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/ProductController.php" />
         <option value="$PROJECT_DIR$/templates/Package/editPackage.html.twig" />
         <option value="$PROJECT_DIR$/templates/Product/editProduct.html.twig" />
         <option value="$PROJECT_DIR$/templates/Zone/editZone.html.twig" />
@@ -201,7 +140,6 @@
         <option value="$PROJECT_DIR$/public/js/modal/new.modal.js" />
         <option value="$PROJECT_DIR$/src/Form/PackageType.php" />
         <option value="$PROJECT_DIR$/src/Controller/MembershipController.php" />
-        <option value="$PROJECT_DIR$/templates/reception/showDetails.html.twig" />
         <option value="$PROJECT_DIR$/templates/reception/memlist.html.twig" />
         <option value="$PROJECT_DIR$/templates/reception/showMemDetails.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/RfidType.php" />
@@ -210,13 +148,20 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/templates/User/editUser.html.twig" />
         <option value="$PROJECT_DIR$/templates/circuit/list.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Package/list.html.twig" />
-        <option value="$PROJECT_DIR$/templates/Product/list.html.twig" />
         <option value="$PROJECT_DIR$/templates/Membership/list.html.twig" />
         <option value="$PROJECT_DIR$/templates/security/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/Zone/list.html.twig" />
         <option value="$PROJECT_DIR$/templates/User/list.html.twig" />
+        <option value="$PROJECT_DIR$/templates/Package/list.html.twig" />
+        <option value="$PROJECT_DIR$/public/css/vendor/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/templates/reception/list.html.twig" />
+        <option value="$PROJECT_DIR$/templates/reception/showDetails.html.twig" />
+        <option value="$PROJECT_DIR$/public/css/modal/modal.popup.css" />
+        <option value="$PROJECT_DIR$/src/Repository/PackageRepository.php" />
+        <option value="$PROJECT_DIR$/src/Repository/MembershipRepository.php" />
+        <option value="$PROJECT_DIR$/templates/Product/addProduct.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/ProductController.php" />
+        <option value="$PROJECT_DIR$/templates/Product/list.html.twig" />
       </list>
     </option>
   </component>
@@ -331,7 +276,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="237" />
+    <option name="x" value="320" />
     <option name="y" value="85" />
     <option name="width" value="1400" />
     <option name="height" value="815" />
@@ -341,7 +286,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -363,68 +307,6 @@
             <path>
               <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="fonts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="modal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="webfonts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="modal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -436,37 +318,7 @@
             <path>
               <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="circuit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Membership" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Package" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
@@ -474,59 +326,11 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="Product" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="reception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Rfid" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Theme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Theme" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="User" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Spa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Zone" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -817,7 +621,9 @@
       <workItem from="1601499470535" duration="518000" />
       <workItem from="1601502828251" duration="205000" />
       <workItem from="1601550906420" duration="1784000" />
-      <workItem from="1601552837376" duration="272000" />
+      <workItem from="1601552837376" duration="1785000" />
+      <workItem from="1601554664039" duration="1304000" />
+      <workItem from="1601566599633" duration="1727000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1595923724818</created>
@@ -1050,17 +856,23 @@
       <option name="project" value="LOCAL" />
       <updated>1601420297307</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added User Settings + Modals">
+      <created>1601553243610</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1601553243611</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333655000" />
+    <option name="totallyTimeSpent" value="338199000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="237" y="85" width="1400" height="815" extended-state="0" />
-    <editor active="true" />
+    <frame x="320" y="85" width="1400" height="815" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17893961" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12665685" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1158,87 +970,10 @@
     <MESSAGE value="Added first modal" />
     <MESSAGE value="Added first modal: Product" />
     <MESSAGE value="Added Modals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Modals" />
+    <MESSAGE value="Added User Settings + Modals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added User Settings + Modals" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/Zone/addZone.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProductController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
-          <folding>
-            <element signature="e#35#58#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Zone/editZone.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="127" selection-start-line="1" selection-start-column="127" selection-end-line="1" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Product/editProduct.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="130" selection-start-line="1" selection-start-column="130" selection-end-line="1" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PackageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ZoneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="127" column="22" selection-start-line="127" selection-start-column="22" selection-end-line="127" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Package/showDetails.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="130" selection-start-line="1" selection-start-column="130" selection-end-line="1" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Theme/Form/fields.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Theme/Form/form_div_layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" column="18" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/80ec1c13-326f-49f2-97c9-3671dadfe3eb/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://80ec1c13-326f-49f2-97c9-3671dadfe3eb/schema/wellness/table/package_zone">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="2ddcd20c-262d-40f3-be85-5603205935e3">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://80ec1c13-326f-49f2-97c9-3671dadfe3eb/schema/wellness/table/zone">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="2ddcd20c-262d-40f3-be85-5603205935e3">
@@ -1271,38 +1006,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Membership.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Package.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/PackageType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modal/new.modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3240">
-          <caret line="216" column="31" selection-start-line="216" selection-start-column="31" selection-end-line="216" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/modal/modal.popup.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7470">
-          <caret line="498" column="1" selection-start-line="498" selection-start-column="1" selection-end-line="498" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1362,13 +1069,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reception/showDetails.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1445,27 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Product/addProduct.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Package/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="120" selection-start-line="57" selection-start-column="120" selection-end-line="57" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Product/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="120" selection-start-line="56" selection-start-column="120" selection-end-line="56" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/security/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1477,13 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3091">
           <caret line="212" selection-start-line="207" selection-start-column="4" selection-end-line="212" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Membership/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1504,10 +1176,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reception/list.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/Membership/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="63" column="30" selection-start-line="60" selection-start-column="24" selection-end-line="63" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Package/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reception/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="92" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/modal/popup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/modal/new.modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/modal/modal.popup.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="500" column="4" selection-start-line="500" selection-start-column="4" selection-end-line="500" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/vendor/jquery-ui-1.10.0.custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27055" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/vendor/bootstrap-theme.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/vendor/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19560">
+          <caret line="4" column="106971" selection-start-line="4" selection-start-column="106971" selection-end-line="4" selection-end-column="106974" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/vendor/all.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/vendor/all.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6137" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reception/showDetails.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-395">
+          <caret line="2" column="138" selection-start-line="2" selection-start-column="138" selection-end-line="2" selection-end-column="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/ProductRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Membership.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="838">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Package.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/PackageRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/MembershipRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Product/addProduct.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="110" selection-start-line="18" selection-start-column="110" selection-end-line="18" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="80" column="37" lean-forward="true" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Product/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>

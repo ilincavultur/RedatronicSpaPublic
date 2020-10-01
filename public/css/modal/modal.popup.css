@@ -12,10 +12,14 @@ body {
 .modal-open {
     padding-right: 0 !important;
     overflow: unset !important;
+
+
+
     /*position: relative !important;*/
 }
 
 .container {
+
     width: 800px;
     margin: 0 auto;
 }
@@ -94,6 +98,7 @@ input {
 
 .smart-modal-header {
     height: 35px;
+
 }
 
 .smart-modal-header-close {
@@ -116,6 +121,7 @@ input {
 
 .modal-content {
     background-color: #F0F0F0;
+    width: 100%;
 
 }
 
@@ -127,6 +133,7 @@ input {
 .popup-container {
     border-radius: 5px;
     border: 3px solid #FFE0B3;
+
 }
 
 .btn-save {
@@ -481,6 +488,8 @@ input.required {
     top: 10px !important;
     /*display: block;*/
     margin-top: -10px !important;
+
+
 }
 
 .modal.fade {
@@ -491,6 +500,8 @@ input.required {
     z-index: 20000;
     position: absolute !important;
     background-color: #8080807d;
+
+
 }
 
 .has-error {

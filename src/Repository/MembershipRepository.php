@@ -32,10 +32,8 @@ class MembershipRepository extends ServiceEntityRepository
 
         if (null !== $search){
             $qb->where('p.ClientName like :search')
-                ->orWhere('p.availability like :search')
-                ->orWhere('p.Package like :search')
+                //->orWhere('p.Packages like :search')
                 ->orWhere('p.Age like :search')
-                ->orWhere('p.NoOfEntries like :search')
                 ->orWhere('p.RFID like :search')
                 ->setParameter('search','%'.$search.'%');
         }

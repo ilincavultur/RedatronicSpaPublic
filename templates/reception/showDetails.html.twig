@@ -1,13 +1,16 @@
 {% set uniqueId = uniqueId() %}
+
 <div id="{{ uniqueId }}" class="modal smart-modal" data-backdrop="false" data-keyboard="false" data-href="{{ path('app_new_reception') }}" >
+
     <div class="modal-dialog">
 
-        <div class="modal-content">
+        <div class="modal-content" >
 
             <div class="modal-header">
+
                 <h4  class="col text-center">Reception {{ reception.id }}</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" >
 
                 <table class="table">
                     <thead>

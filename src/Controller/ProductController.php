@@ -34,12 +34,10 @@ class ProductController extends AbstractController
      * @Route ("/addProduct", name="app_new_product")
      * @param EntityManagerInterface $em
      * @param Request $request
-     * @param ValidatorInterface $validator
      * @return Response
      * @Security("is_granted('ROLE_USER')")
-     *
      */
-    public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
+    public function addProduct(EntityManagerInterface $em, Request $request)
     {
 
         $form = $this->createForm(ProductType::class);
@@ -65,9 +63,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/list", name="app_product_list")
-     *
      * @param Request $request
-     *
      * @return Response
      * @Security("is_granted('ROLE_USER')")
      */
