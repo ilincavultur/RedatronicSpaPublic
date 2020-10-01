@@ -55,7 +55,7 @@
                             {{ app.user.username }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="{{ path('app_user_edit', {"id":app.user.id}) }}">Settings</a>
                             <a class="dropdown-item" href="{{ path('app_logout')}}">Log Out</a>
                         </div>
                     </li>
@@ -69,13 +69,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
-                        Circuits
-                    </a>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
                     <a href="{{ path('app_reception_list') }}" class="btn btn-light">
                         Receptions
@@ -84,6 +78,22 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
+                        Circuits
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <li class="nav-item active">
+                        {#<a  href="{{ path('app_decision') }}" class="btn btn-light">
+                            Add New Reception <i class="fa fa-plus"></i>
+                        </a>#}
+                        <button class="open-in-modal btn btn-light" data-href="#"> End Circuit </button>
+
+                    </li>
 {#
                     <a href="{{ path('app_circuit_edit') }}" class="btn btn-light">
                         Close Circuit

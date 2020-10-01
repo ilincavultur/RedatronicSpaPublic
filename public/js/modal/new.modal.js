@@ -215,8 +215,8 @@ $(document).ready(function () {
                 switch (aform.elements[e].type) {
                     case 'checkbox':
                         // Fix for checkbox sent with ajax
-                        if (aform.elements[e].checked) {
-                            form_elements[aform.elements[e].name] = aform.elements[e].checked;
+                        if (aform.elements[e].checkbox) {
+                            form_elements[aform.elements[e].name] = aform.elements[e].checkbox;
                         }
                         break;
                     case 'select-multiple':

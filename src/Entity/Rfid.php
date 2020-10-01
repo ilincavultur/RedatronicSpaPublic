@@ -25,11 +25,7 @@ class Rfid
      */
     private $Rfid;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Reception", inversedBy="Rfids")
-     * @ORM\JoinColumn(name="reception_id", referencedColumnName="id")
-     */
-    private $Reception;
+
 
 
 
@@ -50,17 +46,7 @@ class Rfid
         return $this;
     }
 
-    public function getReception(): ?string
-    {
-        return $this->Reception;
-    }
 
-    public function setReception(?string $Reception): self
-    {
-        $this->Reception = $Reception;
-
-        return $this;
-    }
 
 
 

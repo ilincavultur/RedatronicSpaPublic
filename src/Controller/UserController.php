@@ -116,4 +116,35 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_list');
 
     }
+
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return RedirectResponse|Response
+     * @Route("/edit/{id}", name="app_user_edit")
+     */
+    public function update(Request $request, User $user)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_list');
+        }
+
+        return $this->render(
+            'User/editUser.html.twig',
+            [
+                'user_form' => $form->createView()
+            ]
+        );
+    }
 }

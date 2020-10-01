@@ -31,10 +31,6 @@ class RfidType extends AbstractType
 
             ->add('Rfid', TextType::class)
 
-
-
-
-
         ;
 
 

@@ -25,6 +25,9 @@ class Membership
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $ClientName;
 
@@ -40,6 +43,9 @@ class Membership
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $Age;
 
