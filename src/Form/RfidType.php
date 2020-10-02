@@ -29,7 +29,7 @@ class RfidType extends AbstractType
     {
         $builder
 
-            ->add('Rfid', TextType::class)
+            ->add('rfid', TextType::class)
 
         ;
 

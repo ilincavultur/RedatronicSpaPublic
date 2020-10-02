@@ -23,7 +23,7 @@ class ZoneType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Name', TextType::class)
+            ->add('name', TextType::class)
             ->add('inReader', TextType::class)
             ->add('outReader', TextType::class)
             ->add('mainEntrance', ChoiceType::class, [

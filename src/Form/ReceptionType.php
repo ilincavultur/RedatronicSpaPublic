@@ -33,7 +33,7 @@ class ReceptionType extends AbstractType
     {
         $builder
 
-            ->add('Age', ChoiceType::class, [
+            ->add('age', ChoiceType::class, [
                 'choices' => [
                     'Adult' => Reception::TYPE_ADULT,
                     'Child' => Reception::TYPE_CHILD,
@@ -43,19 +43,19 @@ class ReceptionType extends AbstractType
                 'expanded' => false,
 
             ])
-            ->add('Package', EntityType::class, [
+            ->add('package', EntityType::class, [
                 'class' => Package::class,
-                'choice_label' => 'Name',
+                'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('Products', EntityType::class, [
+            ->add('products', EntityType::class, [
                 'class' => Product::class,
-                'choice_label' => 'Name',
+                'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('Credit', ChoiceType::class, [
+            ->add('credit', ChoiceType::class, [
                 'choices' => [
                     '10' => Reception::TYPE_TEN ,
                     '50' => Reception::TYPE_FIFTY,
@@ -63,7 +63,7 @@ class ReceptionType extends AbstractType
                 ],
 
             ])
-            ->add('Rfid', TextType::class)
+            ->add('rfid', TextType::class)
 
 
 

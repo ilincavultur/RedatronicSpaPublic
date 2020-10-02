@@ -1,55 +1,46 @@
 {% set uniqueId = uniqueId() %}
 <div id="{{ uniqueId }}" class="modal smart-modal" data-backdrop="false" data-keyboard="false" data-href="{{ path('app_new_rec') }}" >
     <div class="modal-dialog">
-
         <div class="modal-content">
-
             <div class="modal-header">
                 <h4  class="col text-center">Reception {{ memreception.id }}</h4>
             </div>
-            <div class="modal-body">
 
+            <div class="modal-body">
                 <table class="table">
                     <thead>
-
-                    <tr class="col text-center">
-
-                        <th>Client Name</th>
-                        <th>Age</th>
-                        <th>Package</th>
-                        <th>Products</th>
-                    </tr>
-
+                        <tr class="col text-center">
+                            <th>Client Name</th>
+                            <th>Age</th>
+                            <th>Package</th>
+                            <th>Products</th>
+                        </tr>
                     </thead>
 
                     <tbody>
-
-                    <tr class="col text-center">
-                        <td> {{ memreception.ClientName }}</td>
-                        <td> {{ memreception.Age }}</td>
-                        <td>
-                            {{ memreception.Package.Name }}
-                        </td>
-                        <td>
-                            {% for product in memreception.Products %}
-                                <li class="col text-center">
-                                    {{ product.Name }}
-                                </li>
-                            {% endfor %}
-                        </td>
-                    </tr>
-
+                        <tr class="col text-center">
+                            <td> {{ memreception.ClientName }}</td>
+                            <td> {{ memreception.Age }}</td>
+                            <td>
+                                {{ memreception.Package.Name }}
+                            </td>
+                            <td>
+                                {% for product in memreception.Products %}
+                                    <li class="col text-center">
+                                        {{ product.Name }}
+                                    </li>
+                                {% endfor %}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-light btn-modal-close-no-refresh" >{{ 'Exit'|trans }}</button>
 
             </div>
-
         </div>
-
     </div>
 </div>
 

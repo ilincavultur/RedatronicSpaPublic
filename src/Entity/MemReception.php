@@ -24,35 +24,35 @@ class MemReception
      * @ORM\ManyToOne(targetEntity="Membership")
      * @ORM\JoinColumn(name="membership_id", referencedColumnName="id")
      */
-    private $Membership;
+    private $membership;
 
     /**
      *
      * @ORM\ManyToMany(targetEntity="Product")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
-    private $Products;
+    private $products;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Rfid;
+    private $rfid;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Age;
+    private $age;
 
     /**
      * @ORM\ManyToOne(targetEntity="Package")
      * @ORM\JoinColumn(name="package_id", referencedColumnName="id")
      */
-    private $Package;
+    private $package;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ClientName;
+    private $clientName;
 
     public function getId(): ?int
     {
@@ -64,7 +64,7 @@ class MemReception
      */
     public function getMembership(): ?Membership
     {
-        return $this->Membership;
+        return $this->membership;
     }
 
     /**
@@ -73,7 +73,7 @@ class MemReception
      */
     public function setMembership(Membership $Membership): self
     {
-        $this->Membership = $Membership;
+        $this->membership = $Membership;
 
         return $this;
     }
@@ -83,7 +83,7 @@ class MemReception
      */
     public function getProducts()
     {
-        return $this->Products;
+        return $this->products;
     }
 
     /**
@@ -92,31 +92,31 @@ class MemReception
      */
     public function setProducts($Products)
     {
-        $this->Products = $Products;
+        $this->products = $Products;
 
         return $this;
     }
 
     public function getRfid(): ?string
     {
-        return $this->Rfid;
+        return $this->rfid;
     }
 
     public function setRfid(string $Rfid): self
     {
-        $this->Rfid = $Rfid;
+        $this->rfid = $Rfid;
 
         return $this;
     }
 
     public function getAge(): ?string
     {
-        return $this->Age;
+        return $this->age;
     }
 
     public function setAge(?string $Age): self
     {
-        $this->Age = $Age;
+        $this->age = $Age;
 
         return $this;
     }
@@ -126,7 +126,7 @@ class MemReception
      */
     public function getPackage()
     {
-        return $this->Package;
+        return $this->package;
     }
 
     /**
@@ -135,19 +135,19 @@ class MemReception
      */
     public function setPackage($Package)
     {
-        $this->Package = $Package;
+        $this->package = $Package;
 
         return $this;
     }
 
     public function getClientName(): ?string
     {
-        return $this->ClientName;
+        return $this->clientName;
     }
 
     public function setClientName(string $ClientName): self
     {
-        $this->ClientName = $ClientName;
+        $this->clientName = $ClientName;
 
         return $this;
     }

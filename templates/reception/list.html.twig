@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block main %}
     <head>
         <meta charset="UTF-8">
@@ -10,8 +9,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-       {# <link rel="stylesheet" type="text/css" href="/public/css/modal/modal.popup.css">#}
-
 
         <style>
             #navi{
@@ -23,7 +20,6 @@
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -75,10 +71,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <a href="{{ path('app_memreception_list') }}" class="btn btn-light">
+                MemReceptions
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
                     <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
                         Circuits
                     </a>
@@ -88,124 +90,70 @@
                     </button>
 
                     <li class="nav-item active">
-                        {#<a  href="{{ path('app_decision') }}" class="btn btn-light">
-                            Add New Reception <i class="fa fa-plus"></i>
-                        </a>#}
                         <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_reception') }}"> New Client Rec <i class="fa fa-plus"></i></button>
-
                     </li>
                     <li class="nav-item active">
-                        {#<a  href="{{ path('app_decision') }}" class="btn btn-light">
-                            Add New Reception <i class="fa fa-plus"></i>
-                        </a>#}
                         <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_rec') }}">  Membership Rec <i class="fa fa-plus"></i></button>
-
-
                     </li>
                 </ul>
-
-
             </div>
+
             <form method="get" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
                 <button class="btn btn-light">
                     Search Reception
                 </button>
             </form>
-
         </nav>
 
         <title>{% block title %}List{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-
     </head>
 
+    <body>
+        <table class="table">
+            <thead>
+                <tr class="col text-center">
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
+            <tbody>
+            {% for reception in pager.currentPageResults %}
+                <tr class="col text-center">
+                    <td> {{ reception.createdAt|date }}</td>
+                    <td>
+                        <li class="list-inline-item">
+                            <button class="open-in-modal btn btn-info btn-sm" data-href="{{ path('app_reception_showDetails', {"id":reception.id}) }}"><i class="fa fa-list" style="font-size:20px"></i></button>
+                        </li>
+    {#
+                        <li class="list-inline-item">
 
+                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px">delete_forever</i>
+                            </a>
 
-<body>
+                        </li>
+    #}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
+        <div class="fixed-bottom">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
+                        <ul class="pagination justify-content-center">
 
+                            {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
 
-
-    <table class="table">
-        <thead>
-        <tr class="col text-center">
-
-
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        {% for reception in pager.currentPageResults %}
-            <tr class="col text-center">
-
-
-
-                <td> {{ reception.createdAt|date }}</td>
-                <td>
-
-                    <li class="list-inline-item">
-
-
-                           {# <a href="{{ path('app_reception_showDetails', {"id":reception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
-                            </a>#}
-                        <button class="open-in-modal btn btn-info btn-sm" data-href="{{ path('app_reception_showDetails', {"id":reception.id}) }}"><i class="fa fa-list" style="font-size:20px"></i></button>
-
-
-                    </li>
-
-
-
-{#
-                    <li class="list-inline-item">
-
-                        <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px">delete_forever</i>
-                        </a>
-
-                    </li>
-#}
-
-                </td>
-
-
-
-            </tr>
-
-
-
-        {% endfor %}
-
-
-
-        </tbody>
-
-
-    </table>
-
-
-    <div class="fixed-bottom">
-        <div class="row">
-            <div class="col-sm-12">
-                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
-                    <ul class="pagination justify-content-center">
-
-                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
-
-                    </ul>
-                </nav>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-</body>
-
-
+    </body>
 
 {% endblock %}

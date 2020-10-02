@@ -1,62 +1,50 @@
 {% set uniqueId = uniqueId() %}
 <div id="{{ uniqueId }}" class="modal smart-modal" data-backdrop="false" data-keyboard="false" data-href="{{ path('app_new_package') }}" >
     <div class="modal-dialog">
-
         <div class="modal-content">
-
                 <div class="modal-header">
                     <h4  class="col text-center">Package {{ package.Name }}</h4>
                 </div>
-                <div class="modal-body">
 
+                <div class="modal-body">
                     <table class="table">
                         <thead>
 
-                        <tr class="col text-center">
-                            <th>Zones Included</th>
-                            <th>Availability</th>
-                            <th>NoOfEntries</th>
-                        </tr>
+                            <tr class="col text-center">
+                                <th>Zones Included</th>
+                                <th>Availability</th>
+                                <th>NoOfEntries</th>
+                            </tr>
 
                         </thead>
 
                         <tbody>
 
-                        <tr class="col text-center">
+                            <tr class="col text-center">
+                                <td>
+                                    {% for zone in package.Zones %}
+                                        <li class="col text-center">
+                                            {{ zone.Name }}
+                                        </li>
+                                    {% endfor %}
+                                </td>
 
-                            <td>
-                                {% for zone in package.Zones %}
-                                    <li class="col text-center">
-                                        {{ zone.Name }}
-                                    </li>
-                                {% endfor %}
-                            </td>
+                                <td>
+                                    {{ package.Availability }}
+                                </td>
 
-                            <td>
-
-                                {{ package.Availability }}
-
-                            </td>
-                            <td>
-
-                                {{ package.NoOfEntries }}
-
-                            </td>
-
-
-                        </tr>
+                                <td>
+                                    {{ package.NoOfEntries }}
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>
-
-
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light btn-modal-close-no-refresh" >{{ 'Exit'|trans }}</button>
-
                 </div>
-
         </div>
-
     </div>
 </div>

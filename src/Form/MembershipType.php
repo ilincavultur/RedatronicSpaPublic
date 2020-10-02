@@ -26,21 +26,21 @@ class MembershipType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ClientName', TextType::class)
-            ->add('Age', ChoiceType::class, [
+            ->add('clientName', TextType::class)
+            ->add('age', ChoiceType::class, [
                 'choices' => [
                     'Adult' => Membership::TYPE_ADULT,
                     'Child' => Membership::TYPE_CHILD,
                 ],
 
             ])
-            ->add('Package', EntityType::class, [
+            ->add('package', EntityType::class, [
                 'class' => Package::class,
-                'choice_label' => 'Name',
+                'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('RFID', TextType::class);
+            ->add('rfid', TextType::class);
 
         ;
 

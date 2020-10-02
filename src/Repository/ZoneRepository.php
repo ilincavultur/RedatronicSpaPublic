@@ -30,7 +30,7 @@ class ZoneRepository extends ServiceEntityRepository
 
 
         if (null !== $search){
-            $qb->where('p.Name like :search')
+            $qb->where('p.name like :search')
                 ->orWhere('p.inReader like :search')
                 ->orWhere('p.outReader like :search')
                 ->orWhere('p.mainEntrance like :search')
@@ -38,7 +38,7 @@ class ZoneRepository extends ServiceEntityRepository
                 ->setParameter('search','%'.$search.'%');
         }
 
-        $qb->orderBy('p.Name','DESC');
+        $qb->orderBy('p.name','DESC');
 
         return $qb;
     }

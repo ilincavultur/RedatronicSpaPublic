@@ -3,22 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Circuit;
-use App\Entity\Membership;
 use App\Entity\MemReception;
-use App\Entity\Product;
 use App\Entity\Reception;
-use App\Form\CircuitType;
-use App\Form\MembershipType;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Class CircuitController
@@ -47,14 +41,11 @@ class CircuitController extends AbstractController
             $circuit = new Circuit();
 
             $circuit->setRfid($reception->getRfid());
-
             $circuit->setIsOpen(true);
-
 
             $em->persist($circuit);
 
             $em->flush();
-
 
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
@@ -68,25 +59,21 @@ class CircuitController extends AbstractController
             }
         }
         if ($ok == false){
-            $this->createNotFoundException("guhu");
+            $this->createNotFoundException("cannot start new circuit bc it is already open");
             //$this->addFlash('error', 'cannot start new circuit bc it is already open');
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }else{
             $circuit = new Circuit();
 
             $circuit->setRfid("fsdsdf");
-
             $circuit->setIsOpen(true);
-
 
             $em->persist($circuit);
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
-
-
-
 
     }
 
@@ -99,7 +86,6 @@ class CircuitController extends AbstractController
     public function startMemCircuit(EntityManagerInterface $em, MemReception $memreception)
     {
 
-
         $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
         $array = $circuitRepository->findAllWithSameRfid($memreception->getRfid());
 
@@ -107,13 +93,12 @@ class CircuitController extends AbstractController
             $circuit = new Circuit();
 
             $circuit->setRfid($memreception->getRfid());
-
             $circuit->setIsOpen(true);
-
 
             $em->persist($circuit);
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
 
@@ -126,28 +111,22 @@ class CircuitController extends AbstractController
             }
         }
         if ($ok == false){
-            $this->createNotFoundException("guhu");
+            $this->createNotFoundException("cannot start new circuit bc it is already open");
             //$this->addFlash('error', 'cannot start new circuit bc it is already open');
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }else{
             $circuit = new Circuit();
 
             $circuit->setRfid($memreception->getRfid());
-
             $circuit->setIsOpen(true);
-
 
             $em->persist($circuit);
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('app_circuit_list'));
         }
-
-
-
     }
-
-
 
     /**
      * @param Request $request
@@ -160,6 +139,7 @@ class CircuitController extends AbstractController
         $qb = $circuitRepository->findCircuits($request->get('search'));
 
         $page = $request->get('page');
+
         $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
         $pager->setCurrentPage($page?$page:1);
         $pager->getNbResults();
@@ -183,9 +163,9 @@ class CircuitController extends AbstractController
 
         $circuit->setEndTime(date_create());
         $circuit->setIsOpen(false);
+
         $circuitRepository = $this->getDoctrine()->getManager();
         $circuitRepository->flush();
-
 
         return $this->redirectToRoute('app_circuit_list');
 

@@ -10,7 +10,6 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +30,6 @@ class PackageController extends AbstractController
      * @return RedirectResponse|Response
      * @Route("/addPackage", name="app_new_package")
      * @Security("is_granted('ROLE_USER')")
-     *
      */
     public function addPackage(EntityManagerInterface $em , Request $request)
     {
@@ -87,7 +85,6 @@ class PackageController extends AbstractController
      * @param Package $package
      * @return RedirectResponse
      * @Security("is_granted('ROLE_USER')")
-     *
      */
     public function packageDelete(Package $package)
     {
@@ -106,7 +103,6 @@ class PackageController extends AbstractController
      * @param Package $package
      * @return Response
      * @Security("is_granted('ROLE_USER')")
-     *
      */
     public function update(Request $request, Package $package)
     {
@@ -137,17 +133,13 @@ class PackageController extends AbstractController
      * @param Package $package
      * @return Response
      * @Security("is_granted('ROLE_USER')")
-     *
      */
     public function showDetails(Package $package)
     {
 
-
-
         return $this->render('Package/showDetails.html.twig', array(
             'package' => $package
         ));
-
 
 
     }

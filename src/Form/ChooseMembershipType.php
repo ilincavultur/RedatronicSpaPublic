@@ -26,15 +26,15 @@ class ChooseMembershipType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Membership', EntityType::class, [
+            ->add('membership', EntityType::class, [
                 'class' => Membership::class,
-                'choice_label' => 'ClientName',
+                'choice_label' => 'clientName',
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('Products', EntityType::class, [
+            ->add('products', EntityType::class, [
                 'class' => Product::class,
-                'choice_label' => 'Name',
+                'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
             ])

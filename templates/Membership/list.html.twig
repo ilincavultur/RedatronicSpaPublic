@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block main %}
     <head>
         <meta charset="UTF-8">
@@ -10,9 +9,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
 
         <style>
             #navi{
@@ -24,7 +21,6 @@
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -68,10 +64,10 @@
         </nav>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
             <a href="{{ path('app_membership_list') }}" class="btn btn-light">
                 Memberships
             </a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -80,11 +76,7 @@
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        {#<a href="{{ path('app_new_membership') }}" class="btn btn-light">
-                            Add New Membership <i class="fa fa-plus"></i>
-                        </a>#}
                         <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_membership') }}">Add New Membership <i class="fa fa-plus"></i></button>
-
                     </li>
                 </ul>
 
@@ -100,99 +92,62 @@
         </nav>
 
         <title>{% block title %}List{% endblock %}</title>
-        {% block stylesheets %}
-
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
 
     </head>
 
     <body>
 
+        <table class="table">
+            <thead>
+                <tr class="col text-center">
+                    <th>Client Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-    <table class="table">
-        <thead>
-        <tr class="col text-center">
-            <th>Client Name</th>
-            <th>Age</th>
-            <th>Actions</th>
-        </tr>
+            <tbody>
+            {% for membership in pager.currentPageResults %}
+                <tr class="col text-center">
+                    <td> {{ membership.ClientName }}</td>
+                    <td> {{ membership.Age }}</td>
+                    <td>
+                        <ul class="list-inline m-0">
+                            <li class="list-inline-item">
+                                <button class="open-in-modal btn btn-success btn-sm" data-href="{{ path('app_membership_edit', {"id":membership.id}) }}"><i class="fa fa-edit" style="font-size:20px"></i></button>
+                            </li>
 
-        </thead>
+                            <li class="list-inline-item">
+                                <button class="open-in-modal btn btn-info btn-sm" data-href="{{ path('app_membership_showDetails', {"id":membership.id}) }}"><i class="fa fa-list" style="font-size:20px"></i></button>
+                            </li>
 
-        <tbody>
-        {% for membership in pager.currentPageResults %}
-            <tr class="col text-center">
-                <td> {{ membership.ClientName }}</td>
-                <td> {{ membership.Age }}</td>
-                <td>
+                            <li class="list-inline-item">
+                                <a href="{{ path('app_membership_delete', {"id":membership.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-                    <ul class="list-inline m-0">
+        <div class="fixed-bottom">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
+                        <ul class="pagination justify-content-center">
 
-                        <li class="list-inline-item">
+                            {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
 
-                            {#<a href="{{ path('app_membership_edit', {"id":membership.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-edit" style="font-size:20px"></i>
-                            </a>#}
-                            <button class="open-in-modal btn btn-success btn-sm" data-href="{{ path('app_membership_edit', {"id":membership.id}) }}"><i class="fa fa-edit" style="font-size:20px"></i></button>
-
-
-                        </li>
-
-                        <li class="list-inline-item">
-
-
-                            {#<a href="{{ path('app_membership_showDetails', {"id":membership.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
-                            </a>#}
-                            <button class="open-in-modal btn btn-info btn-sm" data-href="{{ path('app_membership_showDetails', {"id":membership.id}) }}"><i class="fa fa-list" style="font-size:20px"></i></button>
-
-
-                        </li>
-
-                        <li class="list-inline-item">
-
-
-                            <a href="{{ path('app_membership_delete', {"id":membership.id}) }}" class="btn btn-danger btn-sm"> <i class="material-icons" style="font-size:20px">delete_forever</i>
-                            </a>
-
-
-                        </li>
-
-
-                    </ul>
-
-                </td>
-
-
-
-            </tr>
-
-
-
-        {% endfor %}
-
-
-        </tbody>
-
-
-    </table>
-
-
-    <div class="fixed-bottom">
-        <div class="row">
-            <div class="col-sm-12">
-                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
-                    <ul class="pagination justify-content-center">
-
-                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
-
-                    </ul>
-                </nav>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-
 
     </body>
-
 
 {% endblock %}
 

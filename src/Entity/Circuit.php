@@ -4,9 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CircuitRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -27,9 +25,12 @@ class Circuit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     max = 255
+     * )
      *
      */
-    private $Rfid;
+    private $rfid;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -49,12 +50,12 @@ class Circuit
 
     public function getRfid(): ?string
     {
-        return $this->Rfid;
+        return $this->rfid;
     }
 
     public function setRfid(string $Rfid): self
     {
-        $this->Rfid = $Rfid;
+        $this->rfid = $Rfid;
 
         return $this;
     }

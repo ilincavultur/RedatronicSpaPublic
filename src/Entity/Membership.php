@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\MembershipRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,7 +28,7 @@ class Membership
      *     max = 255
      * )
      */
-    private $ClientName;
+    private $clientName;
 
 
     /**
@@ -37,7 +36,7 @@ class Membership
      * @ORM\JoinColumn(name="package_id", referencedColumnName="id")
      *
      */
-    private $Package;
+    private $package;
 
 
     /**
@@ -47,7 +46,7 @@ class Membership
      *     max = 255
      * )
      */
-    private $Age;
+    private $age;
 
 
     /**
@@ -57,7 +56,7 @@ class Membership
      *     max = 255
      * )
      */
-    private $RFID;
+    private $rfid;
 
     public function getId(): ?int
     {
@@ -66,7 +65,7 @@ class Membership
 
     public function getClientName(): ?string
     {
-        return $this->ClientName;
+        return $this->clientName;
     }
 
     /**
@@ -75,7 +74,7 @@ class Membership
      */
     public function setClientName(?string $ClientName): self
     {
-        $this->ClientName = $ClientName;
+        $this->clientName = $ClientName;
 
         return $this;
     }
@@ -86,7 +85,7 @@ class Membership
      */
     public function getPackage()
     {
-        return $this->Package;
+        return $this->package;
     }
 
     /**
@@ -95,7 +94,7 @@ class Membership
      */
     public function setPackage($Package)
     {
-        $this->Package = $Package;
+        $this->package = $Package;
 
         return $this;
     }
@@ -107,7 +106,7 @@ class Membership
      */
     public function getAge(): ?string
     {
-        return $this->Age;
+        return $this->age;
     }
 
     /**
@@ -116,18 +115,14 @@ class Membership
      */
     public function setAge(string $Age): self
     {
-        $this->Age = $Age;
+        $this->age = $Age;
 
         return $this;
     }
 
-
-
-
-
     public function getRFID(): ?string
     {
-        return $this->RFID;
+        return $this->rfid;
     }
 
     /**
@@ -136,7 +131,7 @@ class Membership
      */
     public function setRFID(string $RFID): self
     {
-        $this->RFID = $RFID;
+        $this->rfid = $RFID;
 
         return $this;
     }
