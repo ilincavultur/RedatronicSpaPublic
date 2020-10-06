@@ -21,8 +21,7 @@ use Pagerfanta\Pagerfanta;
 /**
  * Class ProductController
  * @package App\Controller
- * @Route("/Spa/Product")
- *
+ * @Route("Product")
  */
 class ProductController extends AbstractController
 {

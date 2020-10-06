@@ -99,9 +99,9 @@
             </div>
 
             <form method="get" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search Reception" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
                 <button class="btn btn-light">
-                    Search Reception
+                    <i class="fa fa-search" style="font-size:20px"></i>
                 </button>
             </form>
         </nav>
@@ -114,6 +114,7 @@
         <table class="table">
             <thead>
                 <tr class="col text-center">
+                    <th>Rfid</th>
                     <th>Created At</th>
                     <th>Actions</th>
                 </tr>
@@ -122,6 +123,7 @@
             <tbody>
             {% for reception in pager.currentPageResults %}
                 <tr class="col text-center">
+                    <td> {{ reception.rfid }}</td>
                     <td> {{ reception.createdAt|date }}</td>
                     <td>
                         <li class="list-inline-item">

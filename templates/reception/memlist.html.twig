@@ -98,9 +98,9 @@
             </div>
 
             <form method="get" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search Reception" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
                 <button class="btn btn-light">
-                    Search Reception
+                    <i class="fa fa-search" style="font-size:20px"></i>
                 </button>
             </form>
         </nav>
@@ -114,8 +114,7 @@
             <thead>
                 <tr class="col text-center">
                     <th>Rfid</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
+                    <th>Created At</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -125,7 +124,6 @@
                 <tr class="col text-center">
                     <td> {{ memreception.Rfid }}</td>
                     <td> {{ memreception.createdAt|date }}</td>
-                    <td> {{ memreception.updatedAt|date }}</td>
                     <td>
                         <li class="list-inline-item">
                             <button class="open-in-modal btn btn-info btn-sm" data-href="{{ path('app_reception_showMemDetails', {"id":memreception.id}) }}"><i class="fa fa-list" style="font-size:20px"></i></button>

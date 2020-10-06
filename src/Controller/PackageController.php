@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class PackageController
  * @package App\Controller
- * @Route("/Spa/Package")
+ * @Route("Package")
  */
 class PackageController extends AbstractController
 {

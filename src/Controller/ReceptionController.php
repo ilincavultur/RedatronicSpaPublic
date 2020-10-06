@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ReceptionController
  * @package App\Controller
- * @Route("/Spa/Reception")
+ * @Route("Reception")
  */
 class ReceptionController extends AbstractController
 {
@@ -169,21 +169,6 @@ class ReceptionController extends AbstractController
         );
 
     }
-/*
-    /**
-     * @return Response
-     * @Route("/decision", name="app_decision")
-     *//*
-    public function decision()
-    {
-        return $this->render(
-            'reception/decision.html.twig',
-            [
-
-            ]
-        );
-
-    }*/
 
     /**
      * @param Reception $reception

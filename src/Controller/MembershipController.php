@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class MembershipController
  * @package App\Controller
- * @Route("/Spa/Membership")
+ * @Route("Membership")
  */
 class MembershipController extends AbstractController
 {

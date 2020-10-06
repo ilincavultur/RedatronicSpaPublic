@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ZoneController
  * @package App\Controller
- * @Route("/Spa/Zone")
+ * @Route("Zone")
  */
 class ZoneController extends AbstractController
 {

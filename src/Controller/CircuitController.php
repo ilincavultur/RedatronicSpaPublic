@@ -31,9 +31,6 @@ class CircuitController extends AbstractController
     {
 
         $circuitRepository = $this->getDoctrine()->getRepository(Circuit::class);
-        //foreach ($reception->getRfids() as $val){
-        //  $array = $circuitRepository->findAllWithSameRfid($val);
-        //}
 
         $array = $circuitRepository->findAllWithSameRfid($reception->getRfid());
         if($array == null){
