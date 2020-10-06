@@ -94,8 +94,6 @@ class ReceptionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
 
-            //$memreception->setRfid('d');
-
             $membership = $form->get('membership')->getData();
 
             $repository = $this->getDoctrine()->getRepository(Membership::class);
