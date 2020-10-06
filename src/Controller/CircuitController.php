@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class CircuitController
  * @package App\Controller
- * @Route("/Spa/Circuit")
+ * @Route("Circuit")
  */
 class CircuitController extends AbstractController
 {
