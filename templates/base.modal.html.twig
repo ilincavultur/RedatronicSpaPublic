@@ -1,0 +1,29 @@
+{% block Popup %}
+    <div class="modal smart-modal" data-backdrop="false"
+         data-href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}?{{ app.request.query.all|url_encode }}"
+         role="dialog">
+        <div class="modal-dialog popup-container ui-draggable"
+             style="width:{{ page_width is defined ? page_width :'80%' }}">
+            <div class="smart-modal-header-buttons">
+                <button class="pull-right btn btn-danger btn-modal-header  btn-modal-close-no-refresh"
+                        data-dismiss="modal"><i
+                            class="glyphicon glyphicon-remove"></i></button>
+                <button class="pull-right btn btn-warning btn-modal-header btn-modal-maximize"><i
+                            class="glyphicon glyphicon-resize-full"></i></button>
+                <button class="pull-right btn btn-success btn-modal-header btn-modal-refresh"><i
+                            class="glyphicon glyphicon-refresh"></i></button>
+            </div>
+            <div class="modal-header smart-modal-header modal-header-bk-color">
+                <div class=""><h3
+                            class="titlu-modal-popup">{{ app.request.query.get('modal_title') }}</h3></div>
+            </div>
+            <div class="modal-content">
+                {% block main %}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

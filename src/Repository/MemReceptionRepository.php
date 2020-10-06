@@ -30,8 +30,8 @@ class MemReceptionRepository extends ServiceEntityRepository
 
 
         if (null !== $search){
-            $qb->where('p.Rfid like :search')
-                //->orWhere('p.Products like :search')
+            $qb->where('p.rfid like :search')
+                //->orWhere('p.products like :search')
                 ->setParameter('search','%'.$search.'%');
         }
 

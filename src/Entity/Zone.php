@@ -14,7 +14,6 @@ class Zone
     public const TYPE_YES = 'Yes';
     public const TYPE_NO = 'No';
 
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -29,7 +28,7 @@ class Zone
      *     max = 255
      * )
      */
-    private $Name;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -64,12 +63,12 @@ class Zone
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName(string $Name): self
     {
-        $this->Name = $Name;
+        $this->name = $Name;
 
         return $this;
     }

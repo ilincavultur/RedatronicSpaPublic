@@ -4,15 +4,12 @@
 namespace App\Controller;
 
 use App\Entity\Membership;
-use App\Entity\Package;
 use App\Form\MembershipType;
-use App\Form\PackageType;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class MembershipController
  * @package App\Controller
- * @Route("/Spa/Membership")
+ * @Route("Membership")
  */
 class MembershipController extends AbstractController
 {
@@ -44,6 +41,7 @@ class MembershipController extends AbstractController
             $em->persist($form->getData());
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('app_membership_list'));
         }
         return $this->render(
@@ -60,12 +58,9 @@ class MembershipController extends AbstractController
      * @param Request $request
      * @return Response
      * @Security("is_granted('ROLE_USER')")
-     *
-     *
      */
     public function listAction(Request $request)
     {
-
 
         $zoneRepository = $this->getDoctrine()->getRepository(Membership::class);
         $qb = $zoneRepository->findMemberships($request->get('search'));
@@ -115,7 +110,6 @@ class MembershipController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-
         $form = $this->createForm(MembershipType::class, $membership);
         $form->handleRequest($request);
 
@@ -139,19 +133,15 @@ class MembershipController extends AbstractController
      * @Route("/showDetails/{id}", name="app_membership_showDetails")
      * @param Membership $membership
      * @return Response
-     *
      * @Security("is_granted('ROLE_USER')")
-     *
      */
     public function showDetails(Membership $membership)
     {
 
         # $this->denyAccessUnlessGranted('ROLE_USER',null, 'Unable to access this page!');
-
         return $this->render('Membership/showDetails.html.twig', array(
             'membership' => $membership
         ));
-
 
     }
 }

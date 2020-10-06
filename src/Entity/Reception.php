@@ -5,10 +5,9 @@ namespace App\Entity;
 use App\Repository\ReceptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
+
 
 
 /**
@@ -33,26 +32,19 @@ class Reception
      */
     private $id;
 
-
-
-
-
     /**
      * @ORM\ManyToOne(targetEntity="Package")
      * @ORM\JoinColumn(name="package_id", referencedColumnName="id")
      *
      */
-    private $Package;
+    private $package;
 
     /**
      * @ORM\ManyToMany(targetEntity="Product")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      *
      */
-    private $Products;
-
-
-
+    private $products;
 
 
     /**
@@ -73,39 +65,36 @@ class Reception
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $Credit;
+    private $credit;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
-    private $Rfid;
+    private $rfid;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
-    private $Age;
-
-
-
-
-
-
+    private $age;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-   
-
-
-
     /**
      * @return mixed
      */
     public function getPackage()
     {
-        return $this->Package;
+        return $this->package;
     }
 
     /**
@@ -114,19 +103,17 @@ class Reception
      */
     public function setPackage($Package)
     {
-        $this->Package = $Package;
+        $this->package = $Package;
 
         return $this;
     }
-
-
 
     /**
      * @return ArrayCollection
      */
     public function getProducts()
     {
-        return $this->Products;
+        return $this->products;
     }
 
     /**
@@ -135,15 +122,10 @@ class Reception
      */
     public function setProducts($Products)
     {
-        $this->Products = $Products;
+        $this->products = $Products;
 
         return $this;
     }
-
-
-
-
-
 
 
     public function getTotalAccess(): ?int
@@ -184,48 +166,44 @@ class Reception
 
     public function getCredit(): ?int
     {
-        return $this->Credit;
+        return $this->credit;
     }
 
     public function setCredit(?int $Credit): self
     {
-        $this->Credit = $Credit;
+        $this->credit = $Credit;
 
         return $this;
     }
 
     public function getRfid(): ?string
     {
-        return $this->Rfid;
+
+        return $this->rfid;
+
     }
 
     public function setRfid(?string $Rfid): self
     {
-        $this->Rfid = $Rfid;
+        $this->rfid = $Rfid;
+
 
         return $this;
     }
 
     public function getAge(): ?string
     {
-        return $this->Age;
+
+        return $this->age;
+
     }
 
     public function setAge(?string $Age): self
     {
-        $this->Age = $Age;
+        $this->age = $Age;
+
 
         return $this;
     }
-
-
-
-
-
-
-
-
-
-
 
 }

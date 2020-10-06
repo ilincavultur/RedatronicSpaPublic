@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
-use App\Form\SearchProductType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +12,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 
@@ -23,8 +21,7 @@ use Pagerfanta\Pagerfanta;
 /**
  * Class ProductController
  * @package App\Controller
- * @Route("/Spa/Product")
- *
+ * @Route("Product")
  */
 class ProductController extends AbstractController
 {
@@ -34,14 +31,13 @@ class ProductController extends AbstractController
      * @Route ("/addProduct", name="app_new_product")
      * @param EntityManagerInterface $em
      * @param Request $request
-     * @param ValidatorInterface $validator
      * @return Response
      * @Security("is_granted('ROLE_USER')")
-     *
      */
-    public function addProduct(EntityManagerInterface $em ,Request $request, ValidatorInterface $validator)
+    public function addProduct(EntityManagerInterface $em, Request $request)
     {
-        $form = $this->createForm(Product\ProductType::class);
+
+        $form = $this->createForm(ProductType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -61,11 +57,10 @@ class ProductController extends AbstractController
 
     }
 
+
     /**
      * @Route("/list", name="app_product_list")
-     *
      * @param Request $request
-     *
      * @return Response
      * @Security("is_granted('ROLE_USER')")
      */
@@ -113,14 +108,13 @@ class ProductController extends AbstractController
      * @param Product $product
      * @return Response
      * @Security("is_granted('ROLE_USER')")
-     *
      */
     public function update(Request $request, Product $product)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
 
-        $form = $this->createForm(Product\ProductType::class, $product);
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
 

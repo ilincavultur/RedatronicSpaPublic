@@ -25,17 +25,17 @@ class PackageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Name', TextType::class)
+            ->add('name', TextType::class)
             ->add('priceAdult', IntegerType::class)
             ->add('priceChild', IntegerType::class)
-            ->add('Zones', EntityType::class, [
+            ->add('zones', EntityType::class, [
                 'class' => Zone::class,
-                'choice_label' => 'Name',
+                'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('Availability', IntegerType::class)
-            ->add('NoOfEntries', IntegerType::class)
+            ->add('availability', IntegerType::class)
+            ->add('noOfEntries', IntegerType::class)
 
         ;
 

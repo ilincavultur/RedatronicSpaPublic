@@ -35,7 +35,7 @@ class Product
      *     max = 255
      * )
      */
-    private $Name;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -43,7 +43,7 @@ class Product
      *     max = 255
      * )
      */
-    private $Code;
+    private $code;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -51,17 +51,17 @@ class Product
      *     max = 255
      * )
      */
-    private $Barcode;
+    private $barcode;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $Price;
+    private $price;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $WeekendPrice;
+    private $weekendPrice;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -69,7 +69,7 @@ class Product
      *     max = 255
      * )
      */
-    private $Type;
+    private $type;
 
 
     public function getId(): ?int
@@ -79,72 +79,72 @@ class Product
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName(string $Name): self
     {
-        $this->Name = $Name;
+        $this->name = $Name;
 
         return $this;
     }
 
     public function getCode(): ?string
     {
-        return $this->Code;
+        return $this->code;
     }
 
     public function setCode(?string $Code): self
     {
-        $this->Code = $Code;
+        $this->code = $Code;
 
         return $this;
     }
 
     public function getBarcode(): ?string
     {
-        return $this->Barcode;
+        return $this->barcode;
     }
 
     public function setBarcode(?string $Barcode): self
     {
-        $this->Barcode = $Barcode;
+        $this->barcode = $Barcode;
 
         return $this;
     }
 
     public function getPrice(): ?int
     {
-        return $this->Price;
+        return $this->price;
     }
 
     public function setPrice(int $Price): self
     {
-        $this->Price = $Price;
+        $this->price = $Price;
 
         return $this;
     }
 
     public function getWeekendPrice(): ?int
     {
-        return $this->WeekendPrice;
+        return $this->weekendPrice;
     }
 
     public function setWeekendPrice(int $WeekendPrice): self
     {
-        $this->WeekendPrice = $WeekendPrice;
+        $this->weekendPrice = $WeekendPrice;
 
         return $this;
     }
 
     public function getType(): ?string
     {
-        return $this->Type;
+        return $this->type;
     }
 
     public function setType(string $Type): self
     {
-        $this->Type = $Type;
+        $this->type = $Type;
 
         return $this;
     }

@@ -25,7 +25,7 @@ class CircuitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Rfid', TextType::class)
+            ->add('rfid', TextType::class)
 
         ;
 

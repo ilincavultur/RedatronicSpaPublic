@@ -25,7 +25,7 @@ class ReceptionRepository extends ServiceEntityRepository
 
 
         if (null !== $search){
-            $qb->where('p.Rfid like :search')
+            $qb->where('p.rfid like :search')
                 ->setParameter('search','%'.$search.'%');
         }
 

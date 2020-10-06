@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Form\ReceptionType;
 use App\Repository\RfidRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RfidRepository", repositoryClass=RfidRepository::class)
@@ -19,48 +19,32 @@ class Rfid
     private $id;
 
     /**
-     *  
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
-    private $Rfid;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Reception", inversedBy="Rfids")
-     * @ORM\JoinColumn(name="reception_id", referencedColumnName="id")
-     */
-    private $Reception;
-
-
+    private $card;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getRfid(): ?string
+    public function getCard(): ?string
     {
-        return $this->Rfid;
+        return $this->card;
     }
 
-    public function setRfid(?string $Rfid): self
+    public function setCard(?string $Card): self
     {
-        $this->Rfid = $Rfid;
+        $this->card = $Card;
 
         return $this;
     }
 
-    public function getReception(): ?string
-    {
-        return $this->Reception;
-    }
+   
 
-    public function setReception(?string $Reception): self
-    {
-        $this->Reception = $Reception;
-
-        return $this;
-    }
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Product;
+namespace App\Form;
 
 
 use App\Entity\Product;
@@ -21,12 +21,12 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Name', TextType::class)
-            ->add('Code', TextType::class)
-            ->add('Barcode', TextType::class)
-            ->add('Price', IntegerType::class)
-            ->add('WeekendPrice', IntegerType::class)
-            ->add('Type', ChoiceType::class, [
+            ->add('name', TextType::class)
+            ->add('code', TextType::class)
+            ->add('barcode', TextType::class)
+            ->add('price', IntegerType::class)
+            ->add('weekendPrice', IntegerType::class)
+            ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Restaurant' => Product::TYPE_RESTAURANT ,
                     'Bar' => Product::TYPE_BAR,

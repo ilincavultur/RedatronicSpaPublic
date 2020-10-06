@@ -2,28 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Circuit;
+
 use App\Entity\Membership;
 use App\Entity\MemReception;
-use App\Entity\Package;
-use App\Entity\Product;
 use App\Entity\Reception;
-use App\Entity\Rfid;
-use App\Entity\Zone;
 use App\Form\ChooseMembershipType;
-use App\Form\PackageType;
 use App\Form\ReceptionType;
-use App\Form\RfidType;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,8 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ReceptionController
  * @package App\Controller
- * @Route("/Spa/Reception")
- *
+ * @Route("Reception")
  */
 class ReceptionController extends AbstractController
 {
@@ -48,26 +35,22 @@ class ReceptionController extends AbstractController
 
         $reception = new Reception();
 
-
-
         $form = $this->createForm(ReceptionType::class, $reception);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $reception->setAge($form->get('Age')->getData());
-            $reception->setPackage($form->get('Package')->getData());
 
-
-            $reception->setCredit($form->get('Credit')->getData());
-            $reception->setProducts($form->get('Products')->getData());
+            $reception->setAge($form->get('age')->getData());
+            $reception->setPackage($form->get('package')->getData());
+            $reception->setCredit($form->get('credit')->getData());
+            $reception->setProducts($form->get('products')->getData());
 
             if($reception->getAge() == Reception::TYPE_ADULT){
                 $reception->setTotalAccess($reception->getPackage()->getPriceAdult());
             }else{
                 $reception->setTotalAccess($reception->getPackage()->getPriceChild());
             }
-
 
             $arr = $reception->getProducts()->toArray();
 
@@ -76,11 +59,9 @@ class ReceptionController extends AbstractController
                 $sum += $p->getPrice();
             }
 
-
-
             $reception->setTotalServices($sum);
-            $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
 
+            $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
 
             $em->persist($form->getData());
 
@@ -90,102 +71,13 @@ class ReceptionController extends AbstractController
         }
 
         return $this->render(
-            'reception/simplecard.html.twig',
+            'reception/addNewCard.html.twig',
             [
                 'user_form' => $form->createView()
             ]
         );
 
-
-
-
-
-
-
-        //-------------------------------------
-        /*
-        $reception = new Reception();
-        $form = $this->createForm(ReceptionType::class, $reception);
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-
-            $reception->setPackage($form->get('Package')->getData());
-            $reception->setAdults($form->get('Adults')->getData());
-            $reception->setChildren($form->get('Children')->getData());
-            $reception->setCredit($form->get('Credit')->getData());
-
-            $reception->setTotalAccess($form->get('Adults')->getData() * $reception->getPackage()->getPriceAdult() + $form->get('Children')->getData() * $reception->getPackage()->getPriceChild());
-            $reception->setTotalPers($form->get('Adults')->getData() + $form->get('Children')->getData());
-
-
-
-
-
-            $reception->setTotalServices($form->get('Products')->getData()->get('Price') * $reception->getTotalPers());
-            $reception->setTotalSum($reception->getTotalServices() + $reception->getTotalAccess() + $reception->getCredit());
-
-
-
-            $em->persist($form->getData());
-
-            $em->flush();
-            return $this->redirect($this->generateUrl('app_new_circuit', array(
-                'id' => $reception->getId())));
-        }
-        return $this->render(
-            'reception/simplecard.html.twig',
-            [
-                'user_form' => $form->createView()
-            ]
-        );
-*/
     }
-
-    /**
-     * @param EntityManagerInterface $em
-     * @param Request $request
-     * @return void
-     * @Route("/addTag", name="addTag")
-     */
-    public function addTag(EntityManagerInterface $em , Request $request)
-    {
-
-
-
-
-
-
-        $rf = new Rfid();
-        $form = $this->createForm(RfidType::class, $rf);
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-
-            $membership = $form->get('Rfid')->getData();
-
-            $repository = $this->getDoctrine()->getRepository(Reception::class);
-
-            $m = $repository->find($membership->getId());
-
-
-            $m->setRfids($form->getData());
-
-
-
-            $em->persist($form->getData());
-
-            $em->flush();
-
-        }
-
-
-    }
-
 
     /**
      * @param EntityManagerInterface $em
@@ -193,7 +85,6 @@ class ReceptionController extends AbstractController
      * @return RedirectResponse|Response
      * @Route("/addMemReception", name="app_new_rec")
      */
-
     public function addMembershipReception(EntityManagerInterface $em, Request $request)
     {
 
@@ -205,7 +96,7 @@ class ReceptionController extends AbstractController
 
             //$memreception->setRfid('d');
 
-            $membership = $form->get('Membership')->getData();
+            $membership = $form->get('membership')->getData();
 
             $repository = $this->getDoctrine()->getRepository(Membership::class);
 
@@ -216,24 +107,21 @@ class ReceptionController extends AbstractController
             $memreception->setAge($m->getAge());
             $memreception->setClientName($m->getClientName());
 
-
             $em->persist($form->getData());
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('app_new_memcircuit', array(
                 'id' => $memreception->getId())));
         }
         return $this->render(
-            'reception/choose.html.twig',
+            'reception/addMembershipCard.html.twig',
             [
                 'user_form' => $form->createView()
             ]
         );
 
-
     }
-
-
 
     /**
      * @param Request $request
@@ -244,7 +132,6 @@ class ReceptionController extends AbstractController
     {
         $receptionRepository = $this->getDoctrine()->getRepository(Reception::class);
         $qbr = $receptionRepository->findReceptions($request->get('search'));
-
 
         $page = $request->get('page');
         $pager = new Pagerfanta(new DoctrineORMAdapter($qbr));
@@ -258,10 +145,7 @@ class ReceptionController extends AbstractController
             ]
         );
 
-
-
     }
-
 
     /**
      * @param Request $request
@@ -286,28 +170,6 @@ class ReceptionController extends AbstractController
             ]
         );
 
-
-
-    }
-
-    /**
-     * @param Request $request
-     * @return Response
-     * @Route("/decision", name="app_decision")
-     */
-    public function decision(Request $request)
-    {
-
-
-        return $this->render(
-            'reception/decision.html.twig',
-            [
-
-            ]
-        );
-
-
-
     }
 
     /**
@@ -317,13 +179,10 @@ class ReceptionController extends AbstractController
      */
     public function showDetails(Reception $reception)
     {
-
         # $this->denyAccessUnlessGranted('ROLE_USER',null, 'Unable to access this page!');
-
         return $this->render('reception/showDetails.html.twig', array(
             'reception' => $reception
         ));
-
 
     }
 
@@ -334,13 +193,10 @@ class ReceptionController extends AbstractController
      */
     public function showMemDetails(MemReception $memreception)
     {
-
         # $this->denyAccessUnlessGranted('ROLE_USER',null, 'Unable to access this page!');
-
         return $this->render('reception/showMemDetails.html.twig', array(
             'memreception' => $memreception
         ));
-
 
     }
 

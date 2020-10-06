@@ -1,7 +1,6 @@
-{% extends 'reception/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-
-{% block head %}
+{% block main %}
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
         <style>
             #navi{
@@ -20,7 +20,6 @@
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light " id="navi">
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,8 +53,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class='fas fa-user-alt'></i>
                             {{ app.user.username }}
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Settings</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ path('app_user_edit', {"id":app.user.id}) }}">Settings</a>
                             <a class="dropdown-item" href="{{ path('app_logout')}}">Log Out</a>
                         </div>
                     </li>
@@ -72,14 +71,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <a href="{{ path('app_memreception_list') }}" class="btn btn-light">
+                MemReceptions
+            </a>
 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a href="{{ path('app_decision') }}" class="btn btn-light">
-                            Add New Reception <i class="fa fa-plus"></i>
-                        </a>
-                    </li>
                     <a href="{{ path('app_circuit_list') }}" class="btn btn-light">
                         Circuits
                     </a>
@@ -87,113 +88,74 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <li class="nav-item active">
+                        <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_reception') }}"> New Client Rec <i class="fa fa-plus"></i></button>
+                    </li>
+                    <li class="nav-item active">
+                        <button class="open-in-modal btn btn-light" data-href="{{ path('app_new_rec') }}">  Membership Rec <i class="fa fa-plus"></i></button>
+                    </li>
                 </ul>
-
-
             </div>
+
             <form method="get" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search Reception" value="{{ app.request.get('search') is defined ? app.request.get('search') }}">
                 <button class="btn btn-light">
-                    Search Reception
+                    <i class="fa fa-search" style="font-size:20px"></i>
                 </button>
             </form>
-
         </nav>
 
         <title>{% block title %}List{% endblock %}</title>
-
+        {% block stylesheets %}{% endblock %}
     </head>
-{% endblock %}
 
+    <body>
+        <table class="table">
+            <thead>
+                <tr class="col text-center">
+                    <th>Rfid</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
+            <tbody>
+            {% for reception in pager.currentPageResults %}
+                <tr class="col text-center">
+                    <td> {{ reception.rfid }}</td>
+                    <td> {{ reception.createdAt|date }}</td>
+                    <td>
+                        <li class="list-inline-item">
+                            <button class="open-in-modal btn btn-info btn-sm" data-href="{{ path('app_reception_showDetails', {"id":reception.id}) }}"><i class="fa fa-list" style="font-size:20px"></i></button>
+                        </li>
+    {#
+                        <li class="list-inline-item">
 
-{% block body %}
-
-
-
-
-    <table class="table">
-        <thead>
-        <tr class="col text-center">
-
-
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        {% for reception in pager.currentPageResults %}
-            <tr class="col text-center">
-
-
-
-                <td> {{ reception.createdAt|date }}</td>
-                <td>
-
-                    <li class="list-inline-item">
-
-
-                            <a href="{{ path('app_reception_showDetails', {"id":reception.id}) }}" class="btn btn-info btn-sm"><i class="fa fa-list" style="font-size:20px"></i>
+                            <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px">delete_forever</i>
                             </a>
 
-                    </li>
+                        </li>
+    #}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
+        <div class="fixed-bottom">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
+                        <ul class="pagination justify-content-center">
 
+                            {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
 
-{#
-                    <li class="list-inline-item">
-
-                        <a href="{{ path('app_reception_delete', {"id":reception.id}) }}" class="btn btn-success btn-sm">  <i class="fa fa-delete" style="font-size:20px">delete_forever</i>
-                        </a>
-
-                    </li>
-#}
-
-                </td>
-
-
-
-            </tr>
-
-
-
-        {% endfor %}
-
-
-
-        </tbody>
-
-
-    </table>
-
-
-    <div class="fixed-bottom">
-        <div class="row">
-            <div class="col-sm-12">
-                <nav aria-label="Page navigation example" class="p-2 mb-1 bg-light text-dark" >
-                    <ul class="pagination justify-content-center">
-
-                        {{ pagerfanta(pager,'twitter_bootstrap4' ) }}
-
-                    </ul>
-                </nav>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-
-
-
+    </body>
 
 {% endblock %}

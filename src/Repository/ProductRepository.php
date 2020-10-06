@@ -6,7 +6,7 @@ use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\EntityRepository;
+
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -31,12 +31,12 @@ class ProductRepository extends ServiceEntityRepository
 
 
         if (null !== $search){
-            $qb->where('p.Name like :search')
-                ->orWhere('p.Code like :search')
-                ->orWhere('p.Barcode like :search')
-                ->orWhere('p.Price like :search')
-                ->orWhere('p.WeekendPrice like :search')
-                ->orWhere('p.Type like :search')
+            $qb->where('p.name like :search')
+                ->orWhere('p.code like :search')
+                ->orWhere('p.barcode like :search')
+                ->orWhere('p.price like :search')
+                ->orWhere('p.weekendPrice like :search')
+                ->orWhere('p.type like :search')
                 ->setParameter('search','%'.$search.'%');
         }
 

@@ -27,7 +27,7 @@ class Package
      *     max = 255
      * )
      */
-    private $Name;
+    private $name;
 
 
     /**
@@ -35,17 +35,17 @@ class Package
      * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      *
      */
-    private $Zones;
+    private $zones;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $Availability;
+    private $availability;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $NoOfEntries;
+    private $noOfEntries;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -66,12 +66,12 @@ class Package
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName(string $Name): self
     {
-        $this->Name = $Name;
+        $this->name = $Name;
 
         return $this;
     }
@@ -82,7 +82,7 @@ class Package
      */
     public function getZones()
     {
-        return $this->Zones;
+        return $this->zones;
     }
 
     /**
@@ -91,31 +91,31 @@ class Package
      */
     public function setZones($Zones)
     {
-        $this->Zones = $Zones;
+        $this->zones = $Zones;
 
         return $this;
     }
 
     public function getAvailability(): ?int
     {
-        return $this->Availability;
+        return $this->availability;
     }
 
     public function setAvailability(int $Availability): self
     {
-        $this->Availability = $Availability;
+        $this->availability = $Availability;
 
         return $this;
     }
 
     public function getNoOfEntries(): ?int
     {
-        return $this->NoOfEntries;
+        return $this->noOfEntries;
     }
 
     public function setNoOfEntries(?int $NoOfEntries): self
     {
-        $this->NoOfEntries = $NoOfEntries;
+        $this->noOfEntries = $NoOfEntries;
 
         return $this;
     }

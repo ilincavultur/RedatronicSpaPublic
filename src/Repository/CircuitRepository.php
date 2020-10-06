@@ -26,7 +26,7 @@ class CircuitRepository extends ServiceEntityRepository
 
 
         if (null !== $search){
-            $qb->where('p.Rfid like :search')
+            $qb->where('p.rfid like :search')
                 ->orWhere('p.createdAt like :search')
                 ->orWhere('p.endTime like :search')
                 ->setParameter('search','%'.$search.'%');
@@ -43,7 +43,7 @@ class CircuitRepository extends ServiceEntityRepository
     public function findByRfid($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.Rfid = :val')
+            ->andWhere('c.rfid = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             //->setMaxResults(10)
@@ -63,9 +63,9 @@ class CircuitRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             'SELECT p
             FROM App\Entity\Circuit p
-            WHERE p.Rfid = :Rfid
-            ORDER BY p.Rfid ASC'
-        )->setParameter('Rfid', $Rfid);
+            WHERE p.rfid = :rfid
+            ORDER BY p.rfid ASC'
+        )->setParameter('rfid', $Rfid);
 
         // returns an array of Product objects
         return $query->getResult();
