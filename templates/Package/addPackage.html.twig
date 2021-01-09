@@ -1,0 +1,25 @@
+{% set uniqueId = uniqueId() %}
+<div id="{{ uniqueId }}" class="modal smart-modal" data-backdrop="false" data-keyboard="false" data-href="{{ path('app_new_package') }}" >
+    <div class="modal-dialog">
+        {{ form_start(user_form) }}
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h3 class="modal-title" id="header">New Package</h3>
+                </div>
+                <div class="modal-body">
+                    <div>
+
+                        {{ form(user_form) }}
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-modal-close-no-refresh" >{{ 'Cancel'|trans }}</button>
+                    <button type="submit" class="btn btn-light btn-p-lr-10 submit">{{ 'Save'|trans }}</button>
+                </div>
+            </form>
+        </div>
+        {{ form_end(user_form) }}
+    </div>
+</div>

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <style>
+            #form{
+                padding-top: 20px;
+                align-items: center;
+                justify-content: space-around;
+                display: flex;
+                float: none;
+            }
+
+        </style>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="{{ path('app_login') }}" class="btn btn-light">
+                Back To Sign In
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+        <title>{% block title %}Users{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+
+    </head>
+
+    <body>
+    <div id="form">
+
+        {{ form_start(user_form) }}
+
+        {{ form_row(user_form.username) }}
+        {{ form_row(user_form.email) }}
+        {{ form_row(user_form.roles) }}
+        {{ form_row(user_form.plainPassword.first) }}
+        {{ form_row(user_form.plainPassword.second) }}
+
+        <button type="submit" class="btn btn-light"> Create Account </button>
+
+        {{ form_end(user_form) }}
+
+    </div>
+    </body>
+{% endblock %}

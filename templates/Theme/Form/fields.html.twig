@@ -1,0 +1,86 @@
+{% block form_errors %}
+    {% if errors|length > 0 -%}
+        {% if form is not rootform %}<span class="help-block">{% else %}<div class="alert alert-danger">{% endif %}
+        <ul class="list-unstyled">
+        {%- for error in errors -%}
+            <li><span class="glyphicon glyphicon-exclamation-sign"></span> {{ error.message|trans | raw }}</li>
+        {%- endfor -%}
+        </ul>
+        {% if form is rootform %}</div>{% else %}</span>{% endif %}
+    {%- endif %}
+{% endblock %}
+
+{%- block collection_row -%}
+    {% set attr = attr | merge({class: (attr.class|default('') ~ ' collection-container')|trim}) -%}
+    <div class="form-group">
+        {{- form_label(form) -}}
+        <div {{ block('widget_attributes') }}{% if prototype is defined %} data-prototype="{{ form_widget(prototype)|e }}"{% endif %}>
+            <div class="collections">
+                {% for child in form %}
+                    {{- form_row(child) -}}
+                {% endfor %}
+            </div>
+            {{- form_errors(form) -}}
+            {% if prototype is defined %}
+                <button type="button" class="btn btn-sm btn-link add-collection p-a-0 {% if attr.no_add_link is defined %}hidden{% endif %}">
+                    <i class="fa fa-plus"></i>
+                    {{ "Add" }}
+                </button>
+            {% endif %}
+        </div>
+    </div>
+{%- endblock collection_row -%}
+
+{% block userHoliday_widget %}
+    <div class="form-group row {% if not valid %} has-error{% endif %} h-25">
+        <div class="col-xs-2">
+            {{ form_row(form.companyLeaveType.name) }}
+        </div>
+        <div class="col-xs-2">
+            {{ form_row(form.date) }}
+        </div>
+        <div class="col-xs-1">
+            {{ form_row(form.duration) }}
+        </div>
+        <div class="col-xs-5">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-xs-2 " style="margin-top: 30px">
+            <button type="button" class="btn btn-default-danger delete-collection w-50" data-toggle="tooltip">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+{% block userContract_widget %}
+    <div class="form-group row {% if not valid %} has-error{% endif %} h-25">
+        <div class="col-xs-5">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-xs-2">
+            {{ form_row(form.startDate) }}
+        </div>
+        <div class="col-xs-2">
+            {{ form_row(form.endDate) }}
+        </div>
+        <div class="col-xs-1">
+            {{ form_row(form.hours) }}
+        </div>
+        <div class="col-xs-2 " style="margin-top: 30px">
+            <button type="button" class="btn btn-default-danger delete-collection w-50" data-toggle="tooltip">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+
+{#{% block color_widget %}#}
+{#    <div class="input-group color">#}
+{#        {{ block('form_widget') }}#}
+{#        {{ form_row(form.name) }}#}
+{#        <span class="input-group-addon" data-color="{{ form.vars.value | default('#FFF') }}" style="color: {{ form.vars.value | default('#FFF') }}">#}
+{#            <i class="fas fa-fw fa-lg fa-stop"></i>#}
+{#        </span>#}
+{#    </div>#}
+{#{% endblock %}#}

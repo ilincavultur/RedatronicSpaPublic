@@ -1,0 +1,510 @@
+body {
+    font-family: san-serif;
+    font-size: 14px;
+    line-height: 1.6em;
+    margin: 0;
+    padding: 0;
+    /*	background-image: url("images/relax.jpg");
+        background-size: cover;
+    */
+}
+
+.modal-open {
+    padding-right: 0 !important;
+    overflow: unset !important;
+
+
+
+    /*position: relative !important;*/
+}
+
+.container {
+
+    width: 800px;
+    margin: 0 auto;
+}
+
+.autocomplete-suggestions {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    background: #FFF;
+    cursor: default;
+    overflow: auto;
+    -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+    -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+    box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+}
+
+.autocomplete-suggestion {
+    font-family: Courier;
+    padding: 2px 5px;
+    white-space: pre;
+    overflow: hidden;
+}
+
+.autocomplete-no-suggestion {
+    padding: 2px 5px;
+}
+
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.autocomplete-group {
+    padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+input {
+    font-size: 28px;
+    padding: 10px;
+    border: 1px solid #CCC;
+    display: block;
+    margin: 20px 0;
+}
+
+@media print {
+    .no-print, .no-print * {
+        display: none !important;
+    }
+
+    th {
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+.panel-culoare {
+    color: #F0F;
+    background-color: #0F0;
+}
+
+.sarbatoare {
+    background-color: #BDBDBD;
+}
+
+.smart-modal-header {
+    height: 35px;
+
+}
+
+.smart-modal-header-close {
+    margin-top: -67px;
+    height: 30px;
+    margin-left: 95%;
+}
+
+.smart-modal-header-refresh {
+    margin-top: -23px;
+    height: 30px;
+    margin-left: 87%;
+}
+
+.smart-modal-header-buttons {
+    height: 30px;
+    float: right;
+    padding: 0;
+}
+
+.modal-content {
+    background-color: #F0F0F0;
+    width: 100%;
+
+}
+
+.modal-content-padding {
+    padding-top: 20px;
+    display: grid;
+}
+
+.popup-container {
+    border-radius: 5px;
+    border: 3px solid #FFE0B3;
+
+}
+
+.btn-save {
+    float: right;
+    margin-bottom: -20px;
+    margin-right: -10px;
+}
+
+.confirm-dialog-text-area-div {
+    min-height: 155px;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.confirm-dialog-text-area-p {
+    font-size: 20px;
+}
+
+.confirm-dialog-btn-div {
+    position: absolute;
+    margin-top: -44px;
+    width: 100%;
+    border-top: 1px solid #efba84;
+    padding: 4px;
+}
+
+.confirm-dialog-btn {
+    width: 41%;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.btn-confirm {
+    margin: auto;
+}
+
+@media screen and (min-width: 1080px) {
+    .btn-delete {
+        margin-left: 10px;
+    }
+}
+
+.btn-modal-header {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 47px;
+    z-index: 65535;
+}
+
+.titlu-modal-popup {
+    margin-top: -13px;
+    margin-left: 0px;
+    width: 70%;
+    height: 0px;
+}
+
+.titlu-modal-confirm {
+    font-size: 2em;
+    padding: 5px;
+    line-height: 1;
+}
+
+.titlu-modal-confirm-conatiner {
+    width: 90%;
+    height: 35px;
+}
+
+.confirm-modal-header {
+
+}
+
+.modal-header-bk-color {
+    background-color: #337ab7;
+    color: #FFFFFF;
+}
+
+.btn-pontaj {
+    width: 93%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.input-group {
+    float: left !important;
+    padding: 10px !important;
+}
+
+.bk-tab {
+    border-color: #e86a6a #ff9a9a #ff9494 !important;
+    /*  background-color: bisque;*/
+}
+
+.active {
+    background-color: #e2e2e2 !important;
+}
+
+.disabledTab {
+    pointer-events: none;
+}
+
+ul.nav li.disabledTab {
+
+    font-style: italic;
+    color: #FFF;
+}
+
+.tab-content {
+    border: 1px solid #ddd;
+    border-radius: 0 0 6px 6px;
+
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.message-box {
+    text-align: center;
+    border: 1px solid lightgrey;
+    padding: 8px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: large;
+    bottom: 20px;
+}
+
+.spacer-10 {
+    margin: 10px;
+}
+
+.row-spacer-10 {
+    height: 10px;
+
+}
+
+.input-group-box .input-group-inner-div {
+    border: 1px solid #c1c1c1;
+    margin: 10px;
+
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+    color: #f2f2f2;
+}
+
+:-moz-placeholder {
+    font-style: italic;
+    color: #f2f2f2;
+}
+
+::-moz-placeholder {
+    font-style: italic;
+    color: #f2f2f2;
+}
+
+:-ms-input-placeholder {
+    font-style: italic;
+    color: #f2f2f2;
+}
+
+#InfoCollection {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+}
+
+.btn-leftMessage {
+    margin-left: 14px;
+    margin-top: -6px;
+}
+
+.glyphicon {
+    top: 3px !important;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+.tooltip {
+    z-index: 65535 !important;
+}
+
+.select2-container {
+    z-index: 65535 !important;
+}
+
+.select2-results__option {
+    padding: 4px !important;
+}
+
+.select2-search__field {
+    padding: 4px !important;
+    font-size: initial !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+
+.note-editable p {
+    font-size: 14px;
+    padding: 2px;
+    font-weight: normal;
+}
+
+.note-editable {
+    min-height: 200px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.delete-confirm-div {
+    position: fixed !important;
+}
+
+.message-confirm-div {
+    position: fixed !important;
+}
+
+.textdiv p {
+    color: black;
+    padding: 0;
+}
+
+.textdiv {
+    overflow: auto;
+    border: 1px solid lightgrey;
+    font-size: small;
+}
+
+input.required {
+    /*border: 1px solid #ffad8b;*/
+    background-color: #fff85c54;
+}
+
+@media screen and (max-width: 1200px) {
+    .popup-container {
+        width: 100% !important;
+        overflow: hidden !important;
+        /*margin: 0 -150px 0 -150px;*/
+    }
+}
+
+.select2-selection--multiple {
+    max-height: 40px !important;
+    overflow-y: auto;
+}
+
+.card-background-app {
+    background-color: #92bede;
+}
+
+.card-background-b2b {
+    background-color: #fff78c;
+}
+
+.divTable {
+    display: table;
+    width: 100%;
+}
+
+.divTableRow {
+    display: table-row;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+
+}
+
+.divTableHeading {
+    background-color: #EEE;
+    display: table-header-group;
+}
+
+.divTableCell, .divTableHead {
+    display: table-cell;
+    padding: 3px 10px;
+}
+
+.divTableHeading {
+    background-color: #EEE;
+    display: table-header-group;
+    font-weight: bold;
+}
+
+.divTableFoot {
+    background-color: #EEE;
+    display: table-footer-group;
+    font-weight: bold;
+}
+
+.divTableBody {
+    display: table-row-group;
+}
+
+.titlu-tabel {
+    font-size: 20px;
+}
+
+.new-tabel {
+    padding: 0 !important;
+}
+
+.modal-popup {
+    z-index: 20000;
+    /*position: absolute !important;*/
+    top: 10px !important;
+    /*display: block;*/
+    margin-top: -10px !important;
+
+
+}
+
+.modal.fade {
+    background-color: rgba(0, 0, 0, .6) !important;
+}
+
+.smart-modal {
+    z-index: 20000;
+    position: absolute !important;
+    background-color: #8080807d;
+
+
+}
+
+.has-error {
+    color: #ff0500 !important;
+    border-color: #ff0500 !important;
+}
